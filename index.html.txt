@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>POV Eye Blink</title>
+<style>
+  html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: transparent;
+    pointer-events: none;
+  }
+
+  .eyelid-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 9999;
+  }
+
+  .eyelid {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background-color: #000000;
+    pointer-events: none;
+    will-change: transform, opacity;
+    animation-duration: 3.8s;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+  }
+
+  .eyelid.top {
+    top: 0;
+    animation-name: blinkTop;
+  }
+
+  .eyelid.bottom {
+    bottom: 0;
+    animation-name: blinkBottom;
+  }
+
+  @keyframes blinkTop {
+    0%   { transform: translateY(0);     opacity: 1; }
+    18%  { transform: translateY(-12%);  opacity: 1; }
+    28%  { transform: translateY(0);     opacity: 1; }
+    70%  { transform: translateY(-100%); opacity: 1; }
+    99%  { transform: translateY(-100%); opacity: 1; }
+    100% { transform: translateY(-100%); opacity: 0; }
+  }
+
+  @keyframes blinkBottom {
+    0%   { transform: translateY(0);     opacity: 1; }
+    18%  { transform: translateY(12%);   opacity: 1; }
+    28%  { transform: translateY(0);     opacity: 1; }
+    70%  { transform: translateY(100%);  opacity: 1; }
+    99%  { transform: translateY(100%);  opacity: 1; }
+    100% { transform: translateY(100%);  opacity: 0; }
+  }
+
+  /* Метка только в режиме редактора */
+  #label {
+    display: none;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    background: rgba(0,0,0,0.5);
+    padding: 4px 8px;
+    border-radius: 4px;
+    z-index: 10000;
+    pointer-events: none;
+  }
+</style>
+</head>
+<body>
+  <div class="eyelid-container">
+    <div class="eyelid top"></div>
+    <div class="eyelid bottom"></div>
+  </div>
+  <div id="label">Пробуждение / Eye Blink</div>
+
+  <script>
+    // Показываем подпись только в редакторе Genially
+    const ref = document.referrer;
+    const isEditor = ref.includes('genial.ly/editor') || ref === '' || window.location.href.includes('localhost');
+    if (isEditor) {
+      document.getElementById('label').style.display = 'block';
+    }
+
+    // Перезапуск анимации при смене размера (если нужно)
+    // Можно раскомментировать для повторного проигрывания при resize:
+    /*
+    window.addEventListener('resize', () => {
+      document.querySelectorAll('.eyelid').forEach(el => {
+        el.style.animation = 'none';
+        void el.offsetWidth;
+        el.style.animation = '';
+      });
+    });
+    */
+  </script>
+</body>
+</html>
