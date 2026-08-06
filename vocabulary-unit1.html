@@ -1,0 +1,1121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Advanced Vocabulary Studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --font-head: 'Fraunces', serif;
+  --font-body: 'Plus Jakarta Sans', sans-serif;
+
+  /* Modern Studio Palette (Nordic Editorial Vibe) */
+  --bg-main: #f5f4f0; /* Soft warm paper tone */
+  --bg-card: #ffffff;
+  --bg-card-hover: #faf9f6;
+  --border-color: #e5e1d8;
+  
+  --primary: #1e293b; /* Sleek Deep Slate */
+  --primary-hover: #0f172a;
+  --accent: #ca6a43; /* Terracotta Clay */
+  --accent-light: #fdf2ed;
+
+  --text-main: #2d2b2a;
+  --text-muted: #79756e;
+
+  --success: #2e6f40;
+  --error: #af3a30;
+
+  --radius-lg: 20px;
+  --radius-md: 14px;
+  --radius-sm: 8px;
+
+  --shadow-sm: 0 4px 12px rgba(30, 20, 10, 0.04);
+  --shadow-md: 0 12px 28px rgba(30, 20, 10, 0.07);
+  --transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background-color: var(--bg-main);
+  /* Elegant dot grid texture mimicking a study planner */
+  background-image: radial-gradient(var(--border-color) 1.5px, transparent 1.5px);
+  background-size: 24px 24px;
+  color: var(--text-main);
+  font-family: var(--font-body);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: clamp(1.5rem, 5vw, 3rem) 1rem;
+  -webkit-font-smoothing: antialiased;
+}
+
+.container { max-width: 880px; width: 100%; }
+
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+
+/* HEADER */
+header { text-align: center; margin-bottom: 2rem; }
+header h1 {
+  font-family: var(--font-head);
+  font-size: clamp(2.2rem, 6vw, 3rem);
+  font-weight: 600;
+  color: var(--primary);
+  letter-spacing: -0.5px;
+  margin-bottom: 0.5rem;
+}
+header p { color: var(--text-muted); font-size: 1.1rem; font-weight: 500; }
+
+/* DASHBOARD STATS */
+.dashboard {
+  display: flex;
+  justify-content: center;
+  gap: clamp(1rem, 3vw, 2.5rem);
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 1.2rem 2rem;
+  margin-bottom: 2rem;
+  box-shadow: var(--shadow-sm);
+  flex-wrap: wrap;
+}
+.stat-box { text-align: center; min-width: 140px; }
+.stat-box .num {
+  font-family: var(--font-head);
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--primary);
+  display: block;
+}
+.stat-box.accent .num { color: var(--accent); }
+.stat-box .label {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-muted);
+  font-weight: 700;
+  margin-top: 2px;
+}
+
+/* TABS */
+.nav-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 2.5rem;
+  flex-wrap: wrap;
+}
+.tab-btn {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  color: var(--text-muted);
+  padding: 12px 22px;
+  border-radius: var(--radius-md);
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: var(--shadow-sm);
+}
+.tab-btn svg { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+.tab-btn:hover { border-color: var(--primary); color: var(--primary); transform: translateY(-2px); }
+.tab-btn.active {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #ffffff;
+  box-shadow: 0 6px 16px rgba(30, 41, 59, 0.25);
+}
+
+.screen { display: none; }
+.screen.active { display: block; animation: fadeIn 0.4s var(--transition); }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+/* SECTION HEADER */
+.section-hdr { margin-bottom: 2rem; text-align: center; }
+.section-hdr h2 {
+  font-family: var(--font-head);
+  font-size: 1.8rem;
+  color: var(--primary);
+  margin-bottom: 0.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.section-hdr h2 svg { width: 26px; height: 26px; stroke: var(--accent); fill: none; stroke-width: 2; }
+.section-hdr p { color: var(--text-muted); font-size: 0.98rem; }
+
+/* 1. FLASHCARDS */
+.fc-layout { display: flex; flex-direction: column; align-items: center; }
+.flashcard-wrapper {
+  perspective: 1000px;
+  width: 100%;
+  max-width: 520px;
+  height: 300px;
+  cursor: pointer;
+  margin-bottom: 1.5rem;
+}
+.flashcard {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: var(--shadow-md);
+  border-radius: var(--radius-lg);
+}
+.flashcard.flipped { transform: rotateY(180deg); }
+.card-face {
+  position: absolute;
+  inset: 0;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  text-align: center;
+}
+.card-face.back {
+  transform: rotateY(180deg);
+  background: var(--accent-light);
+  border-color: rgba(202, 106, 67, 0.2);
+}
+.card-word {
+  font-family: var(--font-head);
+  font-size: clamp(2rem, 5vw, 2.5rem);
+  font-weight: 500;
+  color: var(--primary);
+  margin-bottom: 0.3rem;
+}
+.card-ipa { font-size: 1.05rem; color: var(--text-muted); font-family: monospace; margin-bottom: 1.5rem; }
+.card-tr { font-size: 1.45rem; font-weight: 700; color: var(--accent); margin-bottom: 1rem; }
+.card-def { font-size: 1.05rem; color: var(--text-main); line-height: 1.55; }
+
+.speak-btn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--bg-main);
+  border: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--transition);
+}
+.speak-btn:hover { background: var(--primary); border-color: var(--primary); }
+.speak-btn:hover svg { stroke: #fff; }
+.speak-btn svg { width: 18px; height: 18px; stroke: var(--primary); fill: none; stroke-width: 2.2; }
+
+.card-hint {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-muted);
+  position: absolute;
+  bottom: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 700;
+}
+.card-hint svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 2.5; }
+
+.fc-progress-bar { width: 100%; max-width: 520px; height: 8px; background: #e5e1d8; border-radius: 10px; margin-bottom: 1.5rem; overflow: hidden; }
+.fc-progress-fill { height: 100%; background: var(--accent); border-radius: 10px; transition: width 0.4s ease; }
+
+.mastery-controls { display: flex; gap: 1rem; margin-bottom: 1.5rem; }
+.flashcard-controls { display: flex; gap: 12px; }
+
+.btn {
+  background: var(--bg-card);
+  border: 2px solid var(--border-color);
+  color: var(--text-main);
+  padding: 12px 24px;
+  border-radius: var(--radius-md);
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: var(--shadow-sm);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-body);
+}
+.btn svg { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 2.5; }
+.btn:hover { border-color: var(--primary); color: var(--primary); transform: translateY(-2px); }
+.btn-primary { background: var(--primary); border-color: var(--primary); color: #fff; }
+.btn-primary:hover { background: var(--primary-hover); color: #fff; border-color: var(--primary-hover); }
+.btn-success { border-color: var(--success); color: var(--success); }
+.btn-success:hover { background: var(--success); color: #fff; }
+.btn-warn { border-color: var(--accent); color: var(--accent); }
+.btn-warn:hover { background: var(--accent); color: #fff; }
+
+/* 2. CONTEXT GAPS */
+.gaps-container { display: flex; flex-direction: column; gap: 1.2rem; }
+.gap-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  padding: 1.5rem;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  font-size: 1.1rem;
+  line-height: 1.7;
+}
+.gap-card .sentence-text { display: inline; }
+.gap-input {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  font-weight: 700;
+  border: none;
+  border-bottom: 2px dashed var(--primary);
+  background: transparent;
+  color: var(--primary);
+  padding: 0 8px;
+  width: 130px;
+  text-align: center;
+  outline: none;
+  transition: var(--transition);
+}
+.gap-input:focus { background: rgba(202, 106, 67, 0.05); border-bottom-style: solid; }
+.gap-input.ok { border-color: var(--success); color: var(--success); background: rgba(46, 111, 64, 0.1); border-radius: 4px 4px 0 0; border-bottom-style: solid;}
+.gap-input.bad { border-color: var(--error); color: var(--error); background: rgba(175, 58, 48, 0.1); border-radius: 4px 4px 0 0; border-bottom-style: solid;}
+.gap-hint-text { display: block; font-size: 0.85rem; color: var(--text-muted); margin-top: 6px; font-weight: 600; font-style: italic; }
+.gaps-result { text-align: center; font-weight: 700; margin-top: 1.5rem; font-size: 1.1rem; min-height: 26px; }
+
+/* 3. QUIZ */
+.quiz-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  padding: clamp(1.5rem, 5vw, 3rem);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  text-align: center;
+  max-width: 620px;
+  margin: 0 auto;
+}
+.quiz-progress { font-size: 0.85rem; color: var(--text-muted); font-weight: 700; text-transform: uppercase; letter-spacing: 1.2px; margin-bottom: 0.8rem; }
+.quiz-question {
+  font-family: var(--font-head);
+  font-size: clamp(1.5rem, 4vw, 1.9rem);
+  color: var(--primary);
+  margin-bottom: 2rem;
+  line-height: 1.35;
+}
+.quiz-options { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 1.5rem; }
+.quiz-opt {
+  background: var(--bg-main);
+  border: 2px solid var(--border-color);
+  padding: 16px 20px;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: var(--transition);
+  font-family: var(--font-body);
+  color: var(--text-main);
+  text-align: left;
+}
+.quiz-opt:hover:not(:disabled) { border-color: var(--primary); background: #ffffff; }
+.quiz-opt.correct { background: rgba(46, 111, 64, 0.1); border-color: var(--success); color: var(--success); }
+.quiz-opt.wrong { background: rgba(175, 58, 48, 0.1); border-color: var(--error); color: var(--error); }
+.quiz-opt:disabled { cursor: default; }
+.quiz-feedback { font-weight: 700; margin-top: 1rem; min-height: 24px; font-size: 1.1rem; }
+.quiz-score {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  background: var(--accent-light);
+  color: var(--accent);
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 0.88rem;
+  margin-bottom: 1.5rem;
+}
+
+/* 4. SPEAKING */
+.speak-grid { display: grid; grid-template-columns: 1fr 300px; gap: 1.5rem; }
+.speak-cards { display: flex; flex-direction: column; gap: 1.2rem; }
+.speak-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  padding: 1.8rem;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+  transition: var(--transition);
+  border-left: 4px solid var(--border-color);
+}
+.speak-card.active { border-left-color: var(--accent); background: var(--bg-card-hover); }
+.speak-q { font-family: var(--font-head); font-size: 1.25rem; line-height: 1.45; color: var(--primary); margin-bottom: 1rem; }
+.checklist-pane {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  padding: 1.5rem;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  position: sticky;
+  top: 20px;
+}
+.checklist-pane h3 { font-family: var(--font-head); font-size: 1.25rem; color: var(--primary); margin-bottom: 0.5rem; }
+.checklist-pane p { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem; }
+.word-checkbox-list { display: flex; flex-direction: column; gap: 8px; max-height: 320px; overflow-y: auto; padding-right: 4px; }
+.word-checkbox-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: var(--bg-main);
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  user-select: none;
+  transition: var(--transition);
+}
+.word-checkbox-item:hover { background: #e5e1d8; }
+.word-checkbox-item.checked { background: rgba(46, 111, 64, 0.1); color: var(--success); }
+.word-checkbox-item .box {
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+  border: 2px solid var(--text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
+}
+.word-checkbox-item.checked .box {
+  border-color: var(--success);
+  background: var(--success);
+}
+.word-checkbox-item.checked .box svg { stroke: #fff; display: block; }
+.word-checkbox-item .box svg { display: none; width: 12px; height: 12px; stroke-width: 3; }
+
+.checklist-progress-bar { width: 100%; height: 6px; background: #e5e1d8; border-radius: 10px; margin-top: 1rem; overflow: hidden; }
+.checklist-progress-fill { height: 100%; background: var(--success); width: 0; transition: width 0.3s ease; }
+
+@media(max-width: 800px) {
+  .speak-grid { grid-template-columns: 1fr; }
+  .checklist-pane { position: static; margin-top: 1.5rem; }
+  .quiz-options { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+  <header>
+    <h1>Advanced Lexical Studio</h1>
+    <p>CAE/C1 Level Revision Hub • For High Teens</p>
+  </header>
+
+  <!-- DASHBOARD STATS -->
+  <div class="dashboard">
+    <div class="stat-box">
+      <span class="num" id="statKnown">0</span>
+      <span class="label">Cards Mastered</span>
+    </div>
+    <div class="stat-box accent">
+      <span class="num" id="statLearning">54</span>
+      <span class="label">In Progress</span>
+    </div>
+    <div class="stat-box">
+      <span class="num" id="statQuizBest">0%</span>
+      <span class="label">Quiz High Score</span>
+    </div>
+  </div>
+
+  <nav class="nav-tabs">
+    <button class="tab-btn active" data-tab="flashcards" onclick="switchTab('flashcards', this)">
+      <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 9h18"/></svg>
+      Flashcards
+    </button>
+    <button class="tab-btn" data-tab="gaps" onclick="switchTab('gaps', this)">
+      <svg viewBox="0 0 24 24"><path d="M4 20h16"/><path d="M14.5 3.5l4 4L8 18l-4.5 1L4.5 14.5z"/></svg>
+      Fill In
+    </button>
+    <button class="tab-btn" data-tab="quiz" onclick="switchTab('quiz', this)">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.8.4-1 .9-1 1.7"/><path d="M12 17h.01"/></svg>
+      Quiz
+    </button>
+    <button class="tab-btn" data-tab="speak" onclick="switchTab('speak', this)">
+      <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      Speaking
+    </button>
+  </nav>
+
+  <!-- 1. FLASHCARDS -->
+  <div id="screen-flashcards" class="screen active">
+    <div class="section-hdr">
+      <h2>
+        <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 9h18"/></svg>
+        Revision Flashcards
+      </h2>
+      <p>Self-check your actively recalled knowledge. Save progress to storage.</p>
+    </div>
+
+    <div class="fc-layout">
+      <div class="fc-progress-bar"><div class="fc-progress-fill" id="fcProgressFill"></div></div>
+
+      <div class="flashcard-wrapper" id="flashcardWrapper" onclick="toggleCard()">
+        <div class="flashcard" id="flashcard">
+          <div class="card-face front">
+            <button class="speak-btn" onclick="speakWord(event)" aria-label="Listen to pronunciation">
+              <svg viewBox="0 0 24 24"><path d="M11 5 6 9H2v6h4l5 4z"/><path d="M15.5 8.5a4 4 0 0 1 0 7"/></svg>
+            </button>
+            <div class="card-word" id="fcWord">accomplish</div>
+            <div class="card-ipa" id="fcIpa">/əˈkʌmplɪʃ/</div>
+            <div class="card-hint">
+              <svg viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 4v5h-5"/></svg>
+              Click to flip
+            </div>
+          </div>
+          <div class="card-face back">
+            <div class="card-tr" id="fcTr">достигать, выполнять</div>
+            <div class="card-def" id="fcDef">To achieve something successfully, especially after a lot of effort.</div>
+            <div class="card-hint">
+              <svg viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 4v5h-5"/></svg>
+              Click to flip
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mastery-controls">
+        <button class="btn btn-success" onclick="markCard(true)">
+          <svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>
+          Mastered
+        </button>
+        <button class="btn btn-warn" onclick="markCard(false)">
+          <svg viewBox="0 0 24 24"><path d="M12 8v4M12 16h.01"/><circle cx="12" cy="12" r="9"/></svg>
+          Review Again
+        </button>
+      </div>
+
+      <div class="flashcard-controls">
+        <button class="btn" onclick="prevCard()">
+          <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+          Prev
+        </button>
+        <button class="btn" onclick="shuffleCards()">
+          <svg viewBox="0 0 24 24"><path d="M16 3h5v5"/><path d="M4 20 21 3"/><path d="M21 16v5h-5"/><path d="M15 15l6 6"/><path d="M4 4l5 5"/></svg>
+          Shuffle
+        </button>
+        <button class="btn" onclick="nextCard()">
+          Next
+          <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. CONTEXT GAPS -->
+  <div id="screen-gaps" class="screen">
+    <div class="section-hdr">
+      <h2>
+        <svg viewBox="0 0 24 24"><path d="M4 20h16"/><path d="M14.5 3.5l4 4L8 18l-4.5 1L4.5 14.5z"/></svg>
+        Structural Fill In
+      </h2>
+      <p>Provide the missing structural element (particles, prep phrases, or key collocations).</p>
+    </div>
+
+    <div class="gaps-container" id="gapsContainer"></div>
+    <div class="gaps-result" id="gapsResult"></div>
+
+    <div class="action-row">
+      <button class="btn btn-primary" onclick="checkGaps()">
+        <svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>
+        Check Answers
+      </button>
+      <button class="btn" onclick="renderGaps()">
+        <svg viewBox="0 0 24 24"><path d="M16 3h5v5"/><path d="M4 20 21 3"/><path d="M21 16v5h-5"/><path d="M15 15l6 6"/><path d="M4 4l5 5"/></svg>
+        New Set
+      </button>
+    </div>
+  </div>
+
+  <!-- 3. QUIZ -->
+  <div id="screen-quiz" class="screen">
+    <div class="section-hdr">
+      <h2>
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.8.4-1 .9-1 1.7"/><path d="M12 17h.01"/></svg>
+        Active Recall Quiz
+      </h2>
+      <p>10 random C1 questions. Features translation and definition checking.</p>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-score" id="quizScoreBadge">
+        <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" fill="none" stroke-width="2.5"><path d="M12 2l3 6 6 1-4.5 4.5L18 20l-6-3-6 3 1.5-6.5L3 9l6-1z"/></svg>
+        <span id="quizScoreText">0 / 0</span>
+      </div>
+      <div class="quiz-progress" id="quizProgress">Question 1 of 10</div>
+      <div class="quiz-question" id="quizQuestion">Loading...</div>
+      <div class="quiz-options" id="quizOptions"></div>
+      <div class="quiz-feedback" id="quizFeedback"></div>
+    </div>
+
+    <div class="action-row">
+      <button class="btn btn-primary" id="quizNextBtn" onclick="nextQuestion()" style="display:none;">
+        Next Question
+        <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+      </button>
+      <button class="btn" onclick="startQuiz()">
+        <svg viewBox="0 0 24 24"><path d="M16 3h5v5"/><path d="M4 20 21 3"/><path d="M21 16v5h-5"/><path d="M15 15l6 6"/><path d="M4 4l5 5"/></svg>
+        Restart Quiz
+      </button>
+    </div>
+  </div>
+
+  <!-- 4. SPEAKING -->
+  <div id="screen-speak" class="screen">
+    <div class="section-hdr">
+      <h2>
+        <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        High Teen Discussion Board
+      </h2>
+      <p>Select a discussion prompt. Answer aloud, integrating checked target collocations.</p>
+    </div>
+
+    <div class="speak-grid">
+      <div class="speak-cards" id="speakCardsContainer"></div>
+      
+      <div class="checklist-pane">
+        <h3>Word Checklist</h3>
+        <p>Click words you successfully used in your spoken response:</p>
+        <div class="word-checkbox-list" id="wordCheckboxList"></div>
+        <div class="checklist-progress-bar"><div class="checklist-progress-fill" id="speakProgressFill"></div></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+/* ============================================================
+   COMPLETE WORDLIST DATASET (Transcribed from image)
+   ============================================================ */
+const VOCAB = [
+  // Achievements
+  { word: "accomplish (your goals)", ipa: "/əˈkʌmplɪʃ/", tr: "достигать целей", def: "To successfully achieve something you set out to do." },
+  { word: "flourish", ipa: "/ˈflʌrɪʃ/", tr: "процветать, преуспевать", def: "To grow, develop, or be highly successful." },
+  { word: "fulfil (your potential)", ipa: "/fʊlˈfɪl/", tr: "реализовать свой потенциал", def: "To achieve as much as you are capable of doing." },
+  { word: "occupy (your time)", ipa: "/ˈɒkjʊpaɪ/", tr: "занимать время", def: "To fill or spend time doing particular activities." },
+  { word: "overcome a setback", ipa: "/ˌəʊvəˈkʌm ə ˈsetbæk/", tr: "преодолеть неудачу/задержку", def: "To deal successfully with a problem that delays progress." },
+  { word: "present a challenge", ipa: "/prɪˈzent ə ˈtʃælɪndʒ/", tr: "бросать вызов, создавать трудность", def: "To offer a difficult task or situation that tests someone." },
+  { word: "pursue (your interest)", ipa: "/pəˈsjuː/", tr: "заниматься (интересующим делом)", def: "To follow or engage in a hobby or activity over a period of time." },
+  { word: "talent", ipa: "/ˈtælənt/", tr: "талант", def: "A natural ability or skill to do something exceptionally well." },
+
+  // Idioms
+  { word: "be a pain", ipa: "/biː ə peɪn/", tr: "быть занозой, раздражать", def: "To be extremely annoying or difficult to deal with." },
+  { word: "do something from scratch", ipa: "/frəm skrætʃ/", tr: "делать с самого начала (с нуля)", def: "To do or build something from the very beginning with no pre-existing help." },
+  { word: "go hand in hand", ipa: "/ɡəʊ hænd ɪn hænd/", tr: "идти рука об руку", def: "To be closely connected or always happen together." },
+  { word: "keep your cool", ipa: "/kiːp jɔː kuːl/", tr: "сохранять самообладание", def: "To stay calm and controlled in a difficult or stressful situation." },
+  { word: "be on track", ipa: "/biː ɒn træk/", tr: "идти по плану (по графику)", def: "To make progress as expected or planned." },
+  { word: "have the best of both worlds", ipa: "/ðə best əv bəʊθ wɜːldz/", tr: "получать лучшее от обеих сторон", def: "To enjoy the advantages of two very different situations at once." },
+  { word: "pass with flying colours", ipa: "/pɑːs wɪð ˈflaɪ.ɪŋ ˈkʌl.əz/", tr: "сдать с блеском (на отлично)", def: "To pass an exam, test, or task with very high scores or success." },
+
+  // Phrasal Verbs
+  { word: "beat off (competitors)", ipa: "/biːt ɒf/", tr: "отбиться, победить конкурентов", def: "To successfully resist or defeat opponents." },
+  { word: "come up against (a problem)", ipa: "/kʌm ʌp əˈɡenst/", tr: "столкнуться с (проблемой)", def: "To face or meet unexpected difficulties." },
+  { word: "come through (a difficult time)", ipa: "/kʌm θruː/", tr: "пережить трудные времена", def: "To survive or successfully get through a challenging period." },
+  { word: "come up with (an idea)", ipa: "/kʌm ʌp wɪð/", tr: "придумать (идею)", def: "To suggest, invent, or think of a plan, solution, or idea." },
+  { word: "end up (doing something)", ipa: "/end ʌp/", tr: "закончить тем, что (в итоге)", def: "To finally find yourself in a situation or doing an activity you didn't plan." },
+  { word: "get over (a problem)", ipa: "/ɡet ˈəʊvə/", tr: "справиться с проблемой", def: "To deal with and recover from a setback or issue." },
+  { word: "give in", ipa: "/ɡɪv ɪn/", tr: "сдаваться, уступать", def: "To stop resisting and accept someone else's demands." },
+  { word: "hold back", ipa: "/həʊld bæk/", tr: "сдерживать, мешать прогрессу", def: "To prevent someone or yourself from making progress or showing emotion." },
+  { word: "knock out (an opponent)", ipa: "/nɒk aʊt/", tr: "выбить оппонента, нокаутировать", def: "To defeat an opponent in a competition so they cannot continue." },
+  { word: "live up to (expectations)", ipa: "/lɪv ʌp tuː/", tr: "соответствовать ожиданиям", def: "To be as good as what was hoped for or expected." },
+  { word: "mess up (an exercise)", ipa: "/mes ʌp/", tr: "испортить, провалить упражнение", def: "To do something badly or make a complete mess of an exercise." },
+  { word: "open up (opportunities)", ipa: "/ˈəʊpən ʌp/", tr: "открывать возможности", def: "To create new possibilities, paths, or opportunities." },
+  { word: "pass up (an opportunity)", ipa: "/pɑːs ʌp/", tr: "упустить (возможность)", def: "To refuse or fail to take advantage of an opportunity." },
+  { word: "pull out (of something)", ipa: "/pʊl aʊt/", tr: "выйти (из сделки/проекта)", def: "To withdraw from an agreement, project, or competition before completion." },
+  { word: "see something through", ipa: "/siː θruː/", tr: "довести до конца", def: "To continue working on something until it is completely finished." },
+  { word: "start out", ipa: "/stɑːt aʊt/", tr: "начинать (путь, карьеру)", def: "To begin a career, business, or life in a particular way." },
+  { word: "take to (swimming)", ipa: "/teɪk tu/", tr: "пристраститься, быстро освоить", def: "To begin to like or develop a habit/skill for doing something." },
+
+  // Adverb Collocations
+  { word: "automatically assume", ipa: "/ˌɔː.təˈmæt.ɪ.kəl.i əˈsjuːm/", tr: "автоматически предполагать", def: "To accept that something is true without thinking about it first." },
+  { word: "clearly show", ipa: "/ˈklɪə.li ʃəʊ/", tr: "ясно демонстрировать", def: "To make something obvious or leave no doubt about it." },
+  { word: "closely modelled", ipa: "/ˈkləʊs.li ˈmɒd.əld/", tr: "спроектирован по подобию", def: "Designed to be highly similar to or based on an existing model." },
+  { word: "consistently annoy", ipa: "/kənˈsɪs.tənt.li əˈnɔɪ/", tr: "постоянно раздражать", def: "To repeatedly make someone angry or irritated over a period of time." },
+  { word: "generally accepted", ipa: "/ˈdʒen.ər.əl.i əkˈsep.tɪd/", tr: "общепринятый", def: "Believed or approved of by most people in a society." },
+  { word: "generally considered", ipa: "/ˈdʒen.ər.əl.i kənˈsɪd.əd/", tr: "обычно считается", def: "Thought of by most people in a specific way." },
+  { word: "greatly increase", ipa: "/ˈɡreɪt.li ɪnˈkriːs/", tr: "значительно увеличить", def: "To make something much larger in number, amount, or strength." },
+  { word: "highly likely (unlikely)", ipa: "/ˈhaɪ.li laɪ.kli/", tr: "крайне вероятно (маловероятно)", def: "Very probable or expected to happen (or not happen)." },
+  { word: "largely based (on)", ipa: "/ˈlɑːdʒ.li beɪst/", tr: "в основном базирующийся на", def: "Mainly founded on or using something as its main source." },
+  { word: "negatively influence", ipa: "/ˈneɡ.ə.tɪv.li ˈɪn.flu.əns/", tr: "негативно влиять", def: "To have a bad or damaging effect on someone or something." },
+  { word: "potentially dangerous", ipa: "/pəˈten.ʃəl.i ˈdeɪn.dʒər.əs/", tr: "потенциально опасный", def: "Capable of causing harm or risk under certain conditions." },
+  { word: "readily available", ipa: "/ˈred.ɪ.li əˈveɪ.lə.bəl/", tr: "легкодоступный", def: "Easy to find, get, or buy without delay." },
+  { word: "relatively unknown", ipa: "/ˈrel.ə.tɪv.li ʌnˈnəʊn/", tr: "относительно неизвестный", def: "Not famous or widely recognized by people." },
+  { word: "virtually impossible", ipa: "/ˈvɜː.tʃu.ə.li ɪmˈpɒs.ə.bəl/", tr: "практически невозможный", def: "Almost completely unable to happen or be achieved." },
+  { word: "well designed", ipa: "/wel dɪˈzaɪnd/", tr: "хорошо спроектированный", def: "Planned and made in an artistic, efficient, or logical way." },
+
+  // Other
+  { word: "campaign", ipa: "/kæmˈpeɪn/", tr: "кампания / проводить кампанию", def: "A planned series of actions to achieve a social or political goal." },
+  { word: "compromise", ipa: "/ˈkɒm.prə.maɪz/", tr: "компромисс / идти на компромисс", def: "An agreement reached where both sides give up some demands." },
+  { word: "demonstration", ipa: "/ˌdem.ənˈstreɪ.ʃən/", tr: "демонстрация (протест)", def: "A public protest where people march to show their feelings about an issue." },
+  { word: "drive", ipa: "/draɪv/", tr: "внутренний драйв, мотивация", def: "A strong, organized effort or a inner desire to achieve goals." },
+  { word: "energised", ipa: "/ˈen.ə.dʒaɪzd/", tr: "полный энергии", def: "Filled with energy, excitement, and readiness to act." },
+  { word: "engage", ipa: "/ɪnˈɡeɪdʒ/", tr: "вовлекать, заниматься", def: "To take part in or cause to become involved in an activity." },
+  { word: "expertise", ipa: "/ˌek.spɜːˈtiːz/", tr: "экспертные знания", def: "High-level knowledge or specialized skill in a particular field." },
+  { word: "funding", ipa: "/ˈfʌn.dɪŋ/", tr: "финансирование", def: "Money provided by an organization or government for a purpose." },
+  { word: "genius", ipa: "/ˈdʒiː.ni.əs/", tr: "гениальность, гений", def: "Exceptional intellectual or creative ability." },
+  { word: "gifted", ipa: "/ˈɡɪf.tɪd/", tr: "одаренный", def: "Having great natural ability or high intelligence." },
+  { word: "obstacle", ipa: "/ˈɒb.stə.kəl/", tr: "препятствие", def: "Something that blocks progress or makes a task difficult." },
+  { word: "petition", ipa: "/pəˈtɪʃ.ən/", tr: "петиция / подавать петицию", def: "A formal written document signed by many demanding a change." },
+  { word: "related to", ipa: "/rɪˈleɪ.tɪd tuː/", tr: "связанный с", def: "Connected with or belonging to the same family of things." },
+  { word: "respect", ipa: "/rɪˈspekt/", tr: "уважение / уважать", def: "A feeling of admiration for someone's skills or qualities." },
+  { word: "track down", ipa: "/træk daʊn/", tr: "выследить, разыскать", def: "To find someone or something after a thorough search." },
+  { word: "ultimately", ipa: "/ˈʌl.tɪ.mət.li/", tr: "в конечном счете", def: "In the end, after a series of events or long process." }
+];
+
+/* ============================================================
+   STRUCTURAL GAPS (Testing only the particle, preposition, or collocated element)
+   ============================================================ */
+const GAPS_DATA = [
+  { text: "She was proud to pass her driving test with flying {colours}.", hint: "pass with flying ___ (idiom)", answer: "colours" },
+  { text: "We came up {against} a major obstacle when our funding was cut.", hint: "come up ___ a problem (three-part phrasal verb)", answer: "against" },
+  { text: "It is highly {unlikely} that the school will cancel the exams.", hint: "highly ___ (adverb collocation)", answer: "unlikely" },
+  { text: "He had to overcome a severe {setback} when he injured his knee.", hint: "overcome a ___ (achievement collocation)", answer: "setback" },
+  { text: "If you want to fulfil your {potential}, you must practice daily.", hint: "fulfil your ___ (achievement collocation)", answer: "potential" },
+  { text: "Don't hold {back} - tell us your creative ideas for the campaign.", hint: "hold ___ (phrasal verb meaning to hesitate)", answer: "back" },
+  { text: "The new training system is closely {modelled} on the British structure.", hint: "closely ___ on (passive adverb collocation)", answer: "modelled" },
+  { text: "We messed up the project and had to start again from {scratch}.", hint: "do something from ___ (idiom)", answer: "scratch" },
+  { text: "I automatically {assume} that teens are comfortable with coding.", hint: "automatically ___ (adverb collocation)", answer: "assume" },
+  { text: "It is generally {accepted} that digital habits influence mental health.", hint: "generally ___ (adverb collocation)", answer: "accepted" },
+  { text: "He start-up ended {up} going bankrupt within six months.", hint: "end ___ (phrasal verb)", answer: "up" },
+  { text: "They had to pull {out} of the contract due to lack of expertise.", hint: "pull ___ of something (phrasal verb)", answer: "out" },
+  { text: "Try to keep your {cool} when presenting to the panel.", hint: "keep your ___ (idiom)", answer: "cool" },
+  { text: "The curriculum is largely {based} on hands-on practice.", hint: "largely ___ on (adverb collocation)", answer: "based" },
+  { text: "Winning this competition will open {up} a lot of international opportunities.", hint: "open ___ opportunities (phrasal verb)", answer: "up" },
+  { text: "The detectives managed to track {down} the hackers.", hint: "track ___ (phrasal verb)", answer: "down" }
+];
+
+/* ============================================================
+   SPEAKING DISCUSSION PROMPTS (High Teen / 17 y.o. Focus)
+   ============================================================ */
+const SPEAK_PROMPTS = [
+  {
+    id: 1,
+    q: "How do you plan to pursue your interests after finishing high school? What obstacles do you expect to come up against, and how will you ensure you fulfil your potential?",
+    targetWords: ["pursue (your interest)", "obstacle", "come up against", "fulfil (your potential)", "be on track", "occupy (your time)"]
+  },
+  {
+    id: 2,
+    q: "High school exams and university applications present a massive challenge. How do you keep your cool when you feel under pressure? Do you believe academic success and happiness go hand in hand?",
+    targetWords: ["present a challenge", "keep your cool", "go hand in hand", "be a pain", "get over (a problem)", "mess up (an exercise)"]
+  },
+  {
+    id: 3,
+    q: "Many teens engage in online campaigns or sign petitions for climate action. Do you think digital activism negatively influences policy, or does it open up genuine opportunities?",
+    targetWords: ["engage", "campaign", "petition", "negatively influence", "open up", "funding", "ultimately"]
+  },
+  {
+    id: 4,
+    q: "If you spent months planning a major project, but a sudden setback forced you to start from scratch, how would you find the drive to see it through? When is it acceptable to give in?",
+    targetWords: ["overcome a setback", "do something from scratch", "drive", "see something through", "give in", "end up (doing something)"]
+  }
+];
+
+/* ============================================================
+   PERSISTENT PROGRESS (localStorage)
+   ============================================================ */
+const STORAGE_KEY = "teenVocabProgress";
+
+function loadProgress() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    return raw ? JSON.parse(raw) : { known: [], quizBest: 0, checkedWords: [] };
+  } catch (e) {
+    return { known: [], quizBest: 0, checkedWords: [] };
+  }
+}
+
+function saveProgress(progressData) {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(progressData));
+}
+
+let progress = loadProgress();
+
+function updateDashboard() {
+  document.getElementById("statKnown").textContent = progress.known.length;
+  document.getElementById("statLearning").textContent = VOCAB.length - progress.known.length;
+  document.getElementById("statQuizBest").textContent = progress.quizBest + "%";
+}
+
+/* ============================================================
+   TABS SYSTEM
+   ============================================================ */
+let gapsInitialized = false;
+let quizInitialized = false;
+let speakInitialized = false;
+
+function switchTab(tabId, btnEl) {
+  document.querySelectorAll(".screen").forEach(s => s.classList.remove("active"));
+  document.getElementById("screen-" + tabId).classList.add("active");
+
+  document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
+  btnEl.classList.add("active");
+
+  if (tabId === "gaps" && !gapsInitialized) renderGaps();
+  if (tabId === "quiz" && !quizInitialized) startQuiz();
+  if (tabId === "speak" && !speakInitialized) renderSpeaking();
+}
+
+/* ============================================================
+   1. FLASHCARDS
+   ============================================================ */
+let fcDeck = [...VOCAB];
+let fcIndex = 0;
+let fcFlipped = false;
+
+function shuffleArray(arr) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function renderCard() {
+  const card = fcDeck[fcIndex];
+  // Clean up bracketed details for clean presentation on front face
+  document.getElementById("fcWord").textContent = card.word;
+  document.getElementById("fcIpa").textContent = card.ipa;
+  document.getElementById("fcTr").textContent = card.tr;
+  document.getElementById("fcDef").textContent = card.def;
+
+  fcFlipped = false;
+  document.getElementById("flashcard").classList.remove("flipped");
+
+  const pct = ((fcIndex + 1) / fcDeck.length) * 100;
+  document.getElementById("fcProgressFill").style.width = pct + "%";
+}
+
+function toggleCard() {
+  fcFlipped = !fcFlipped;
+  document.getElementById("flashcard").classList.toggle("flipped", fcFlipped);
+}
+
+function nextCard() {
+  fcIndex = (fcIndex + 1) % fcDeck.length;
+  renderCard();
+}
+
+function prevCard() {
+  fcIndex = (fcIndex - 1 + fcDeck.length) % fcDeck.length;
+  renderCard();
+}
+
+function shuffleCards() {
+  fcDeck = shuffleArray(fcDeck);
+  fcIndex = 0;
+  renderCard();
+}
+
+function markCard(isKnown) {
+  const word = fcDeck[fcIndex].word;
+  const idx = progress.known.indexOf(word);
+
+  if (isKnown && idx === -1) {
+    progress.known.push(word);
+  } else if (!isKnown && idx !== -1) {
+    progress.known.splice(idx, 1);
+  }
+
+  saveProgress(progress);
+  updateDashboard();
+  nextCard();
+}
+
+function speakWord(e) {
+  e.stopPropagation();
+  if (!("speechSynthesis" in window)) return;
+  // Strip parentheses for clean speech output
+  const wordToSpeak = fcDeck[fcIndex].word.replace(/\(.*?\)/g, "").trim();
+  const utter = new SpeechSynthesisUtterance(wordToSpeak);
+  utter.lang = "en-GB";
+  utter.rate = 0.85;
+  window.speechSynthesis.cancel();
+  window.speechSynthesis.speak(utter);
+}
+
+/* ============================================================
+   2. STRUCTURAL FILL IN
+   ============================================================ */
+let currentGapsSet = [];
+
+function renderGaps() {
+  gapsInitialized = true;
+  currentGapsSet = shuffleArray(GAPS_DATA).slice(0, 6);
+  const container = document.getElementById("gapsContainer");
+  container.innerHTML = "";
+  document.getElementById("gapsResult").textContent = "";
+
+  currentGapsSet.forEach((item, i) => {
+    const div = document.createElement("div");
+    div.className = "gap-card";
+    const parts = item.text.split(/\{[^}]+\}/);
+    div.innerHTML =
+      `<div class="sentence-text">${parts[0]}</div>` +
+      `<input type="text" class="gap-input" id="gapInput${i}" autocomplete="off" spellcheck="false">` +
+      `<div class="sentence-text">${parts[1]}</div>` +
+      `<span class="gap-hint-text">${item.hint}</span>`;
+    container.appendChild(div);
+  });
+}
+
+function checkGaps() {
+  let correctCount = 0;
+
+  currentGapsSet.forEach((item, i) => {
+    const input = document.getElementById("gapInput" + i);
+    const userVal = input.value.trim().toLowerCase();
+
+    input.classList.remove("ok", "bad");
+    if (userVal === item.answer.toLowerCase()) {
+      input.classList.add("ok");
+      correctCount++;
+    } else if (userVal.length > 0) {
+      input.classList.add("bad");
+    }
+  });
+
+  const resultEl = document.getElementById("gapsResult");
+  resultEl.textContent = `Scored: ${correctCount} / ${currentGapsSet.length}`;
+  resultEl.style.color = correctCount === currentGapsSet.length ? "var(--success)" : "var(--accent)";
+}
+
+/* ============================================================
+   3. QUIZ
+   ============================================================ */
+let quizQuestions = [];
+let quizIndex = 0;
+let quizScore = 0;
+let quizAnswered = false;
+
+function buildQuizQuestions() {
+  const pool = shuffleArray(VOCAB).slice(0, 10);
+  return pool.map((correctItem, idx) => {
+    const wrongPool = VOCAB.filter(v => v.word !== correctItem.word);
+    
+    // Switch question types randomly to challenge 17 y.o. cognitive load
+    const isDefinitionMode = idx % 2 === 0; 
+    let wrongOptions, questionText, correctAnswer;
+
+    if (isDefinitionMode) {
+      wrongOptions = shuffleArray(wrongPool).slice(0, 3).map(v => v.word);
+      questionText = `Which term is defined as: "${correctItem.def}"?`;
+      correctAnswer = correctItem.word;
+    } else {
+      wrongOptions = shuffleArray(wrongPool).slice(0, 3).map(v => v.tr);
+      questionText = `What is the Russian translation for: "${correctItem.word}"?`;
+      correctAnswer = correctItem.tr;
+    }
+
+    const options = shuffleArray([correctAnswer, ...wrongOptions]);
+
+    return {
+      question: questionText,
+      correctAnswer: correctAnswer,
+      options: options
+    };
+  });
+}
+
+function startQuiz() {
+  quizInitialized = true;
+  quizQuestions = buildQuizQuestions();
+  quizIndex = 0;
+  quizScore = 0;
+  quizAnswered = false;
+
+  document.getElementById("quizNextBtn").style.display = "none";
+  renderQuestion();
+}
+
+function renderQuestion() {
+  const q = quizQuestions[quizIndex];
+  quizAnswered = false;
+
+  document.getElementById("quizProgress").textContent = `Question ${quizIndex + 1} of ${quizQuestions.length}`;
+  document.getElementById("quizQuestion").textContent = q.question;
+  document.getElementById("quizFeedback").textContent = "";
+  document.getElementById("quizScoreText").textContent = `${quizScore} / ${quizQuestions.length}`;
+  document.getElementById("quizNextBtn").style.display = "none";
+
+  const optionsContainer = document.getElementById("quizOptions");
+  optionsContainer.innerHTML = "";
+
+  q.options.forEach(opt => {
+    const btn = document.createElement("button");
+    btn.className = "quiz-opt";
+    btn.textContent = opt;
+    btn.onclick = () => selectAnswer(btn, opt, q.correctAnswer);
+    optionsContainer.appendChild(btn);
+  });
+}
+
+function selectAnswer(btnEl, chosen, correctAnswer) {
+  if (quizAnswered) return;
+  quizAnswered = true;
+
+  const allButtons = document.querySelectorAll(".quiz-opt");
+  allButtons.forEach(b => b.disabled = true);
+
+  const feedbackEl = document.getElementById("quizFeedback");
+
+  if (chosen === correctAnswer) {
+    btnEl.classList.add("correct");
+    feedbackEl.textContent = "Excellent work! Accurate.";
+    feedbackEl.style.color = "var(--success)";
+    quizScore++;
+  } else {
+    btnEl.classList.add("wrong");
+    feedbackEl.textContent = `Incorrect. Correct: ${correctAnswer}`;
+    feedbackEl.style.color = "var(--error)";
+
+    allButtons.forEach(b => {
+      if (b.textContent === correctAnswer) b.classList.add("correct");
+    });
+  }
+
+  document.getElementById("quizScoreText").textContent = `${quizScore} / ${quizQuestions.length}`;
+
+  const nextBtn = document.getElementById("quizNextBtn");
+  if (quizIndex < quizQuestions.length - 1) {
+    nextBtn.innerHTML = `Next Question <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" fill="none" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>`;
+    nextBtn.style.display = "inline-flex";
+  } else {
+    finishQuiz();
+  }
+}
+
+function finishQuiz() {
+  const percent = Math.round((quizScore / quizQuestions.length) * 100);
+
+  if (percent > progress.quizBest) {
+    progress.quizBest = percent;
+    saveProgress(progress);
+    updateDashboard();
+  }
+
+  const feedbackEl = document.getElementById("quizFeedback");
+  feedbackEl.innerHTML += `<br><span style="font-size:0.95rem;color:var(--text-muted);font-weight:600;">Test complete. Score: ${percent}%</span>`;
+  document.getElementById("quizNextBtn").style.display = "none";
+}
+
+function nextQuestion() {
+  quizIndex++;
+  renderQuestion();
+}
+
+/* ============================================================
+   4. SPEAKING DISCUSSION & CHECKLIST
+   ============================================================ */
+let activeSpeakIdx = 0;
+
+function renderSpeaking() {
+  speakInitialized = true;
+  const container = document.getElementById("speakCardsContainer");
+  container.innerHTML = "";
+
+  SPEAK_PROMPTS.forEach((item, idx) => {
+    const div = document.createElement("div");
+    div.className = `speak-card ${idx === activeSpeakIdx ? "active" : ""}`;
+    div.onclick = () => selectSpeakCard(idx);
+    div.innerHTML = `<div class="speak-q">${idx + 1}. ${item.q}</div>`;
+    container.appendChild(div);
+  });
+
+  renderWordChecklist();
+}
+
+function selectSpeakCard(idx) {
+  activeSpeakIdx = idx;
+  document.querySelectorAll(".speak-card").forEach((c, i) => {
+    c.classList.toggle("active", i === idx);
+  });
+  renderWordChecklist();
+}
+
+function renderWordChecklist() {
+  const list = document.getElementById("wordCheckboxList");
+  list.innerHTML = "";
+  const currentPrompt = SPEAK_PROMPTS[activeSpeakIdx];
+
+  currentPrompt.targetWords.forEach(word => {
+    const isChecked = progress.checkedWords.includes(word);
+    const div = document.createElement("div");
+    div.className = `word-checkbox-item ${isChecked ? "checked" : ""}`;
+    div.onclick = () => toggleWordCheck(word, div);
+
+    div.innerHTML = `
+      <div class="box">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 6 9 17l-5-5"/></svg>
+      </div>
+      <span>${word}</span>
+    `;
+    list.appendChild(div);
+  });
+
+  updateSpeakProgress();
+}
+
+function toggleWordCheck(word, element) {
+  const index = progress.checkedWords.indexOf(word);
+  if (index === -1) {
+    progress.checkedWords.push(word);
+    element.classList.add("checked");
+  } else {
+    progress.checkedWords.splice(index, 1);
+    element.classList.remove("checked");
+  }
+  saveProgress(progress);
+  updateSpeakProgress();
+}
+
+function updateSpeakProgress() {
+  const currentPrompt = SPEAK_PROMPTS[activeSpeakIdx];
+  const listSize = currentPrompt.targetWords.length;
+  const checkedInCurrent = currentPrompt.targetWords.filter(w => progress.checkedWords.includes(w)).length;
+  
+  const pct = (checkedInCurrent / listSize) * 100;
+  document.getElementById("speakProgressFill").style.width = pct + "%";
+}
+
+/* ============================================================
+   INITIALIZATION
+   ============================================================ */
+function init() {
+  updateDashboard();
+  fcDeck = shuffleArray(VOCAB);
+  fcIndex = 0;
+  renderCard();
+}
+
+init();
+</script>
+</body>
+</html>
