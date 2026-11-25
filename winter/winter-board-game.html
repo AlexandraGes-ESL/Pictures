@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Winter Past Adventure</title>
+<title>Winter Adventure · A1 Feelings Quiz</title>
 <style>
 /* Standalone page reset; game styles below are container-scoped. */
 body{margin:0}
-#winter-game,#winter-game *{box-sizing:border-box}#winter-game{--ink:#163b42;--green:#17695c;--red:#b74d3b;--cream:#fffaf0;--mint:#e4f1e9;width:100%;min-height:100vh;margin:0;color:var(--ink);font-family:Arial,Helvetica,sans-serif;background:linear-gradient(180deg,#d5ecea,#f0f4e7 55%,#deeadb);isolation:isolate;position:relative;overflow:hidden}#winter-game button,#winter-game input{font:inherit}#winter-game button{cursor:pointer}#winter-game .wg-screen{min-height:100vh;padding:clamp(14px,3vw,32px);display:flex;flex-direction:column;align-items:center;justify-content:center}#winter-game .wg-title{font-family:Georgia,serif;font-size:clamp(32px,6vw,62px);line-height:1.02;text-align:center;color:#174b50;margin:0 0 8px}#winter-game .wg-subtitle{text-align:center;color:#42666b;margin:0 0 22px;font-size:16px}#winter-game .wg-panel{width: min(1080px, 100%);background:#fffcf5;border:2px solid white;border-radius:14px;box-shadow:0 7px 0 #a9c5b9,0 15px 36px #244a4420;padding:clamp(16px,3vw,28px)}#winter-game .wg-label{font-size:12px;font-weight:800;text-transform:uppercase;color:#637d77;margin:0 0 10px}#winter-game .wg-counts{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:18px}#winter-game .wg-count{padding:12px 16px;border-radius:8px;background:#e6efe8;color:#31565a;border:2px solid transparent;font-weight:800}#winter-game .wg-count[aria-pressed="true"]{border-color:#287d68;background:#d9eee5}#winter-game .wg-layout{display:grid;grid-template-columns:minmax(0,1fr) 280px;gap:18px;align-items:start}#winter-game .wg-roster{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px;max-height:440px;overflow:auto;padding:2px}#winter-game .wg-char{min-width:0;background:#f1eee4;border:2px solid transparent;border-radius:9px;padding:8px 5px;color:#294f53;font-weight:700;text-align:center}#winter-game .wg-char[aria-pressed="true"]{border-color:#287d68;background:#e1f0e7}#winter-game .wg-char img{display:block;width:100%;height:124px;object-fit:contain;margin:0 auto 5px}#winter-game .wg-char span{display:block;font-size:12px;line-height:1.2;overflow-wrap:anywhere}#winter-game .wg-preview{position:sticky;top:12px;background:#e8f1e8;border-radius:10px;min-height:310px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:16px;text-align:center}#winter-game .wg-preview img{height:260px;max-width:100%;object-fit:contain}#winter-game .wg-preview strong{font-family:Georgia,serif;font-size:20px;color:#174b50}#winter-game .wg-selection{display:flex;gap:8px;flex-wrap:wrap;margin:13px 0 18px}#winter-game .wg-selected-chip{background:#fff;border:1px solid #d4e1d8;border-radius:7px;padding:6px 9px;font-size:12px;font-weight:700}#winter-game .wg-primary{border:0;border-radius:8px;background:#b84d3b;color:white;padding:13px 19px;font-weight:800;box-shadow:0 4px #84382d}#winter-game .wg-primary:disabled{opacity:.48;cursor:not-allowed}#winter-game .wg-start{width:100%}#winter-game .wg-game{justify-content:flex-start;padding:14px!important;gap:10px}#winter-game .wg-top{width:min(1400px,100%);display:flex;align-items:center;justify-content:space-between;gap:10px;margin:0 auto}#winter-game .wg-wordmark{font:700 23px Georgia,serif;color:#174b50}#winter-game .wg-players{display:flex;gap:7px;flex-wrap:wrap;justify-content:flex-end}#winter-game .wg-player{background:#fffaf0;border:2px solid white;border-radius:8px;padding:7px 10px;font-size:12px;font-weight:800;box-shadow:0 2px #bdcec3}#winter-game .wg-player.is-current{border-color:#ba5645;background:#fff0e7}#winter-game .wg-board-layout{width:min(1400px,100%);margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) 250px;gap:12px;align-items:stretch}#winter-game .wg-board{width:100%;aspect-ratio:16/9;position:relative;overflow:hidden;border:4px solid #fff;border-radius:12px;box-shadow:0 6px #9cbab0;background:#dcebe1}#winter-game .wg-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:fill;display:block}#winter-game .wg-token-layer{position:absolute;inset:0;pointer-events:none}#winter-game .wg-token{position:absolute;width:clamp(28px,4.2vw,54px);height:clamp(38px,5.7vw,72px);object-fit:contain;transform:translate(-50%,-85%);filter:drop-shadow(0 2px 2px #203b3c70);transition:left .22s linear,top .22s linear;z-index:3}#winter-game .wg-spot{position:absolute;width:24px;height:24px;border:2px solid white;border-radius:50%;background:#b84d3b;color:#fff;display:none;align-items:center;justify-content:center;font-size:11px;font-weight:800;transform:translate(-50%,-50%);z-index:5;box-shadow:0 1px 5px #173b3b80;touch-action:none;cursor:grab}#winter-game.wg-calibrate .wg-spot{display:flex}#winter-game .wg-side{background:#fffcf5;border:2px solid white;border-radius:12px;padding:14px;box-shadow:0 6px #a9c5b9;display:flex;flex-direction:column;gap:9px}#winter-game .wg-side h2{font:700 21px Georgia,serif;margin:0;color:#174b50}#winter-game .wg-current{font-weight:800;background:#e5f0e7;border-radius:7px;padding:9px;font-size:14px}#winter-game .wg-die{font-size:44px;text-align:center;line-height:1.1}#winter-game .wg-side small{font-size:12px;line-height:1.4;color:#5e7972}#winter-game .wg-tool{font-size:12px;border:1px solid #adc6bb;background:#fff;padding:9px;border-radius:7px;font-weight:700;color:#34585a}#winter-game .wg-status{min-height:30px;font-size:13px;font-weight:700;line-height:1.4}#winter-game .wg-modal{position:fixed;inset:0;background:#12363dcc;z-index:20;display:flex;align-items:center;justify-content:center;padding:16px}#winter-game .wg-dialog{width:min(520px,100%);max-height:90vh;overflow:auto;background:#fffaf0;border:3px solid white;border-radius:14px;padding:22px;box-shadow:0 10px #a9c5b9}#winter-game .wg-dialog h2{font:700 26px Georgia,serif;color:#174b50;margin:0 0 8px}#winter-game .wg-dialog p{line-height:1.5}#winter-game .wg-answer{display:block;width:100%;text-align:left;padding:11px;margin:7px 0;background:#e6f0e7;color:#264b4f;border:2px solid transparent;border-radius:7px;font-weight:700}#winter-game .wg-answer:hover{border-color:#438b75}#winter-game .wg-fill{width:100%;padding:12px;border:2px solid #b6cec2;border-radius:7px;margin-bottom:9px}#winter-game .wg-feedback{min-height:24px;font-weight:800}#winter-game .wg-end{text-align:center}#winter-game .wg-end img{height:min(45vh,320px);max-width:90%;object-fit:contain}#winter-game .wg-hidden{display:none!important}#winter-game .wg-alert{color:#a64436;font-size:12px;min-height:16px}
-@media(max-width:760px){#winter-game .wg-screen{padding:14px;justify-content:flex-start}#winter-game .wg-count{min-height:44px}#winter-game .wg-layout{grid-template-columns:1fr!important}#winter-game .wg-roster{grid-template-columns:repeat(3,minmax(0,1fr))!important;max-height:42vh!important}#winter-game .wg-char img{height:100px!important}#winter-game .wg-preview{position:static!important;min-height:0!important;padding:10px!important}#winter-game .wg-preview img{height:145px}#winter-game .wg-side{display:grid!important;grid-template-columns:1fr auto;align-items:center}#winter-game .wg-side h2,#winter-game .wg-current{grid-column:1/-1}#winter-game .wg-side small{grid-column:1/-1}#winter-game .wg-board-layout{grid-template-columns:1fr!important}#winter-game .wg-top{align-items:flex-start!important}#winter-game .wg-wordmark{font-size:18px!important}#winter-game .wg-player{font-size:10px!important;padding:5px 6px!important}#winter-game .wg-game{padding:9px!important}#winter-game .wg-board{border-width:2px!important}#winter-game .wg-spot{width:22px!important;height:22px!important}}
+#winter-game,#winter-game *{box-sizing:border-box}#winter-game{--ink:#163b42;--green:#17695c;--red:#b74d3b;--cream:#fffaf0;--mint:#e4f1e9;width:100%;min-height:100vh;margin:0;color:var(--ink);font-family:Arial,Helvetica,sans-serif;background:linear-gradient(180deg,#d5ecea,#f0f4e7 55%,#deeadb);isolation:isolate;position:relative;overflow:hidden}#winter-game button,#winter-game input{font:inherit}#winter-game button{cursor:pointer}#winter-game .wg-screen{min-height:100vh;padding:clamp(14px,3vw,32px);display:flex;flex-direction:column;align-items:center;justify-content:center}#winter-game .wg-title{font-family:Georgia,serif;font-size:clamp(32px,6vw,62px);line-height:1.02;text-align:center;color:#174b50;margin:0 0 8px}#winter-game .wg-subtitle{text-align:center;color:#42666b;margin:0 0 22px;font-size:16px}#winter-game .wg-panel{width:min(1080px,100%);background:#fffcf5;border:2px solid white;border-radius:14px;box-shadow:0 7px 0 #a9c5b9,0 15px 36px #244a4420;padding:clamp(16px,3vw,28px)}#winter-game .wg-label{font-size:12px;font-weight:800;text-transform:uppercase;color:#637d77;margin:0 0 10px}#winter-game .wg-counts{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:18px}#winter-game .wg-count{padding:12px 16px;border-radius:8px;background:#e6efe8;color:#31565a;border:2px solid transparent;font-weight:800}#winter-game .wg-count[aria-pressed="true"]{border-color:#287d68;background:#d9eee5}#winter-game .wg-layout{display:grid;grid-template-columns:minmax(0,1fr) 280px;gap:18px;align-items:start}#winter-game .wg-roster{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px;max-height:440px;overflow:auto;padding:2px}#winter-game .wg-char{min-width:0;background:#f1eee4;border:2px solid transparent;border-radius:9px;padding:8px 5px;color:#294f53;font-weight:700;text-align:center}#winter-game .wg-char[aria-pressed="true"]{border-color:#287d68;background:#e1f0e7}#winter-game .wg-char img{display:block;width:100%;height:124px;object-fit:contain;margin:0 auto 5px}#winter-game .wg-char span{display:block;font-size:12px;line-height:1.2;overflow-wrap:anywhere}#winter-game .wg-preview{position:sticky;top:12px;background:#e8f1e8;border-radius:10px;min-height:310px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:16px;text-align:center}#winter-game .wg-preview img{height:260px;max-width:100%;object-fit:contain}#winter-game .wg-preview strong{font-family:Georgia,serif;font-size:20px;color:#174b50}#winter-game .wg-selection{display:flex;gap:8px;flex-wrap:wrap;margin:13px 0 18px}#winter-game .wg-selected-chip{background:#fff;border:1px solid #d4e1d8;border-radius:7px;padding:6px 9px;font-size:12px;font-weight:700}#winter-game .wg-primary{border:0;border-radius:8px;background:#b84d3b;color:white;padding:13px 19px;font-weight:800;box-shadow:0 4px #84382d}#winter-game .wg-primary:disabled{opacity:.48;cursor:not-allowed}#winter-game .wg-start{width:100%}#winter-game .wg-game{justify-content:flex-start;padding:14px!important;gap:10px}#winter-game .wg-top{width:min(1400px,100%);display:flex;align-items:center;justify-content:space-between;gap:10px;margin:0 auto}#winter-game .wg-wordmark{font:700 23px Georgia,serif;color:#174b50}#winter-game .wg-players{display:flex;gap:7px;flex-wrap:wrap;justify-content:flex-end}#winter-game .wg-player{background:#fffaf0;border:2px solid white;border-radius:8px;padding:7px 10px;font-size:12px;font-weight:800;box-shadow:0 2px #bdcec3}#winter-game .wg-player.is-current{border-color:#ba5645;background:#fff0e7}#winter-game .wg-board-layout{width:min(1400px,100%);margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) 250px;gap:12px;align-items:stretch}#winter-game .wg-board{width:100%;aspect-ratio:16/9;position:relative;overflow:hidden;border:4px solid #fff;border-radius:12px;box-shadow:0 6px #9cbab0;background:#dcebe1}#winter-game .wg-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:fill;display:block}#winter-game .wg-token-layer{position:absolute;inset:0;pointer-events:none}#winter-game .wg-token{position:absolute;width:clamp(28px,4.2vw,54px);height:clamp(38px,5.7vw,72px);object-fit:contain;transform:translate(-50%,-85%);filter:drop-shadow(0 2px 2px #203b3c70);transition:left .22s linear,top .22s linear;z-index:3}#winter-game .wg-side{background:#fffcf5;border:2px solid white;border-radius:12px;padding:14px;box-shadow:0 6px #a9c5b9;display:flex;flex-direction:column;gap:9px}#winter-game .wg-side h2{font:700 21px Georgia,serif;margin:0;color:#174b50}#winter-game .wg-current{font-weight:800;background:#e5f0e7;border-radius:7px;padding:9px;font-size:14px}#winter-game .wg-die{font-size:44px;text-align:center;line-height:1.1}#winter-game .wg-side small{font-size:12px;line-height:1.4;color:#5e7972}#winter-game .wg-tool{font-size:12px;border:1px solid #adc6bb;background:#fff;padding:9px;border-radius:7px;font-weight:700;color:#34585a}#winter-game .wg-status{min-height:30px;font-size:13px;font-weight:700;line-height:1.4}#winter-game .wg-modal{position:fixed;inset:0;background:#12363dcc;z-index:20;display:flex;align-items:center;justify-content:center;padding:16px}#winter-game .wg-dialog{width:min(520px,100%);max-height:90vh;overflow:auto;background:#fffaf0;border:3px solid white;border-radius:14px;padding:22px;box-shadow:0 10px #a9c5b9}#winter-game .wg-dialog h2{font:700 26px Georgia,serif;color:#174b50;margin:0 0 8px}#winter-game .wg-dialog p{line-height:1.5}#winter-game .wg-answer{display:block;width:100%;text-align:left;padding:11px;margin:7px 0;background:#e6f0e7;color:#264b4f;border:2px solid transparent;border-radius:7px;font-weight:700}#winter-game .wg-answer:hover{border-color:#438b75}#winter-game .wg-feedback{min-height:24px;font-weight:800}#winter-game .wg-end{text-align:center}#winter-game .wg-end img{height:min(45vh,320px);max-width:90%;object-fit:contain}#winter-game .wg-hidden{display:none!important}#winter-game .wg-alert{color:#a64436;font-size:12px;min-height:16px}
+@media(max-width:760px){#winter-game .wg-screen{padding:14px;justify-content:flex-start}#winter-game .wg-count{min-height:44px}#winter-game .wg-layout{grid-template-columns:1fr!important}#winter-game .wg-roster{grid-template-columns:repeat(3,minmax(0,1fr))!important;max-height:42vh!important}#winter-game .wg-char img{height:100px!important}#winter-game .wg-preview{position:static!important;min-height:0!important;padding:10px!important}#winter-game .wg-preview img{height:145px}#winter-game .wg-side{display:grid!important;grid-template-columns:1fr auto;align-items:center}#winter-game .wg-side h2,#winter-game .wg-current{grid-column:1/-1}#winter-game .wg-side small{grid-column:1/-1}#winter-game .wg-board-layout{grid-template-columns:1fr!important}#winter-game .wg-top{align-items:flex-start!important}#winter-game .wg-wordmark{font-size:18px!important}#winter-game .wg-player{font-size:10px!important;padding:5px 6px!important}#winter-game .wg-game{padding:9px!important}#winter-game .wg-board{border-width:2px!important}}
 @media(max-width:390px){#winter-game .wg-roster{grid-template-columns:repeat(2,minmax(0,1fr))!important}#winter-game .wg-char img{height:112px!important}#winter-game .wg-title{font-size:34px!important}}
 
 #winter-game .wg-board{align-self:start}
@@ -29,375 +29,97 @@ body{margin:0}
 #winter-game .wg-token{object-position:center bottom}
 @media(max-width:760px){#winter-game .wg-status{grid-column:1/-1}}
 @media(prefers-reduced-motion:reduce){#winter-game .wg-token{transition:none}}
-  /* =========================================
-   WINTER START SCREEN — visual upgrade
-   ========================================= */
 
-/* Deep winter gradient */
-#winter-game #wg-setup {
-  position: relative;
-  overflow: hidden;
-  background:
-    radial-gradient(circle at 50% -15%, rgba(255,255,255,.82), transparent 34%),
-    radial-gradient(circle at 8% 22%, rgba(159,220,229,.34), transparent 28%),
-    radial-gradient(circle at 92% 78%, rgba(185,224,216,.38), transparent 30%),
-    linear-gradient(
-      160deg,
-      #b9e2e5 0%,
-      #d8eeee 28%,
-      #edf4e8 67%,
-      #d9e9d9 100%
-    );
+/* Winter setup and interface enhancements, scoped to this game. */
+#winter-game #wg-setup{position:relative;overflow:hidden;background:radial-gradient(circle at 50% -15%,#ffffffd1,transparent 34%),radial-gradient(circle at 8% 22%,#9fdce957,transparent 28%),linear-gradient(160deg,#b9e2e5,#d8eeee 28%,#edf4e8 67%,#d9e9d9)}
+#winter-game #wg-setup::before,#winter-game #wg-setup::after{content:"";position:absolute;inset:-120px 0 0;pointer-events:none;opacity:.65;background-image:radial-gradient(circle,#fff 0 2px,transparent 3px),radial-gradient(circle,#fffc 0 1px,transparent 2px);background-size:115px 145px,73px 96px;animation:wg-snow 18s linear infinite}
+#winter-game #wg-setup::after{opacity:.35;background-size:220px 230px,145px 175px;animation-duration:28s}
+@keyframes wg-snow{from{background-position:0 0,35px 22px}to{background-position:40px 870px,-20px 982px}}
+#winter-game #wg-setup>*{position:relative;z-index:1}
+#winter-game #wg-setup .wg-title{text-shadow:0 2px #fffd,0 0 22px #fffa;letter-spacing:-1px}
+#winter-game #wg-setup .wg-panel{background:linear-gradient(145deg,#fffffff0,#fffaf0f0);border:1px solid white;box-shadow:0 2px 0 white inset,0 12px 0 #a7c5ba,0 22px 44px #1c4a4833}
+#winter-game #wg-setup .wg-char{position:relative;overflow:hidden;isolation:isolate;border-radius:13px;background:linear-gradient(#f7f3e8,#eee9dc) padding-box,linear-gradient(145deg,#fff,#cebe97,#fff) border-box;border:2px solid transparent;box-shadow:0 4px 0 #c9bea6,0 8px 15px #4349381f;transition:transform .2s,box-shadow .2s}
+#winter-game #wg-setup .wg-char:hover{transform:translateY(-5px);box-shadow:0 7px 0 #b6aa91,0 14px 22px #43493833}
+#winter-game #wg-setup .wg-char[aria-pressed="true"]{background:linear-gradient(#edf8ef,#dcefe4) padding-box,linear-gradient(145deg,#fff,#318b76,#b8e6d3) border-box;box-shadow:0 4px 0 #438c78,0 10px 20px #23785e40,0 0 0 4px #52ad8e21}
+#winter-game #wg-setup .wg-char img{filter:drop-shadow(0 5px 3px #353f3629)}
+#winter-game #wg-setup .wg-count{background:linear-gradient(145deg,#f1f6ed,#dcebe3);border:2px solid #fff;box-shadow:0 3px 0 #bfd3c8}
+#winter-game #wg-setup .wg-count[aria-pressed="true"]{background:linear-gradient(145deg,#e6f7ef,#cdebe1);border-color:#28836f;box-shadow:0 3px 0 #6cae9b,0 0 0 3px #51b5971f}
+#winter-game #wg-setup .wg-preview{background:radial-gradient(circle at 50% 20%,#ffffffb8,transparent 42%),linear-gradient(145deg,#eaf7ed,#d4e9df);border:2px solid #fff;box-shadow:0 4px 0 #bed4c7,0 10px 20px #2d5b531c}
+#winter-game #wg-setup .wg-preview img{filter:drop-shadow(0 8px 5px #2e413333);animation:wg-float 3.8s ease-in-out infinite}
+@keyframes wg-float{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(-7px) rotate(1deg)}}
+#winter-game #wg-setup .wg-start{background:linear-gradient(145deg,#c9624d,#a94035);box-shadow:0 5px 0 #81352c,0 10px 18px #85372d2e}
+#winter-game .wg-sound{white-space:nowrap}#winter-game #wg-setup .wg-sound{float:right}#winter-game .wg-intro{font-size:13px;color:#42666b;line-height:1.45;padding-right:105px}
+#winter-game .wg-answer:disabled{opacity:.65;cursor:default}
+#winter-game :focus-visible{outline:3px solid #d57738;outline-offset:3px}
+@media(max-width:760px){#winter-game #wg-setup .wg-char:hover{transform:none}#winter-game .wg-top{flex-wrap:wrap}#winter-game .wg-intro{padding-right:0;clear:both;padding-top:9px}}
+@media(prefers-reduced-motion:reduce){#winter-game #wg-setup::before,#winter-game #wg-setup::after,#winter-game #wg-setup .wg-preview img{animation:none}#winter-game #wg-setup .wg-char{transition:none}}
+/* Feelings edition: large uncropped map, compact controls, and quiz tiles. */
+#winter-game .wg-game {
+  --rail:clamp(178px, 13vw, 236px);
+  --gap:clamp(8px, 1vw, 16px);
+  --frame:min(100%, calc(max(430px, (100vh - 92px) * 1.77778) + var(--rail) + var(--gap)));
+  --frame:min(100%, calc(max(430px, (100svh - 92px) * 1.77778) + var(--rail) + var(--gap)));
+  gap:var(--gap);
+  background:radial-gradient(ellipse at 20% 0%, #f6fbf6, transparent 68%), linear-gradient(155deg,#badadf,#e8efe1);
+}
+#winter-game .wg-top,#winter-game .wg-board-layout {width:var(--frame)}
+#winter-game .wg-top {min-height:44px;justify-content:flex-start;align-items:center!important}
+#winter-game .wg-wordmark {font-size:clamp(19px,2.1vw,32px);line-height:1.05}
+#winter-game .wg-players {margin-inline-start:auto}
+#winter-game .wg-board-layout {grid-template-columns:minmax(0,1fr) var(--rail);gap:var(--gap)}
+#winter-game .wg-board {border:0;outline:2px solid #fff;outline-offset:-2px;border-radius:16px;box-shadow:0 5px 0 #93b5ad,0 12px 32px #38566026}
+#winter-game .wg-side {align-self:start;border-radius:16px;padding:clamp(10px,1.15vw,18px);border-color:#fffc;background:linear-gradient(145deg,#fffdf7,#f1f5ea);box-shadow:0 5px #a9c5b9,0 12px 28px #38566020}
+#winter-game .wg-side small {border-top:1px solid #d1e1d9;padding-top:9px}
+#winter-game button {-webkit-tap-highlight-color:transparent}
+#winter-game .wg-primary,#winter-game #wg-setup .wg-start {
+  min-height:48px;border:1px solid #eab797;border-radius:14px;color:#fff9f0;
+  background:linear-gradient(165deg,#a04451,#70263c 72%);box-shadow:inset 0 1px #ffffff66,0 4px #50172b,0 8px 16px #50172b24;
+  transition:filter .15s,transform .15s,box-shadow .15s;
+}
+#winter-game #wg-roll {min-height:54px;font-size:clamp(16px,1.3vw,21px);line-height:1.15}
+#winter-game .wg-tool {min-height:42px;border:1px solid #b3cfc5;border-radius:999px;background:linear-gradient(#fffffb,#e6f2eb);box-shadow:0 2px #a4c5ba;color:#1f544f;padding:7px 12px;transition:filter .15s,transform .15s}
+#winter-game .wg-tool[aria-pressed="true"] {background:linear-gradient(#397066,#224f49);color:#fff;border-color:#32685c;box-shadow:0 2px #153c35}
+#winter-game #wg-setup .wg-count {border-radius:999px;min-height:44px}
+#winter-game #wg-setup .wg-char {border-radius:16px}
+#winter-game .wg-primary:disabled {opacity:.68;box-shadow:inset 0 1px #ffffff39}
+@media(hover:hover){
+  #winter-game .wg-primary:not(:disabled):hover,#winter-game .wg-tool:hover,#winter-game #wg-setup .wg-start:not(:disabled):hover {transform:translateY(-2px);filter:brightness(1.12)}
+  #winter-game .wg-quiz .wg-answer:not(:disabled):hover {border-color:#9e7033;background:#fff2d4;transform:translateY(-2px)}
+}
+#winter-game .wg-primary:not(:disabled):active,#winter-game .wg-tool:active,#winter-game #wg-setup .wg-start:not(:disabled):active,#winter-game .wg-quiz .wg-answer:not(:disabled):active {transform:translateY(2px);box-shadow:inset 0 1px #ffffff66,0 1px #75634e}
+#winter-game .wg-quiz {width:min(740px,100%);max-height:calc(100dvh - 32px);padding:clamp(14px,3.3vw,34px);border-radius:22px;border:2px solid #e3c48d;background:linear-gradient(140deg,#fffdf7,#fbf0da);box-shadow:0 6px #a37a4c,0 20px 64px #0e283c7a}
+#winter-game .wg-topic {display:inline-block;border-radius:999px;padding:6px 11px;color:#fff8e6;background:#294e50;letter-spacing:.08em}
+#winter-game .wg-quiz h2 {font-size:clamp(22px,3vw,34px)}
+#winter-game .wg-question-text {font-size:clamp(17px,2.1vw,24px);line-height:1.45;margin:14px 0 18px}
+#winter-game .wg-answers {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(6px,1.3vw,14px)}
+#winter-game .wg-quiz .wg-answer {width:100%;min-height:56px;margin:0;text-align:center;padding:8px 3px;border:2px solid #ddc294;border-radius:13px;background:linear-gradient(#fffdf6,#f5e7ca);box-shadow:0 3px #c7a77c;color:#383024;font:700 clamp(16px,2.7vw,24px) Georgia,serif;transition:transform .15s,background .15s}
+#winter-game .wg-quiz .wg-answer:disabled {box-shadow:none}
+#winter-game .wg-quiz .wg-answer.is-correct {background:#dceee1;border-color:#38765b;color:#164d36;opacity:1}
+#winter-game .wg-quiz .wg-answer.is-incorrect {background:#f7e0db;border-color:#9c3e44;color:#802c31;opacity:1}
+#winter-game .wg-stakes {color:#5b635e;font-size:13px;margin:14px 0 8px}
+#winter-game .wg-quiz .wg-feedback:empty {display:none}
+#winter-game .wg-quiz .wg-feedback {padding:10px 13px;border-radius:11px;background:#e5efe2;color:#254c3d;margin:12px 0}
+#winter-game .wg-quiz .wg-feedback[data-result="incorrect"] {background:#f8e8e0;color:#723636}
+#winter-game .wg-quiz .wg-feedback p {font-weight:400;margin:4px 0 0}
+#winter-game #wg-continue {width:100%}
+@media(max-width:760px){
+  #winter-game .wg-game {--frame:100%;--gap:10px}
+  #winter-game .wg-top {gap:8px}
+  #winter-game .wg-players {width:100%;margin-inline:0;justify-content:flex-start}
+  #winter-game .wg-side {grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+  #winter-game .wg-board {border:0!important;border-radius:12px}
+}
+@media(prefers-reduced-motion:reduce){
+  #winter-game .wg-primary,#winter-game .wg-tool,#winter-game .wg-quiz .wg-answer {transition:none}
 }
 
-/* Snow layer 1 */
-#winter-game #wg-setup::before {
-  content: "";
-  position: absolute;
-  inset: -80px 0 0;
-  pointer-events: none;
-  z-index: 0;
-  opacity: .72;
-  background-image:
-    radial-gradient(circle, rgba(255,255,255,.95) 0 2px, transparent 2.8px),
-    radial-gradient(circle, rgba(255,255,255,.78) 0 1.5px, transparent 2.3px),
-    radial-gradient(circle, rgba(255,255,255,.88) 0 2.5px, transparent 3.2px);
-  background-size:
-    115px 145px,
-    73px 96px,
-    185px 210px;
-  background-position:
-    8px 0,
-    35px 22px,
-    80px 60px;
-  animation: winterSnowFall 18s linear infinite;
-}
-
-/* Snow layer 2 — slower and more delicate */
-#winter-game #wg-setup::after {
-  content: "";
-  position: absolute;
-  inset: -120px 0 0;
-  pointer-events: none;
-  z-index: 0;
-  opacity: .38;
-  background-image:
-    radial-gradient(circle, #ffffff 0 1.5px, transparent 2.5px),
-    radial-gradient(circle, #ffffff 0 1px, transparent 2px);
-  background-size:
-    220px 230px,
-    145px 175px;
-  background-position:
-    40px 0,
-    100px 55px;
-  animation: winterSnowFallSlow 28s linear infinite;
-}
-
-@keyframes winterSnowFall {
-  from {
-    transform: translate3d(-18px, -100px, 0);
-  }
-  to {
-    transform: translate3d(22px, 900px, 0);
-  }
-}
-
-@keyframes winterSnowFallSlow {
-  from {
-    transform: translate3d(18px, -160px, 0);
-  }
-  to {
-    transform: translate3d(-20px, 900px, 0);
-  }
-}
-
-/* Keep all interface elements above the snow */
-#winter-game #wg-setup > * {
-  position: relative;
-  z-index: 1;
-}
-
-/* Soft glow behind the title */
-#winter-game #wg-setup .wg-title {
-  text-shadow:
-    0 2px 0 rgba(255,255,255,.85),
-    0 0 22px rgba(255,255,255,.6);
-  letter-spacing: -1px;
-}
-
-#winter-game #wg-setup .wg-subtitle {
-  color: #37666b;
-  text-shadow: 0 1px 0 rgba(255,255,255,.75);
-}
-
-/* More dimensional main panel */
-#winter-game #wg-setup .wg-panel {
-  position: relative;
-  overflow: hidden;
-  background:
-    linear-gradient(
-      145deg,
-      rgba(255,255,255,.94),
-      rgba(255,250,239,.94)
-    );
-  border: 1px solid rgba(255,255,255,.98);
-  box-shadow:
-    0 2px 0 rgba(255,255,255,.9) inset,
-    0 0 0 1px rgba(116,165,157,.16),
-    0 12px 0 #a7c5ba,
-    0 22px 44px rgba(28,74,72,.20);
-}
-
-/* Decorative icy highlight on panel */
-#winter-game #wg-setup .wg-panel::before {
-  content: "";
-  position: absolute;
-  left: 7%;
-  right: 7%;
-  top: 0;
-  height: 2px;
-  border-radius: 50%;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255,255,255,.95),
-    transparent
-  );
-  pointer-events: none;
-}
-
-/* Player-count buttons */
-#winter-game #wg-setup .wg-count {
-  position: relative;
-  overflow: hidden;
-  background:
-    linear-gradient(145deg, #f1f6ed, #dcebe3);
-  border: 2px solid rgba(255,255,255,.9);
-  box-shadow:
-    0 3px 0 #bfd3c8,
-    0 5px 12px rgba(40,88,80,.10);
-  transition:
-    transform .18s ease,
-    box-shadow .18s ease,
-    background .18s ease;
-}
-
-#winter-game #wg-setup .wg-count:hover {
-  transform: translateY(-2px);
-  box-shadow:
-    0 5px 0 #a8c5b9,
-    0 9px 16px rgba(40,88,80,.16);
-}
-
-#winter-game #wg-setup .wg-count[aria-pressed="true"] {
-  background:
-    linear-gradient(145deg, #e6f7ef, #cdebe1);
-  border-color: #28836f;
-  box-shadow:
-    0 3px 0 #6cae9b,
-    0 8px 16px rgba(37,117,96,.20),
-    0 0 0 3px rgba(81,181,151,.12);
-}
-
-/* Character cards — dimensional contour */
-#winter-game #wg-setup .wg-char {
-  position: relative;
-  overflow: hidden;
-  isolation: isolate;
-  background:
-    linear-gradient(#f7f3e8, #eee9dc) padding-box,
-    linear-gradient(
-      145deg,
-      rgba(255,255,255,1),
-      rgba(206,190,151,.95),
-      rgba(255,255,255,.92)
-    ) border-box;
-  border: 2px solid transparent;
-  border-radius: 13px;
-  box-shadow:
-    0 4px 0 #c9bea6,
-    0 8px 15px rgba(67,73,56,.12);
-  transition:
-    transform .2s ease,
-    box-shadow .2s ease,
-    filter .2s ease;
-}
-
-/* Glossy top edge */
-#winter-game #wg-setup .wg-char::before {
-  content: "";
-  position: absolute;
-  left: 8%;
-  right: 8%;
-  top: 0;
-  height: 3px;
-  border-radius: 50%;
-  background: rgba(255,255,255,.85);
-  pointer-events: none;
-  z-index: 2;
-}
-
-/* Very subtle card shine */
-#winter-game #wg-setup .wg-char::after {
-  content: "";
-  position: absolute;
-  width: 70px;
-  height: 180%;
-  top: -40%;
-  left: -90px;
-  transform: rotate(20deg);
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255,255,255,.32),
-    transparent
-  );
-  pointer-events: none;
-  transition: left .55s ease;
-  z-index: 3;
-}
-
-#winter-game #wg-setup .wg-char:hover {
-  transform: translateY(-5px) rotateX(2deg);
-  box-shadow:
-    0 7px 0 #b6aa91,
-    0 14px 22px rgba(67,73,56,.20);
-  filter: saturate(1.06);
-}
-
-#winter-game #wg-setup .wg-char:hover::after {
-  left: 125%;
-}
-
-#winter-game #wg-setup .wg-char[aria-pressed="true"] {
-  background:
-    linear-gradient(#edf8ef, #dcefe4) padding-box,
-    linear-gradient(
-      145deg,
-      #ffffff,
-      #318b76,
-      #b8e6d3
-    ) border-box;
-  box-shadow:
-    0 4px 0 #438c78,
-    0 10px 20px rgba(35,120,94,.25),
-    0 0 0 4px rgba(82,173,142,.13);
-  transform: translateY(-3px);
-}
-
-/* Character image: more breathing space */
-#winter-game #wg-setup .wg-char img {
-  position: relative;
-  z-index: 1;
-  filter:
-    drop-shadow(0 5px 3px rgba(53,63,54,.16));
-  transition: transform .2s ease;
-}
-
-#winter-game #wg-setup .wg-char:hover img {
-  transform: scale(1.045);
-}
-
-/* Character name */
-#winter-game #wg-setup .wg-char span {
-  position: relative;
-  z-index: 4;
-  color: #294f53;
-  text-shadow: 0 1px 0 rgba(255,255,255,.8);
-}
-
-/* Selected-character preview */
-#winter-game #wg-setup .wg-preview {
-  background:
-    radial-gradient(circle at 50% 20%, rgba(255,255,255,.72), transparent 42%),
-    linear-gradient(145deg, #eaf7ed, #d4e9df);
-  border: 2px solid rgba(255,255,255,.95);
-  box-shadow:
-    0 4px 0 #bed4c7,
-    inset 0 1px 0 rgba(255,255,255,.9),
-    0 10px 20px rgba(45,91,83,.11);
-}
-
-#winter-game #wg-setup .wg-preview img {
-  filter: drop-shadow(0 8px 5px rgba(46,65,59,.20));
-  animation: characterFloat 3.8s ease-in-out infinite;
-}
-
-@keyframes characterFloat {
-  0%, 100% {
-    transform: translateY(0) rotate(-1deg);
-  }
-  50% {
-    transform: translateY(-7px) rotate(1deg);
-  }
-}
-
-/* Start button */
-#winter-game #wg-setup .wg-start {
-  position: relative;
-  overflow: hidden;
-  background:
-    linear-gradient(145deg, #c9624d, #a94035);
-  border: 1px solid rgba(255,255,255,.34);
-  box-shadow:
-    0 5px 0 #81352c,
-    0 10px 18px rgba(133,55,45,.18);
-  transition:
-    transform .18s ease,
-    box-shadow .18s ease,
-    filter .18s ease;
-}
-
-#winter-game #wg-setup .wg-start:not(:disabled):hover {
-  transform: translateY(-3px);
-  filter: brightness(1.06);
-  box-shadow:
-    0 8px 0 #81352c,
-    0 14px 22px rgba(133,55,45,.25);
-}
-
-#winter-game #wg-setup .wg-start:not(:disabled):active {
-  transform: translateY(2px);
-  box-shadow: 0 2px 0 #81352c;
-}
-
-/* Mobile: keep the visual depth, but avoid hover movement */
-@media (max-width: 760px) {
-  #winter-game #wg-setup .wg-char:hover {
-    transform: none;
-  }
-
-  #winter-game #wg-setup .wg-char:hover img {
-    transform: none;
-  }
-
-  #winter-game #wg-setup .wg-preview {
-    border-radius: 12px;
-  }
-}
-
-/* Accessibility / reduced motion */
-@media (prefers-reduced-motion: reduce) {
-  #winter-game #wg-setup::before,
-  #winter-game #wg-setup::after,
-  #winter-game #wg-setup .wg-preview img {
-    animation: none;
-  }
-
-  #winter-game #wg-setup .wg-char,
-  #winter-game #wg-setup .wg-char img,
-  #winter-game #wg-setup .wg-count,
-  #winter-game #wg-setup .wg-start {
-    transition: none;
-  }
-}
 </style>
 </head>
 <body>
 <main id="winter-game">
   <section class="wg-screen" id="wg-setup">
-    <h1 class="wg-title">Winter Past Adventure</h1><p class="wg-subtitle">A snowy journey through the past</p>
-    <div class="wg-panel">
+    <h1 class="wg-title">Winter Adventure</h1><p class="wg-subtitle">Feelings Quiz · A1</p>
+    <div class="wg-panel"><button type="button" class="wg-tool wg-sound" aria-pressed="false">🔇 Sound off</button><p class="wg-intro">Roll, then choose the right feeling to move. Winter events may slow you down!</p>
       <p class="wg-label">Choose the number of players</p><div class="wg-counts" id="wg-counts"></div>
       <div class="wg-layout"><div><p class="wg-label">Choose one character per player</p><div class="wg-roster" id="wg-roster"></div></div><aside class="wg-preview" id="wg-preview"><span>Select a character</span></aside></div>
       <div class="wg-selection" id="wg-selection"></div><div class="wg-alert" id="wg-alert"></div>
@@ -405,9 +127,9 @@ body{margin:0}
     </div>
   </section>
   <section class="wg-screen wg-game wg-hidden" id="wg-game">
-    <header class="wg-top"><div class="wg-wordmark">Winter Past Adventure</div><div class="wg-players" id="wg-players"></div></header>
-    <div class="wg-board-layout"><div class="wg-board" id="wg-board"><img class="wg-bg" src="https://raw.githubusercontent.com/AlexandraGes-ESL/Pictures/main/winter/background.png" alt="Snowy Christmas board game map"><div id="wg-spots"></div><div class="wg-token-layer" id="wg-token-layer"></div></div>
-      <aside class="wg-side"><h2>Current turn</h2><div class="wg-current" id="wg-current"></div><div class="wg-die"><div class="wg-die-stage" aria-hidden="true"><div class="wg-die-tilt"><div class="wg-cube" id="wg-cube"></div></div></div><span class="wg-die-result" id="wg-die-result" role="status">Ready to roll</span></div><button class="wg-primary" id="wg-roll">Roll the die</button><div class="wg-status" id="wg-status" role="status">Roll to move along the snowy trail.</div><button class="wg-tool" id="wg-calibrate">Adjust cell markers</button><button class="wg-tool" id="wg-export">Copy coordinates</button><small>Tap “Adjust cell markers”, then drag each numbered dot to the centre of its matching clearing. Coordinates are measured as percentages of the map.</small></aside>
+    <header class="wg-top"><div class="wg-wordmark">Winter Adventure</div><button type="button" class="wg-tool wg-sound" aria-pressed="false">🔇 Sound off</button><div class="wg-players" id="wg-players"></div></header>
+    <div class="wg-board-layout"><div class="wg-board" id="wg-board"><img class="wg-bg" src="https://raw.githubusercontent.com/AlexandraGes-ESL/Pictures/main/winter/background.png" alt="Snowy Christmas board game map"><div class="wg-token-layer" id="wg-token-layer"></div></div>
+      <aside class="wg-side"><h2>Current turn</h2><div class="wg-current" id="wg-current"></div><div class="wg-die"><div class="wg-die-stage" aria-hidden="true"><div class="wg-die-tilt"><div class="wg-cube" id="wg-cube"></div></div></div><span class="wg-die-result" id="wg-die-result" role="status">Ready to roll</span></div><button class="wg-primary" id="wg-roll">Roll the die</button><div class="wg-status" id="wg-status" role="status">Roll to move along the snowy trail.</div><small>Roll 1–2: move 1 · 3–4: move 2 · 5–6: move 3. Answer correctly to move; a wrong answer sends you back 1 space.</small></aside>
     </div>
   </section><div id="wg-modal"></div>
 </main>
@@ -415,279 +137,476 @@ body{margin:0}
 (()=>{'use strict';
 const ROOT='https://raw.githubusercontent.com/AlexandraGes-ESL/Pictures/main/winter/';
 const chars=[['Angel','Angel.png'],['Elf','Elf.png'],['Ice Princess','Elsa-Cinderella.png'],['Gingerbread','Gingerbread.png'],['Green Trickster','Grinch-elf.png'],['Ice Man','Ice-man.png'],['Red Hat Traveller','Man-red-hat.png'],['Mrs Claus','Mrs.Claus.png'],['Nutcracker','Nutcracker.png'],['Penguin','Penguin.png'],['Reindeer','Reindeer.png'],['Santa','Santa.png'],['Snowman','Snowman.png'],['Polar Bear','White-bear.png'],['Winter Fairy','Winter-fairy.png'],['Winter Witch','Winter-witch.png']];
-// Calibrated centres for background.png, in route order (START → FINISH).
-const initialPoints=[[0.103,0.7814],[0.212,0.7777],[0.3214,0.787],[0.4323,0.7838],[0.5427,0.7858],[0.655,0.7861],[0.7652,0.7855],[0.8771,0.7827],[0.8756,0.6131],[0.7618,0.6128],[0.6564,0.6099],[0.5423,0.6182],[0.4292,0.6169],[0.3185,0.6101],[0.2027,0.6086],[0.2156,0.4573],[0.321,0.4508],[0.4313,0.4472],[0.5403,0.4485],[0.6522,0.4491],[0.7583,0.4467],[0.869,0.4445]];
-const pointsKey="winterBoardPoints:calibrated-v1";
-const labels={4:['boost','☕','Hot chocolate break! Move forward 2 spaces.'],7:['trap','🧊','Icy patch! Miss your next turn.'],10:['boost','🎁','A kind traveller shares a lucky map. Move forward 2 spaces.'],13:['trap','🌨️','A snowstorm pushes you back 2 spaces.'],16:['boost','🛷','A speedy sled carries you forward 3 spaces.'],19:['trap','🧤','You dropped a mitten. Move back 1 space.']};
-const bank = [
+const points=[[0.103,0.7814],[0.212,0.7777],[0.3214,0.787],[0.4323,0.7838],[0.5427,0.7858],[0.655,0.7861],[0.7652,0.7855],[0.8771,0.7827],[0.8756,0.6131],[0.7618,0.6128],[0.6564,0.6099],[0.5423,0.6182],[0.4292,0.6169],[0.3185,0.6101],[0.2027,0.6086],[0.2156,0.4573],[0.321,0.4508],[0.4313,0.4472],[0.5403,0.4485],[0.6522,0.4491],[0.7583,0.4467],[0.869,0.4445]];
+const bank=[
   {
-    type: 'quiz',
-    q: 'We arrived ___ the station just before the train left.',
-    a: ['at', 'in', 'on'],
-    correct: 0
+    "q": "My brother broke my phone and laughed. I’m ___.",
+    "answer": "angry",
+    "explanation": "I’m angry with my brother.",
+    "options": [
+      "angry",
+      "happy",
+      "cold"
+    ]
   },
   {
-    type: 'quiz',
-    q: 'My sister works ___ a small design studio in Bristol.',
-    a: ['at', 'in', 'on'],
-    correct: 1
+    "q": "“You took my bag again! Give it back now!” How do I feel?",
+    "answer": "angry",
+    "explanation": "I’m angry. I want my bag back.",
+    "options": [
+      "angry",
+      "bored",
+      "hungry"
+    ]
   },
   {
-    type: 'quiz',
-    q: 'There was a beautiful painting ___ the wall above the fireplace.',
-    a: ['at', 'in', 'on'],
-    correct: 2
+    "q": "Tom shouts, “That’s not fair!” He’s ___.",
+    "answer": "angry",
+    "explanation": "Tom is angry. He thinks it’s not fair.",
+    "options": [
+      "angry",
+      "thirsty",
+      "happy"
+    ]
   },
   {
-    type: 'quiz',
-    q: 'We usually have our team meeting ___ Monday morning.',
-    a: ['at', 'in', 'on'],
-    correct: 2
+    "q": "There’s nothing to do. This is not fun. I’m ___.",
+    "answer": "bored",
+    "explanation": "I’m bored. I want something fun to do.",
+    "options": [
+      "bored",
+      "cold",
+      "thirsty"
+    ]
   },
   {
-    type: 'quiz',
-    q: 'The children were playing ___ the garden when it started to snow.',
-    a: ['at', 'in', 'on'],
-    correct: 1
+    "q": "This film is really slow. Can we watch something more fun? I’m ___.",
+    "answer": "bored",
+    "explanation": "I’m bored. The film isn’t interesting.",
+    "options": [
+      "bored",
+      "angry",
+      "happy"
+    ]
   },
   {
-    type: 'quiz',
-    q: 'I left my keys ___ the kitchen table.',
-    a: ['at', 'in', 'on'],
-    correct: 2
+    "q": "Max is at home all day with no games and no books. “I have nothing to do!” he says. He’s ___.",
+    "answer": "bored",
+    "explanation": "Max is bored. He wants something to do.",
+    "options": [
+      "bored",
+      "hungry",
+      "frightened"
+    ]
   },
   {
-    type: 'quiz',
-    q: 'The museum is usually quiet ___ the early morning.',
-    a: ['at', 'in', 'on'],
-    correct: 1
+    "q": "It’s snowing and I don’t have a coat. I’m ___.",
+    "answer": "cold",
+    "explanation": "I’m cold. I need a coat.",
+    "options": [
+      "cold",
+      "hot",
+      "happy"
+    ]
   },
   {
-    type: 'quiz',
-    q: 'Someone is waiting for you ___ the entrance.',
-    a: ['at', 'in', 'on'],
-    correct: 0
+    "q": "My feet are like ice. Can I have some warm socks? I’m ___.",
+    "answer": "cold",
+    "explanation": "I’m cold. I want warm socks.",
+    "options": [
+      "cold",
+      "bored",
+      "hungry"
+    ]
   },
   {
-    type: 'quiz',
-    q: 'They moved to Canada ___ 2018.',
-    a: ['at', 'in', 'on'],
-    correct: 1
+    "q": "Please close the window. The air outside is freezing and I’m ___.",
+    "answer": "cold",
+    "explanation": "I’m cold. The air from the window is very cold.",
+    "options": [
+      "cold",
+      "hot",
+      "worried"
+    ]
   },
   {
-    type: 'quiz',
-    q: 'There were several people standing ___ the bus stop.',
-    a: ['at', 'in', 'on'],
-    correct: 0
+    "q": "I see a big dog running at me. I’m scared! How do I feel?",
+    "answer": "frightened",
+    "explanation": "I’m frightened. “Frightened” means “scared”.",
+    "options": [
+      "frightened",
+      "happy",
+      "bored"
+    ]
   },
   {
-    type: 'quiz',
-    q: 'We stayed ___ a lovely hotel near the lake.',
-    a: ['at', 'in', 'on'],
-    correct: 1
+    "q": "There’s a loud noise in the dark. “I’m scared!” says Mia. She’s ___.",
+    "answer": "frightened",
+    "explanation": "Mia is frightened by the noise.",
+    "options": [
+      "frightened",
+      "cold",
+      "hungry"
+    ]
   },
   {
-    type: 'quiz',
-    q: 'The final decision was announced ___ the radio.',
-    a: ['at', 'in', 'on'],
-    correct: 2
+    "q": "Leo hides under the bed when he hears the thunder. “It’s scary!” he says. He’s ___.",
+    "answer": "frightened",
+    "explanation": "Leo is frightened. The thunder scares him.",
+    "options": [
+      "frightened",
+      "thirsty",
+      "happy"
+    ]
   },
   {
-    type: 'quiz',
-    q: 'I will call you ___ lunchtime.',
-    a: ['at', 'in', 'on'],
-    correct: 0
+    "q": "It’s my birthday and all my friends are here. This is the best day! I’m ___.",
+    "answer": "happy",
+    "explanation": "I’m happy to see my friends.",
+    "options": [
+      "happy",
+      "sad",
+      "angry"
+    ]
   },
   {
-    type: 'quiz',
-    q: 'The students are ___ the library, preparing for their exams.',
-    a: ['at', 'in', 'on'],
-    correct: 1
+    "q": "“I won the game!” says Ana with a big smile. She’s ___.",
+    "answer": "happy",
+    "explanation": "Ana is happy. She won the game.",
+    "options": [
+      "happy",
+      "worried",
+      "bored"
+    ]
   },
   {
-    type: 'quiz',
-    q: 'We met ___ a conference in Edinburgh last year.',
-    a: ['at', 'in', 'on'],
-    correct: 0
+    "q": "“Look! It’s a present for you.” “Wow, I love it!” How do I feel?",
+    "answer": "happy",
+    "explanation": "I’m happy. I love the present.",
+    "options": [
+      "happy",
+      "stressed",
+      "sad"
+    ]
   },
   {
-    type: 'quiz',
-    q: 'The instructions are written ___ page 42 of the handbook.',
-    a: ['at', 'in', 'on'],
-    correct: 2
-  },
-
-  {
-    type: 'fill',
-    q: 'Complete the sentence: The train leaves ___ 7:45.',
-    answer: 'at'
+    "q": "The sun is strong today. Can we sit in the shade? I’m ___.",
+    "answer": "hot",
+    "explanation": "I’m hot. I want to sit out of the sun.",
+    "options": [
+      "hot",
+      "cold",
+      "sad"
+    ]
   },
   {
-    type: 'fill',
-    q: 'Complete the sentence: I was born ___ November.',
-    answer: 'in'
+    "q": "It’s 35°C in this room. Please turn on the fan. I’m ___.",
+    "answer": "hot",
+    "explanation": "I’m hot. The fan can help me cool down.",
+    "options": [
+      "hot",
+      "angry",
+      "cold"
+    ]
   },
   {
-    type: 'fill',
-    q: 'Complete the sentence: We went skiing ___ Saturday.',
-    answer: 'on'
+    "q": "Sam takes off his thick coat in the warm café. He puts it on a chair because he’s ___.",
+    "answer": "hot",
+    "explanation": "Sam is hot in his thick coat.",
+    "options": [
+      "hot",
+      "bored",
+      "cold"
+    ]
   },
   {
-    type: 'fill',
-    q: 'Complete the sentence: She is waiting ___ the airport.',
-    answer: 'at'
+    "q": "I didn’t have breakfast. Can I have a sandwich, please? I’m ___.",
+    "answer": "hungry",
+    "explanation": "I’m hungry. I want something to eat.",
+    "options": [
+      "hungry",
+      "thirsty",
+      "cold"
+    ]
   },
   {
-    type: 'fill',
-    q: 'Complete the sentence: There is a small village ___ the mountains.',
-    answer: 'in'
+    "q": "“Do you want some food?” “Yes, please! I’m ___.”",
+    "answer": "hungry",
+    "explanation": "I’m hungry, so I want some food.",
+    "options": [
+      "hungry",
+      "hot",
+      "worried"
+    ]
   },
   {
-    type: 'fill',
-    q: 'Complete the sentence: Your coat is ___ the chair.',
-    answer: 'on'
+    "q": "It’s dinner time. We want pizza, and one small slice isn’t enough. We’re ___.",
+    "answer": "hungry",
+    "explanation": "We’re hungry. We want more food.",
+    "options": [
+      "hungry",
+      "thirsty",
+      "sad"
+    ]
   },
   {
-    type: 'fill',
-    q: 'Complete the sentence: They arrived ___ the hotel late at night.',
-    answer: 'at'
+    "q": "My best friend goes home today. I miss her already. I’m ___.",
+    "answer": "sad",
+    "explanation": "I’m sad because my friend is going home.",
+    "options": [
+      "sad",
+      "happy",
+      "hot"
+    ]
   },
   {
-    type: 'fill',
-    q: 'Complete the sentence: We often travel ___ winter.',
-    answer: 'in'
+    "q": "We can’t go on our trip. I feel like crying. I’m ___.",
+    "answer": "sad",
+    "explanation": "I’m sad. I wanted to go on the trip.",
+    "options": [
+      "sad",
+      "hungry",
+      "happy"
+    ]
   },
   {
-    type: 'fill',
-    q: 'Complete the sentence: I saw the announcement ___ the website.',
-    answer: 'on'
+    "q": "Emma cries when the story ends. “I wanted a happy ending,” she says. She’s ___.",
+    "answer": "sad",
+    "explanation": "Emma is sad. The story doesn’t end well.",
+    "options": [
+      "sad",
+      "bored",
+      "thirsty"
+    ]
   },
   {
-    type: 'fill',
-    q: 'Complete the sentence: He is ___ work until six o’clock.',
-    answer: 'at'
+    "q": "I have three tests and lots of homework today. It’s all too much! I’m ___.",
+    "answer": "stressed",
+    "explanation": "I’m stressed. I have too much to do.",
+    "options": [
+      "stressed",
+      "bored",
+      "thirsty"
+    ]
   },
   {
-    type: 'fill',
-    q: 'Complete the sentence: The children are playing ___ the snow.',
-    answer: 'in'
+    "q": "The phone is ringing, the baby is crying, and dinner isn’t ready. It’s all too much for me! I feel ___.",
+    "answer": "stressed",
+    "explanation": "I feel stressed. Too many things are happening at once.",
+    "options": [
+      "stressed",
+      "happy",
+      "bored"
+    ]
   },
   {
-    type: 'fill',
-    q: 'Complete the sentence: Someone left a message ___ my phone.',
-    answer: 'on'
+    "q": "“I have ten things to do in five minutes!” says Kim. “I need a break.” Kim feels ___.",
+    "answer": "stressed",
+    "explanation": "Kim feels stressed. There’s too much to do in very little time.",
+    "options": [
+      "stressed",
+      "hungry",
+      "happy"
+    ]
+  },
+  {
+    "q": "My mouth is dry. Can I have a glass of water? I’m ___.",
+    "answer": "thirsty",
+    "explanation": "I’m thirsty. I need a drink.",
+    "options": [
+      "thirsty",
+      "hungry",
+      "sad"
+    ]
+  },
+  {
+    "q": "“A sandwich?” “No, thanks. Just some water, please. I’m ___.”",
+    "answer": "thirsty",
+    "explanation": "I’m thirsty, not hungry. I want a drink.",
+    "options": [
+      "thirsty",
+      "hungry",
+      "tired"
+    ]
+  },
+  {
+    "q": "After the game, Ali drinks a whole bottle of water. He was very ___.",
+    "answer": "thirsty",
+    "explanation": "Ali was thirsty. He needed water.",
+    "options": [
+      "thirsty",
+      "angry",
+      "bored"
+    ]
+  },
+  {
+    "q": "I only slept for four hours last night. I need a nap. I’m ___.",
+    "answer": "tired",
+    "explanation": "I’m tired. I need more sleep.",
+    "options": [
+      "tired",
+      "happy",
+      "hungry"
+    ]
+  },
+  {
+    "q": "It’s late and Ava can’t keep her eyes open. She’s ___.",
+    "answer": "tired",
+    "explanation": "Ava is tired. She’s ready for bed.",
+    "options": [
+      "tired",
+      "angry",
+      "cold"
+    ]
+  },
+  {
+    "q": "We walked for six hours. Now we want to sit down and rest. We’re ___.",
+    "answer": "tired",
+    "explanation": "We’re tired. We need to rest.",
+    "options": [
+      "tired",
+      "thirsty",
+      "bored"
+    ]
+  },
+  {
+    "q": "My cat isn’t home. “Is she OK? Where is she?” I keep thinking about her. I’m ___.",
+    "answer": "worried",
+    "explanation": "I’m worried about my cat. I hope she’s OK.",
+    "options": [
+      "worried",
+      "happy",
+      "hungry"
+    ]
+  },
+  {
+    "q": "Dad is late. I keep looking at my phone. “Is he OK?” I’m ___.",
+    "answer": "worried",
+    "explanation": "I’m worried about Dad. I want to know he’s OK.",
+    "options": [
+      "worried",
+      "hot",
+      "bored"
+    ]
+  },
+  {
+    "q": "“What if I miss the last bus?” asks Ben. He keeps checking the time. He’s ___.",
+    "answer": "worried",
+    "explanation": "Ben is worried about missing the bus.",
+    "options": [
+      "worried",
+      "thirsty",
+      "happy"
+    ]
   }
 ];
-const host=document.getElementById('winter-game');
-const $=s=>host.querySelector(s);
-function readPoints(){
-  try{const points=JSON.parse(localStorage.getItem(pointsKey)||'null');
-    if(Array.isArray(points)&&points.length===initialPoints.length&&points.every(p=>Array.isArray(p)&&p.length===2&&p.every(n=>Number.isFinite(n)&&n>=0&&n<=1))) return points;
-  }catch{}
-  return initialPoints.map(p=>p.slice());
-}
-const state={count:2,selected:[],players:[],turn:0,locked:false,finished:false,die:1,points:readPoints(),calibrating:false,questionIndex:0};
-function initSetup(){const counts=$('#wg-counts');for(let n=1;n<=4;n++){const b=document.createElement('button');b.className='wg-count';b.textContent=n===1?'1 player vs computer':n+' players';b.setAttribute('aria-pressed',n===state.count);b.onclick=()=>{state.count=n;state.selected=state.selected.slice(0,n);counts.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));renderRoster()};counts.append(b)}renderRoster()}
-function renderRoster(){const list=$('#wg-roster');list.innerHTML='';chars.forEach((c,i)=>{const b=document.createElement('button');b.className='wg-char';b.setAttribute('aria-pressed',state.selected.includes(i));b.innerHTML=`<img loading="lazy" src="${ROOT+c[1]}" alt=""><span>${c[0]}</span>`;b.onclick=()=>{if(state.selected.includes(i))state.selected=state.selected.filter(x=>x!==i);else if(state.selected.length<state.count)state.selected.push(i);renderRoster()};list.append(b)});const preview=$('#wg-preview');if(state.selected.length){const c=chars[state.selected[state.selected.length-1]];preview.innerHTML=`<img src="${ROOT+c[1]}" alt=""><strong>${c[0]}</strong>`}else preview.innerHTML='<span>Select a character</span>';$('#wg-selection').innerHTML=state.selected.map((id,i)=>`<span class="wg-selected-chip">Player ${i+1}: ${chars[id][0]}</span>`).join('');$('#wg-start').disabled=state.selected.length!==state.count;$('#wg-alert').textContent=state.selected.length<state.count?`Choose ${state.count-state.selected.length} more character${state.count-state.selected.length===1?'':'s'}.`:''}
-function startGame(){if(state.selected.length!==state.count)return;state.players=state.selected.map((id,i)=>({name:state.count===1?'You':'Player '+(i+1),asset:chars[id][1],label:chars[id][0],pos:0,skip:false}));
-if(state.count===1){const options=chars.filter((_,i)=>i!==state.selected[0]);const [label,asset]=options[Math.floor(Math.random()*options.length)];state.players.push({name:'Computer',label,asset,pos:0,skip:false,bot:true});}
-$('#wg-setup').classList.add('wg-hidden');$('#wg-game').classList.remove('wg-hidden');buildSpots();renderGame()}
-function buildSpots(){const holder=$('#wg-spots');holder.innerHTML='';state.points.forEach((p,i)=>{const el=document.createElement('button');el.className='wg-spot';el.type='button';el.textContent=i+1;el.setAttribute('aria-label','Cell '+(i+1)+' position');el.dataset.index=i;el.style.left=(p[0]*100)+'%';el.style.top=(p[1]*100)+'%';el.addEventListener('pointerdown',dragStart);holder.append(el)})}
-let drag=null;function dragStart(e){if(!state.calibrating)return;e.preventDefault();const board=$('#wg-board'),r=board.getBoundingClientRect();drag={el:e.currentTarget,rect:r,index:+e.currentTarget.dataset.index};drag.el.setPointerCapture(e.pointerId);dragMove(e);drag.el.addEventListener('pointermove',dragMove);drag.el.addEventListener('pointerup',dragEnd,{once:true})}
-function dragMove(e){if(!drag)return;const x=Math.max(0,Math.min(1,(e.clientX-drag.rect.left)/drag.rect.width)),y=Math.max(0,Math.min(1,(e.clientY-drag.rect.top)/drag.rect.height));state.points[drag.index]=[+x.toFixed(4),+y.toFixed(4)];drag.el.style.left=(x*100)+'%';drag.el.style.top=(y*100)+'%'}
-function dragEnd(){if(!drag)return;drag.el.removeEventListener('pointermove',dragMove);try{localStorage.setItem(pointsKey,JSON.stringify(state.points))}catch{}drag=null;tokens()}
-function tokens(){
- const layer=$('#wg-token-layer');
- state.players.forEach((p,i)=>{
-   let el=layer.children[i];
-   if(!el){el=document.createElement('img');el.className='wg-token';el.src=ROOT+p.asset;el.alt=p.label;layer.append(el)}
-   const [x,y]=state.points[p.pos], group=state.players.filter(other=>other.pos===p.pos);
-   const rank=group.indexOf(p), count=group.length;
-   const dx=count===1?0:count===2?(rank===0?-1.45:1.45):rank%2===0?-1.65:1.65;
-   const dy=count<3?0:rank<2?-1.4:1.4;
-   el.style.left=(x*100+dx)+'%';el.style.top=(y*100+dy)+'%';
- });
-}
-function renderGame(){const p=state.players[state.turn];$('#wg-players').innerHTML=state.players.map((x,i)=>`<div class="wg-player ${i===state.turn?'is-current':''}">${x.bot?'CPU · ':''}${x.label} · ${x.pos+1}/22</div>`).join('');$('#wg-current').textContent=p.name+' · '+p.label;$('#wg-roll').disabled=state.locked||Boolean(p.bot)||state.finished;$('#wg-roll').textContent=p.bot?'Computer’s turn':'Roll the die';tokens()}
-function setStatus(t){$('#wg-status').textContent=t}
-const LAST=initialPoints.length-1;
-// The computer follows the same route and event rules. On a challenge, only
-// its outcome is simulated; it doesn't consume a question from the learner's bank.
-const BOT_SUCCESS=.60;
+const host=document.getElementById('winter-game'), $=s=>host.querySelector(s), LAST=points.length-1;
+const state={count:2,selected:[],players:[],turn:0,locked:false,finished:false,die:1,deck:[],sound:false};
 const wait=ms=>new Promise(resolve=>setTimeout(resolve,ms));
 const reduced=()=>window.matchMedia?.('(prefers-reduced-motion: reduce)').matches===true;
-const pipLayouts=[[5],[1,9],[1,5,9],[1,3,7,9],[1,3,5,7,9],[1,3,4,6,7,9]];
-const angles=[[0,0],[0,-90],[-90,0],[90,0],[0,90],[0,180]];
-const pose=(x,y)=>`rotateX(${x}deg) rotateY(${y}deg)`;
-function buildDie(){
- const cube=$('#wg-cube');
- pipLayouts.forEach(layout=>{
-   const face=document.createElement('div');face.className='wg-face';
-   layout.forEach(i=>{const pip=document.createElement('span');pip.className='wg-pip';pip.style.gridArea=`${Math.ceil(i/3)} / ${(i-1)%3+1}`;face.append(pip)});
-   cube.append(face);
- });
+// Web Audio generates short effects; no external media or autoplay.
+let audio=null;
+function initAudio(){try{const C=window.AudioContext||window.webkitAudioContext;if(!C)return false;audio=audio||new C();if(audio.state==='suspended')audio.resume().catch(()=>{});return true}catch{return false}}
+function sound(kind){if(!state.sound||!audio)return;try{const sequences={roll:[[300,0,.09],[380,.1,.1],[480,.2,.12]],step:[[570,0,.055]],correct:[[520,0,.12],[660,.1,.12],[800,.2,.18]],wrong:[[290,0,.13],[220,.13,.2]],event:[[420,0,.13],[350,.14,.2]],win:[[523,0,.14],[659,.15,.14],[784,.3,.14],[1046,.45,.35]]};for(const [freq,delay,duration] of (sequences[kind]||[])){const t=audio.currentTime+delay,osc=audio.createOscillator(),gain=audio.createGain();osc.type='sine';osc.frequency.setValueAtTime(freq,t);gain.gain.setValueAtTime(.0001,t);gain.gain.exponentialRampToValueAtTime(.07,t+.015);gain.gain.exponentialRampToValueAtTime(.0001,t+duration);osc.connect(gain);gain.connect(audio.destination);osc.start(t);osc.stop(t+duration+.02)}}catch{}}
+function updateSound(){host.querySelectorAll('.wg-sound').forEach(b=>{b.textContent=state.sound?'🔊 Sound on':'🔇 Sound off';b.setAttribute('aria-pressed',String(state.sound))})}
+host.querySelectorAll('.wg-sound').forEach(b=>b.addEventListener('click',()=>{if(state.sound){state.sound=false}else{state.sound=initAudio();if(state.sound)sound('correct');else setStatus('Sound is not available in this browser.')}updateSound()}));
+function shuffle(arr){const a=arr.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+const recentKey='winter-feelings-a1-recent-v1';
+function loadRecent(){
+  try {
+    const saved=JSON.parse(localStorage.getItem(recentKey)||'[]');
+    if(Array.isArray(saved)) return saved.filter(i=>Number.isInteger(i)&&i>=0&&i<bank.length).slice(-8);
+  } catch {}
+  return [];
 }
-async function animateDie(value,player){
- const cube=$('#wg-cube'), result=$('#wg-die-result');
- const [x,y]=angles[value-1], [oldX,oldY]=angles[state.die-1];
- result.textContent='Rolling…';
- if(!reduced()&&typeof cube.animate==='function'){
-   const motion=cube.animate([{transform:pose(oldX,oldY)},{transform:pose(x+720,y+720)}],{duration:760,easing:'cubic-bezier(.15,.58,.23,1)',fill:'forwards'});
-   try{await motion.finished}catch{}
-   cube.style.transform=pose(x,y);motion.cancel();
- }else cube.style.transform=pose(x,y);
- state.die=value;result.textContent=`${player.bot?'CPU rolled':'Rolled'}: ${value}`;
+const recentQuestions=loadRecent();
+function nextQuestion(){
+  if(!state.deck.length){
+    const recent=new Set(recentQuestions), order=shuffle(bank.map((_,i)=>i));
+    state.deck=order.filter(i=>!recent.has(i)).concat(order.filter(i=>recent.has(i)));
+  }
+  const index=state.deck.shift();
+  recentQuestions.push(index);
+  if(recentQuestions.length>8) recentQuestions.shift();
+  try { localStorage.setItem(recentKey,JSON.stringify(recentQuestions)); } catch {}
+  return bank[index];
 }
-async function walk(p,delta){
- const goal=Math.max(0,Math.min(LAST,p.pos+delta));
- if(reduced()){p.pos=goal;renderGame();return}
- while(p.pos!==goal){p.pos+=Math.sign(goal-p.pos);renderGame();await wait(220)}
+function initSetup(){const counts=$('#wg-counts');counts.replaceChildren();for(let n=1;n<=4;n++){const b=document.createElement('button');b.type='button';b.className='wg-count';b.textContent=n===1?'1 player vs computer':n+' players';b.setAttribute('aria-pressed',String(n===state.count));b.onclick=()=>{state.count=n;state.selected=state.selected.slice(0,n);counts.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));renderRoster()};counts.append(b)}renderRoster()}
+function renderRoster(){const list=$('#wg-roster');list.innerHTML='';chars.forEach((c,i)=>{const b=document.createElement('button');b.type='button';b.className='wg-char';b.setAttribute('aria-pressed',String(state.selected.includes(i)));b.innerHTML=`<img loading="lazy" src="${ROOT+c[1]}" alt=""><span>${c[0]}</span>`;b.onclick=()=>{if(state.selected.includes(i))state.selected=state.selected.filter(x=>x!==i);else if(state.selected.length<state.count)state.selected.push(i);renderRoster()};list.append(b)});const preview=$('#wg-preview');if(state.selected.length){const c=chars[state.selected[state.selected.length-1]];preview.innerHTML=`<img src="${ROOT+c[1]}" alt=""><strong>${c[0]}</strong>`}else preview.innerHTML='<span>Select a character</span>';$('#wg-selection').innerHTML=state.selected.map((id,i)=>`<span class="wg-selected-chip">Player ${i+1}: ${chars[id][0]}</span>`).join('');$('#wg-start').disabled=state.selected.length!==state.count;const remaining=state.count-state.selected.length;$('#wg-alert').textContent=remaining?`Choose ${remaining} more character${remaining===1?'':'s'}.`:''}
+function startGame(){if(state.selected.length!==state.count)return;if(state.sound)initAudio();state.players=state.selected.map((id,i)=>({name:state.count===1?'You':'Player '+(i+1),asset:chars[id][1],label:chars[id][0],pos:0}));if(state.count===1){const options=chars.filter((_,i)=>i!==state.selected[0]);const [label,asset]=options[Math.floor(Math.random()*options.length)];state.players.push({name:'Computer',label,asset,pos:0,bot:true})}state.turn=0;state.locked=false;state.finished=false;state.die=1;state.deck=[];$('#wg-cube').style.transform=pose(0,0);$('#wg-die-result').textContent='Ready to roll';$('#wg-token-layer').replaceChildren();$('#wg-setup').classList.add('wg-hidden');$('#wg-game').classList.remove('wg-hidden');setStatus('Roll, then answer to move.');renderGame();$('#wg-roll').focus()}
+function tokens(){const layer=$('#wg-token-layer');state.players.forEach((p,i)=>{let el=layer.children[i];if(!el){el=document.createElement('img');el.className='wg-token';el.src=ROOT+p.asset;el.alt=p.label;layer.append(el)}const [x,y]=points[p.pos],group=state.players.filter(other=>other.pos===p.pos),rank=group.indexOf(p),count=group.length,dx=count===1?0:count===2?(rank===0?-1.45:1.45):rank%2===0?-1.65:1.65,dy=count<3?0:rank<2?-1.4:1.4;el.style.left=(x*100+dx)+'%';el.style.top=(y*100+dy)+'%'})}
+function renderGame(){const p=state.players[state.turn];$('#wg-players').innerHTML=state.players.map((x,i)=>`<div class="wg-player ${i===state.turn?'is-current':''}">${x.bot?'CPU · ':''}${x.label} · ${x.pos+1}/22</div>`).join('');$('#wg-current').textContent=p.name+' · '+p.label;$('#wg-roll').disabled=state.locked||Boolean(p.bot)||state.finished;$('#wg-roll').textContent=p.bot?'Computer’s turn':'Roll the die';tokens()}
+function setStatus(t){$('#wg-status').textContent=t}
+const pipLayouts=[[5],[1,9],[1,5,9],[1,3,7,9],[1,3,5,7,9],[1,3,4,6,7,9]],angles=[[0,0],[0,-90],[-90,0],[90,0],[0,90],[0,180]],pose=(x,y)=>`rotateX(${x}deg) rotateY(${y}deg)`;
+function buildDie(){const cube=$('#wg-cube');pipLayouts.forEach(layout=>{const face=document.createElement('div');face.className='wg-face';layout.forEach(i=>{const pip=document.createElement('span');pip.className='wg-pip';pip.style.gridArea=`${Math.ceil(i/3)} / ${(i-1)%3+1}`;face.append(pip)});cube.append(face)})}
+async function animateDie(value,player){const cube=$('#wg-cube'),result=$('#wg-die-result'),[x,y]=angles[value-1],[oldX,oldY]=angles[state.die-1];result.textContent='Rolling…';sound('roll');if(!reduced()&&typeof cube.animate==='function'){const motion=cube.animate([{transform:pose(oldX,oldY)},{transform:pose(x+720,y+720)}],{duration:760,easing:'cubic-bezier(.15,.58,.23,1)',fill:'forwards'});try{await motion.finished}catch{}cube.style.transform=pose(x,y);motion.cancel()}else cube.style.transform=pose(x,y);state.die=value;result.textContent=`${player.bot?'CPU rolled':'Rolled'}: ${value} · up to ${Math.ceil(value/2)} space${value>2?'s':''}`}
+async function walk(p,delta){const goal=Math.max(0,Math.min(LAST,p.pos+delta));if(reduced()){p.pos=goal;renderGame();return}while(p.pos!==goal){p.pos+=Math.sign(goal-p.pos);sound('step');renderGame();await wait(220)}}
+function nextTurn(){if(state.finished)return;state.turn=(state.turn+1)%state.players.length;const p=state.players[state.turn];state.locked=false;renderGame();if(p.bot){setStatus('The computer is getting ready to roll…');setTimeout(()=>{if(state.players[state.turn]===p&&!state.finished)roll(true)},650)}else {setStatus(`${p.name==='You'?'Your turn':p.name+'’s turn'}. Roll, then answer to move.`);$('#wg-roll').focus({preventScroll:true})}}
+async function roll(automatic=false){const p=state.players[state.turn];if(!p||state.locked||state.finished||Boolean(p.bot)!==automatic)return;state.locked=true;renderGame();const n=1+Math.floor(Math.random()*6),steps=Math.ceil(n/2);setStatus(p.bot?'The computer is rolling…':'Rolling the die…');await animateDie(n,p);if(p.bot){const correct=Math.random()<.60;setStatus(correct?`The computer solved its challenge. Moving ${steps}…`:'The computer missed its challenge. Back 1 space.');sound(correct?'correct':'wrong');await wait(1300);await resolveAnswer(p,correct,steps)}else ask(p,steps)}
+// Events apply once, only after a correct answer and normal movement; no cascades.
+const events={4:['☕','A hot chocolate break slows you down. Move back 1 space.',-1],7:['🧊','An icy path sends you sliding back 2 spaces.',-2],10:['🎁','A missing gift delays your journey. Move back 1 space.',-1],13:['🌨️','A snowstorm pushes you back 2 spaces.',-2],16:['🛷','Your sled takes a wrong turn. Move back 2 spaces.',-2],19:['🧤','You dropped a mitten. Move back 1 space.',-1]};
+async function resolveAnswer(p,ok,steps){if(!ok){await walk(p,-1);nextTurn();return}await walk(p,steps);if(p.pos===LAST){finish(p);return}const ev=events[p.pos];if(!ev){nextTurn();return}sound('event');if(p.bot){setStatus('CPU event · '+ev[1]);await wait(1500);await walk(p,ev[2]);nextTurn()}else showDialog(ev[0]+' Winter detour',ev[1],async()=>{await walk(p,ev[2]);nextTurn()})}
+function ask(p,steps){
+  const q=nextQuestion(), modal=$('#wg-modal');
+  modal.innerHTML=`<div class="wg-modal"><div class="wg-dialog wg-quiz" role="dialog" aria-modal="true" aria-labelledby="wg-question-title" aria-describedby="wg-question-text">
+    <p class="wg-label wg-topic">A1 · Feelings</p>
+    <h2 id="wg-question-title" tabindex="-1">Choose the right word</h2>
+    <p class="wg-question-text" id="wg-question-text"></p>
+    <div class="wg-answers" id="wg-answers" role="group" aria-label="Answer choices"></div>
+    <p class="wg-stakes">Correct: +${steps} · Incorrect: −1 (never before Start)</p>
+    <div class="wg-feedback" id="wg-feedback" role="status"></div>
+    <button type="button" class="wg-primary wg-hidden" id="wg-continue">Continue <span aria-hidden="true">→</span></button>
+  </div></div>`;
+  $('#wg-game').inert=true;
+  $('#wg-question-text').textContent=q.q;
+  const answers=$('#wg-answers'), next=$('#wg-continue');
+  let graded=false;
+  shuffle(q.options).forEach(value=>{
+    const button=document.createElement('button');
+    button.type='button'; button.className='wg-answer'; button.dataset.value=value;
+    button.textContent=value;
+    button.addEventListener('click',()=>grade(value));
+    answers.append(button);
+  });
+  $('#wg-question-title').focus();
+  function grade(value){
+    if(graded)return;
+    graded=true;
+    const ok=value===q.answer;
+    for(const button of answers.children){
+      button.disabled=true;
+      if(button.dataset.value===q.answer) button.classList.add('is-correct');
+      else if(button.dataset.value===value) button.classList.add('is-incorrect');
+    }
+    sound(ok?'correct':'wrong');
+    const feedback=$('#wg-feedback');
+    feedback.dataset.result=ok?'correct':'incorrect';
+    const lead=document.createElement('strong'), note=document.createElement('p');
+    lead.textContent=ok?'Correct!':`Not quite. Answer: ${q.answer}.`;
+    note.textContent=q.explanation;
+    feedback.append(lead,note);
+    next.classList.remove('wg-hidden');
+    next.focus();
+    next.onclick=async()=>{
+      next.disabled=true;
+      modal.replaceChildren();
+      $('#wg-game').inert=false;
+      await resolveAnswer(p,ok,steps);
+    };
+  }
 }
-function nextTurn(){
- if(state.finished)return;
- state.turn=(state.turn+1)%state.players.length;
- const p=state.players[state.turn];state.locked=false;renderGame();
- if(p.bot){setStatus('The computer is getting ready to roll…');setTimeout(()=>{if(state.players[state.turn]===p&&!state.finished)roll(true)},650)}
- else setStatus(p.skip?'An icy patch delays your next turn.':`${p.name==='You'?'Your turn':p.name+'’s turn'}. Roll to move along the snowy trail.`);
-}
-async function roll(automatic=false){
- const p=state.players[state.turn];
- if(!p||state.locked||state.finished||Boolean(p.bot)!==automatic)return;
- state.locked=true;renderGame();
- if(p.skip){p.skip=false;
-   if(p.bot){setStatus('The computer misses this turn.');await wait(950);nextTurn()}
-   else showDialog('Snowy delay','This player misses a turn.',nextTurn);
-   return;
- }
- const n=1+Math.floor(Math.random()*6);
- setStatus(p.bot?'The computer is rolling…':'Rolling the die…');
- await animateDie(n,p);await walk(p,n);await land(p);
-}
-async function resolveEvent(p){
- const delta={4:2,10:2,13:-2,16:3,19:-1}[p.pos];
- if(p.pos===7)p.skip=true;
- else if(delta)await walk(p,delta);
- if(p.pos===LAST)finish(p);else nextTurn();
-}
-async function land(p){
- if(p.pos===LAST){finish(p);return}
- const event=labels[p.pos];
- if(event){
-   if(p.bot){setStatus('CPU event · '+event[2]);await wait(1500);await resolveEvent(p)}
-   else showDialog(event[1]+' '+(event[0]==='boost'?'Lucky break':'Winter trouble'),event[2],()=>resolveEvent(p));
-   return;
- }
- if(!p.bot){ask(p);return}
- const correct=Math.random()<BOT_SUCCESS;
- setStatus(correct?'The computer solved its challenge. One extra space!':'The computer missed its challenge. No extra move.');
- await wait(1350);
- if(correct)await walk(p,1);
- if(p.pos===LAST)finish(p);else nextTurn();
-}
-function ask(p){const q=bank[state.questionIndex++%bank.length],modal=$('#wg-modal');modal.innerHTML=`<div class="wg-modal"><div class="wg-dialog"><p class="wg-label">Past tense challenge · ${q.type==='fill'?'Complete the sentence':'Choose the best answer'}</p><h2>Winter story</h2><p>${q.q}</p><div id="wg-answers"></div><div class="wg-feedback" id="wg-feedback"></div><button class="wg-primary wg-hidden" id="wg-continue">Continue</button></div></div>`;const a=$('#wg-answers');if(q.type==='quiz')q.a.forEach((v,i)=>{const b=document.createElement('button');b.className='wg-answer';b.textContent=v;b.onclick=()=>grade(i===q.correct);a.append(b)});else{a.innerHTML='<input class="wg-fill" id="wg-fill" placeholder="Type your answer" autocomplete="off"><button class="wg-primary" id="wg-check">Check</button>';$('#wg-check').onclick=()=>grade($('#wg-fill').value.trim().toLowerCase()===q.answer.toLowerCase())}function grade(ok){if(a.dataset.done)return;a.dataset.done='1';$('#wg-feedback').textContent=ok?'Correct! Move forward one extra space.':'The answer is '+(q.type==='quiz'?q.a[q.correct]:q.answer)+'.';$('#wg-feedback').style.color=ok?'#16725e':'#a64335';$('#wg-continue').classList.remove('wg-hidden');$('#wg-continue').onclick=async()=>{modal.innerHTML='';if(ok)await walk(p,1);if(p.pos===LAST)finish(p);else nextTurn()}}}
-function showDialog(title,text,callback){const m=$('#wg-modal');m.innerHTML=`<div class="wg-modal"><div class="wg-dialog"><h2>${title}</h2><p>${text}</p><button class="wg-primary" id="wg-ok">Continue</button></div></div>`;$('#wg-ok').onclick=()=>{m.innerHTML='';callback()}}
-function finish(p){state.finished=true;state.locked=true;renderGame();const m=$('#wg-modal');m.innerHTML=`<div class="wg-modal"><div class="wg-dialog wg-end"><img src="${ROOT+p.asset}" alt="${p.label}"><h2>${p.label} reached the Clocktower Castle!</h2><p>${p.name==='You'?'You win!':p.bot?'The computer wins!':p.name+' completed the winter journey.'}</p><button class="wg-primary" id="wg-restart">Play again</button></div></div>`;$('#wg-restart').onclick=()=>location.reload()}
-$('#wg-start').addEventListener('click',startGame);$('#wg-roll').addEventListener('click',()=>roll());$('#wg-calibrate').addEventListener('click',()=>{state.calibrating=!state.calibrating;host.classList.toggle('wg-calibrate',state.calibrating);$('#wg-calibrate').textContent=state.calibrating?'Finish adjusting markers':'Adjust cell markers';setStatus(state.calibrating?'Drag each numbered marker onto the centre of its matching clearing.':'Marker positions saved in this browser.')});$('#wg-export').addEventListener('click',async()=>{const data=JSON.stringify(state.points);try{await navigator.clipboard.writeText(data);setStatus('Coordinates copied as JSON.')}catch{setStatus(data)}});buildDie();initSetup();
+function showDialog(title,text,callback){const m=$('#wg-modal');m.innerHTML=`<div class="wg-modal"><div class="wg-dialog" role="dialog" aria-modal="true" aria-labelledby="wg-dialog-title"><h2 id="wg-dialog-title">${title}</h2><p>${text}</p><button class="wg-primary" id="wg-ok">Continue</button></div></div>`;$('#wg-game').inert=true;const button=$('#wg-ok');button.focus();button.onclick=()=>{button.disabled=true;m.innerHTML='';$('#wg-game').inert=false;callback()}}
+function finish(p){state.finished=true;state.locked=true;renderGame();sound('win');const m=$('#wg-modal');m.innerHTML=`<div class="wg-modal"><div class="wg-dialog wg-end" role="dialog" aria-modal="true" aria-labelledby="wg-win-title"><img src="${ROOT+p.asset}" alt="${p.label}"><h2 id="wg-win-title">${p.label} reached the Clocktower Castle!</h2><p>${p.name==='You'?'You win!':p.bot?'The computer wins!':p.name+' completed the winter journey.'}</p><button class="wg-primary" id="wg-restart">Play again</button></div></div>`;$('#wg-game').inert=true;const restart=$('#wg-restart');restart.focus();restart.onclick=()=>{m.innerHTML='';$('#wg-game').inert=false;$('#wg-game').classList.add('wg-hidden');$('#wg-setup').classList.remove('wg-hidden');state.selected=[];state.deck=[];initSetup();$('#wg-counts [aria-pressed="true"]').focus()}}
+$('#wg-modal').addEventListener('keydown',e=>{
+  if(e.key!=='Tab')return;
+  const controls=[...e.currentTarget.querySelectorAll('button:not(:disabled):not(.wg-hidden)')];
+  if(!controls.length)return;
+  const first=controls[0], last=controls[controls.length-1], active=document.activeElement;
+  if((e.shiftKey&&(active===first||!controls.includes(active)))||(!e.shiftKey&&active===last)){
+    e.preventDefault(); (e.shiftKey?last:first).focus();
+  }
+});
+$('#wg-start').addEventListener('click',startGame);$('#wg-roll').addEventListener('click',()=>roll());buildDie();initSetup();updateSound();
 })();
 </script>
 </body>
