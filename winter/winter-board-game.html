@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -6,56 +5,170 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Winter Past Adventure</title>
 <style>
-#winter-game,#winter-game *{box-sizing:border-box}#winter-game{--ink:#163b42;--green:#17695c;--red:#b74d3b;--cream:#fffaf0;--mint:#e4f1e9;width:100%;min-height:100vh;margin:0;color:var(--ink);font-family:Arial,Helvetica,sans-serif;background:linear-gradient(180deg,#d5ecea,#f0f4e7 55%,#deeadb);isolation:isolate;position:relative;overflow:hidden}#winter-game button,#winter-game input{font:inherit}#winter-game button{cursor:pointer}#winter-game .wg-screen{min-height:100vh;padding:clamp(14px,3vw,32px);display:flex;flex-direction:column;align-items:center;justify-content:center}#winter-game .wg-title{font-family:Georgia,serif;font-size:clamp(32px,6vw,62px);line-height:1.02;text-align:center;color:#174b50;margin:0 0 8px}#winter-game .wg-subtitle{text-align:center;color:#42666b;margin:0 0 22px;font-size:16px}#winter-game .wg-panel{width:min(960px,100%);background:#fffcf5;border:2px solid white;border-radius:14px;box-shadow:0 7px 0 #a9c5b9,0 15px 36px #244a4420;padding:clamp(16px,3vw,28px)}#winter-game .wg-label{font-size:12px;font-weight:800;text-transform:uppercase;color:#637d77;margin:0 0 10px}#winter-game .wg-counts{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:18px}#winter-game .wg-count{padding:12px 16px;border-radius:8px;background:#e6efe8;color:#31565a;border:2px solid transparent;font-weight:800}#winter-game .wg-count[aria-pressed="true"]{border-color:#287d68;background:#d9eee5}#winter-game .wg-layout{display:grid;grid-template-columns:minmax(0,1fr) 280px;gap:18px;align-items:start}#winter-game .wg-roster{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px;max-height:440px;overflow:auto;padding:2px}#winter-game .wg-char{min-width:0;background:#f1eee4;border:2px solid transparent;border-radius:9px;padding:8px 5px;color:#294f53;font-weight:700;text-align:center}#winter-game .wg-char[aria-pressed="true"]{border-color:#287d68;background:#e1f0e7}#winter-game .wg-char img{display:block;width:100%;height:124px;object-fit:contain;margin:0 auto 5px}#winter-game .wg-char span{display:block;font-size:12px;line-height:1.2;overflow-wrap:anywhere}#winter-game .wg-preview{position:sticky;top:12px;background:#e8f1e8;border-radius:10px;min-height:310px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:16px;text-align:center}#winter-game .wg-preview img{height:260px;max-width:100%;object-fit:contain}#winter-game .wg-preview strong{font-family:Georgia,serif;font-size:20px;color:#174b50}#winter-game .wg-selection{display:flex;gap:8px;flex-wrap:wrap;margin:13px 0 18px}.wg-selected-chip{background:#fff;border:1px solid #d4e1d8;border-radius:7px;padding:6px 9px;font-size:12px;font-weight:700}#winter-game .wg-primary{border:0;border-radius:8px;background:#b84d3b;color:white;padding:13px 19px;font-weight:800;box-shadow:0 4px #84382d}#winter-game .wg-primary:disabled{opacity:.48;cursor:not-allowed}#winter-game .wg-start{width:100%}#winter-game .wg-game{justify-content:flex-start;padding:14px!important;gap:10px}#winter-game .wg-top{width:min(1400px,100%);display:flex;align-items:center;justify-content:space-between;gap:10px;margin:0 auto}#winter-game .wg-wordmark{font:700 23px Georgia,serif;color:#174b50}#winter-game .wg-players{display:flex;gap:7px;flex-wrap:wrap;justify-content:flex-end}#winter-game .wg-player{background:#fffaf0;border:2px solid white;border-radius:8px;padding:7px 10px;font-size:12px;font-weight:800;box-shadow:0 2px #bdcec3}#winter-game .wg-player.is-current{border-color:#ba5645;background:#fff0e7}#winter-game .wg-board-layout{width:min(1400px,100%);margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) 250px;gap:12px;align-items:stretch}#winter-game .wg-board{width:100%;aspect-ratio:16/9;position:relative;overflow:hidden;border:4px solid #fff;border-radius:12px;box-shadow:0 6px #9cbab0;background:#dcebe1}#winter-game .wg-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:fill;display:block}#winter-game .wg-token-layer{position:absolute;inset:0;pointer-events:none}#winter-game .wg-token{position:absolute;width:clamp(28px,4.2vw,54px);height:clamp(38px,5.7vw,72px);object-fit:contain;transform:translate(-50%,-85%);filter:drop-shadow(0 2px 2px #203b3c70);transition:left .22s linear,top .22s linear;z-index:3}#winter-game .wg-spot{position:absolute;width:24px;height:24px;border:2px solid white;border-radius:50%;background:#b84d3b;color:#fff;display:none;align-items:center;justify-content:center;font-size:11px;font-weight:800;transform:translate(-50%,-50%);z-index:5;box-shadow:0 1px 5px #173b3b80;touch-action:none;cursor:grab}#winter-game.wg-calibrate .wg-spot{display:flex}#winter-game .wg-side{background:#fffcf5;border:2px solid white;border-radius:12px;padding:14px;box-shadow:0 6px #a9c5b9;display:flex;flex-direction:column;gap:9px}#winter-game .wg-side h2{font:700 21px Georgia,serif;margin:0;color:#174b50}#winter-game .wg-current{font-weight:800;background:#e5f0e7;border-radius:7px;padding:9px;font-size:14px}#winter-game .wg-die{font-size:44px;text-align:center;line-height:1.1}#winter-game .wg-side small{font-size:12px;line-height:1.4;color:#5e7972}#winter-game .wg-tool{font-size:12px;border:1px solid #adc6bb;background:#fff;padding:9px;border-radius:7px;font-weight:700;color:#34585a}#winter-game .wg-status{min-height:30px;font-size:13px;font-weight:700;line-height:1.4}#winter-game .wg-modal{position:fixed;inset:0;background:#12363dcc;z-index:20;display:flex;align-items:center;justify-content:center;padding:16px}#winter-game .wg-dialog{width:min(520px,100%);max-height:90vh;overflow:auto;background:#fffaf0;border:3px solid white;border-radius:14px;padding:22px;box-shadow:0 10px #a9c5b9}#winter-game .wg-dialog h2{font:700 26px Georgia,serif;color:#174b50;margin:0 0 8px}#winter-game .wg-dialog p{line-height:1.5}#winter-game .wg-answer{display:block;width:100%;text-align:left;padding:11px;margin:7px 0;background:#e6f0e7;color:#264b4f;border:2px solid transparent;border-radius:7px;font-weight:700}#winter-game .wg-answer:hover{border-color:#438b75}#winter-game .wg-fill{width:100%;padding:12px;border:2px solid #b6cec2;border-radius:7px;margin-bottom:9px}#winter-game .wg-feedback{min-height:24px;font-weight:800}#winter-game .wg-end{text-align:center}#winter-game .wg-end img{height:min(45vh,320px);max-width:90%;object-fit:contain}#winter-game .wg-hidden{display:none!important}#winter-game .wg-alert{color:#a64436;font-size:12px;min-height:16px}
-+@media(max-width:760px){#winter-game .wg-screen{padding:14px}.wg-layout{grid-template-columns:1fr!important}.wg-roster{grid-template-columns:repeat(3,minmax(0,1fr))!important;max-height:42vh!important}.wg-char img{height:100px!important}.wg-preview{position:static!important;min-height:180px!important;display:none!important}.wg-side{display:grid!important;grid-template-columns:1fr auto;align-items:center}.wg-side h2,.wg-current{grid-column:1/-1}.wg-side small{grid-column:1/-1}.wg-board-layout{grid-template-columns:1fr!important}.wg-top{align-items:flex-start!important}.wg-wordmark{font-size:18px!important}.wg-player{font-size:10px!important;padding:5px 6px!important}.wg-game{padding:9px!important}.wg-board{border-width:2px!important}.wg-spot{width:22px!important;height:22px!important}}
-+@media(max-width:390px){#winter-game .wg-roster{grid-template-columns:repeat(2,minmax(0,1fr))!important}.wg-char img{height:112px!important}.wg-title{font-size:34px!important}}
-+</style>
-+</head>
-+<body>
-+<main id="winter-game">
-+  <section class="wg-screen" id="wg-setup">
-+    <h1 class="wg-title">Winter Past Adventure</h1><p class="wg-subtitle">A snowy journey through the past</p>
-+    <div class="wg-panel">
-+      <p class="wg-label">Choose the number of players</p><div class="wg-counts" id="wg-counts"></div>
-+      <div class="wg-layout"><div><p class="wg-label">Choose one character per player</p><div class="wg-roster" id="wg-roster"></div></div><aside class="wg-preview" id="wg-preview"><span>Select a character</span></aside></div>
-+      <div class="wg-selection" id="wg-selection"></div><div class="wg-alert" id="wg-alert"></div>
-+      <button class="wg-primary wg-start" id="wg-start" disabled>Start the adventure</button>
-+    </div>
-+  </section>
-+  <section class="wg-screen wg-game wg-hidden" id="wg-game">
-+    <header class="wg-top"><div class="wg-wordmark">Winter Past Adventure</div><div class="wg-players" id="wg-players"></div></header>
-+    <div class="wg-board-layout"><div class="wg-board" id="wg-board"><img class="wg-bg" src="https://raw.githubusercontent.com/AlexandraGes-ESL/Pictures/main/winter/background.png" alt="Snowy Christmas board game map"><div id="wg-spots"></div><div class="wg-token-layer" id="wg-token-layer"></div></div>
-+      <aside class="wg-side"><h2>Your turn</h2><div class="wg-current" id="wg-current"></div><div class="wg-die" id="wg-die">🎲</div><button class="wg-primary" id="wg-roll">Roll the dice</button><div class="wg-status" id="wg-status">Roll to move along the snowy trail.</div><button class="wg-tool" id="wg-calibrate">Adjust cell markers</button><button class="wg-tool" id="wg-export">Copy coordinates</button><small>Tap “Adjust cell markers”, then drag each numbered dot to the centre of its matching clearing. Coordinates are measured as percentages of the map.</small></aside>
-+    </div>
-+  </section><div id="wg-modal"></div>
-+</main>
-+<script>
-+(()=>{'use strict';
-+const ROOT='https://raw.githubusercontent.com/AlexandraGes-ESL/Pictures/main/winter/';
-+const chars=[['Angel','Angel.png'],['Elf','Elf.png'],['Ice Princess','Elsa-Cinderella.png'],['Gingerbread','Gingerbread.png'],['Green Trickster','Grinch-elf.png'],['Ice Man','Ice-man.png'],['Red Hat Traveller','Man-red-hat.png'],['Mrs Claus','Mrs.Claus.png'],['Nutcracker','Nutcracker.png'],['Penguin','Penguin.png'],['Reindeer','Reindeer.png'],['Santa','Santa.png'],['Snowman','Snowman.png'],['Polar Bear','White-bear.png'],['Winter Fairy','Winter-fairy.png'],['Winter Witch','Winter-witch.png']];
-+// Approximate first pass. Drag numbered markers over the painted clearings to calibrate.
-+const initialPoints=[[.07,.89],[.18,.89],[.29,.89],[.40,.89],[.51,.89],[.62,.89],[.73,.89],[.84,.89],[.93,.79],[.82,.79],[.71,.79],[.60,.79],[.49,.79],[.38,.79],[.27,.79],[.27,.64],[.38,.64],[.49,.64],[.60,.64],[.71,.64],[.82,.64],[.93,.64]];
-+const labels={4:['boost','☕','Hot chocolate break! Move forward 2 spaces.'],7:['trap','🧊','Icy patch! Miss your next turn.'],10:['boost','🎁','A kind traveller shares a lucky map. Move forward 2 spaces.'],13:['trap','🌨️','A snowstorm pushes you back 2 spaces.'],16:['boost','🛷','A speedy sled carries you forward 3 spaces.'],19:['trap','🧤','You dropped a mitten. Move back 1 space.']};
-+const bank=[{type:'quiz',q:'Yesterday, we ___ a snowman.',a:['made','make','were make'],correct:0},{type:'fill',q:'Complete: She ___ (see) a shooting star last night.',answer:'saw'},{type:'quiz',q:'While I ___ home, it started to snow.',a:['walked','was walking','am walking'],correct:1},{type:'fill',q:'Complete: They ___ (not / go) to the market last Sunday.',answer:'did not go'}];
-+const $=s=>document.querySelector(s),state={count:2,selected:[],players:[],turn:0,locked:false,points:JSON.parse(localStorage.getItem('winterBoardPoints')||'null')||initialPoints.map(p=>p.slice()),calibrating:false,questionIndex:0};
-+function initSetup(){const counts=$('#wg-counts');for(let n=2;n<=4;n++){const b=document.createElement('button');b.className='wg-count';b.textContent=n+' players';b.setAttribute('aria-pressed',n===state.count);b.onclick=()=>{state.count=n;state.selected=state.selected.slice(0,n);counts.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));renderRoster()};counts.append(b)}renderRoster()}
-+function renderRoster(){const list=$('#wg-roster');list.innerHTML='';chars.forEach((c,i)=>{const b=document.createElement('button');b.className='wg-char';b.setAttribute('aria-pressed',state.selected.includes(i));b.innerHTML=`<img loading="lazy" src="${ROOT+c[1]}" alt=""><span>${c[0]}</span>`;b.onclick=()=>{if(state.selected.includes(i))state.selected=state.selected.filter(x=>x!==i);else if(state.selected.length<state.count)state.selected.push(i);renderRoster()};list.append(b)});const preview=$('#wg-preview');if(state.selected.length){const c=chars[state.selected[state.selected.length-1]];preview.innerHTML=`<img src="${ROOT+c[1]}" alt=""><strong>${c[0]}</strong>`}else preview.innerHTML='<span>Select a character</span>';$('#wg-selection').innerHTML=state.selected.map((id,i)=>`<span class="wg-selected-chip">Player ${i+1}: ${chars[id][0]}</span>`).join('');$('#wg-start').disabled=state.selected.length!==state.count;$('#wg-alert').textContent=state.selected.length<state.count?`Choose ${state.count-state.selected.length} more character${state.count-state.selected.length===1?'':'s'}.`:''}
-+function startGame(){if(state.selected.length!==state.count)return;state.players=state.selected.map((id,i)=>({name:'Player '+(i+1),asset:chars[id][1],label:chars[id][0],pos:0,skip:false}));$('#wg-setup').classList.add('wg-hidden');$('#wg-game').classList.remove('wg-hidden');buildSpots();renderGame()}
-+function buildSpots(){const holder=$('#wg-spots');holder.innerHTML='';state.points.forEach((p,i)=>{const el=document.createElement('button');el.className='wg-spot';el.type='button';el.textContent=i+1;el.setAttribute('aria-label','Cell '+(i+1)+' position');el.dataset.index=i;el.style.left=(p[0]*100)+'%';el.style.top=(p[1]*100)+'%';el.addEventListener('pointerdown',dragStart);holder.append(el)})}
-+let drag=null;function dragStart(e){if(!state.calibrating)return;e.preventDefault();const board=$('#wg-board'),r=board.getBoundingClientRect();drag={el:e.currentTarget,rect:r,index:+e.currentTarget.dataset.index};drag.el.setPointerCapture(e.pointerId);dragMove(e);drag.el.addEventListener('pointermove',dragMove);drag.el.addEventListener('pointerup',dragEnd,{once:true})}
-+function dragMove(e){if(!drag)return;const x=Math.max(0,Math.min(1,(e.clientX-drag.rect.left)/drag.rect.width)),y=Math.max(0,Math.min(1,(e.clientY-drag.rect.top)/drag.rect.height));state.points[drag.index]=[+x.toFixed(4),+y.toFixed(4)];drag.el.style.left=(x*100)+'%';drag.el.style.top=(y*100)+'%'}
-+function dragEnd(){if(!drag)return;drag.el.removeEventListener('pointermove',dragMove);localStorage.setItem('winterBoardPoints',JSON.stringify(state.points));drag=null}
-+function tokens(){const layer=$('#wg-token-layer');layer.innerHTML='';state.players.forEach((p,i)=>{const el=document.createElement('img');el.className='wg-token';el.src=ROOT+p.asset;el.alt=p.label;const [x,y]=state.points[p.pos];el.style.left=(x*100+(i%2?1.3:-1.3))+'%';el.style.top=(y*100)+'%';layer.append(el)})}
-+function renderGame(){const p=state.players[state.turn];$('#wg-players').innerHTML=state.players.map((x,i)=>`<div class="wg-player ${i===state.turn?'is-current':''}">${x.label} · ${x.pos+1}/22</div>`).join('');$('#wg-current').textContent=p.name+' · '+p.label;$('#wg-roll').disabled=state.locked;tokens()}
-+function setStatus(t){$('#wg-status').textContent=t}
-+function nextTurn(){state.turn=(state.turn+1)%state.players.length;renderGame()}
-+function roll(){if(state.locked)return;const p=state.players[state.turn];if(p.skip){p.skip=false;state.locked=true;showDialog('Snowy delay',p.name+' misses this turn.',()=>{state.locked=false;nextTurn()});return}state.locked=true;const n=1+Math.floor(Math.random()*6);$('#wg-die').textContent=['⚀','⚁','⚂','⚃','⚄','⚅'][n-1];let steps=0;function move(){if(steps<n&&p.pos<21){p.pos++;steps++;tokens();renderGame();setTimeout(move,160);return}setTimeout(()=>land(p),220)}move()}
-+function land(p){if(p.pos===21){finish(p);return}const s=labels[p.pos];if(s){showDialog(s[1]+' '+(s[0]==='boost'?'Lucky break':'Winter trouble'),s[2],()=>{if(p.pos===16)p.pos=Math.min(21,p.pos+3);else if(p.pos===4||p.pos===10)p.pos=Math.min(21,p.pos+2);else if(p.pos===7)p.skip=true;else if(p.pos===13)p.pos=Math.max(0,p.pos-2);else if(p.pos===19)p.pos=Math.max(0,p.pos-1);tokens();if(p.pos===21)finish(p);else{state.locked=false;nextTurn()}});return}ask(p)}
-+function ask(p){const q=bank[state.questionIndex++%bank.length],modal=$('#wg-modal');modal.innerHTML=`<div class="wg-modal"><div class="wg-dialog"><p class="wg-label">Past tense challenge · ${q.type==='fill'?'Complete the sentence':'Choose the best answer'}</p><h2>Winter story</h2><p>${q.q}</p><div id="wg-answers"></div><div class="wg-feedback" id="wg-feedback"></div><button class="wg-primary wg-hidden" id="wg-continue">Continue</button></div></div>`;const a=$('#wg-answers');if(q.type==='quiz')q.a.forEach((v,i)=>{const b=document.createElement('button');b.className='wg-answer';b.textContent=v;b.onclick=()=>grade(i===q.correct);a.append(b)});else{a.innerHTML='<input class="wg-fill" id="wg-fill" placeholder="Type your answer" autocomplete="off"><button class="wg-primary" id="wg-check">Check</button>';$('#wg-check').onclick=()=>grade($('#wg-fill').value.trim().toLowerCase()===q.answer.toLowerCase())}function grade(ok){if(a.dataset.done)return;a.dataset.done='1';$('#wg-feedback').textContent=ok?'Correct! Move forward one extra space.':'The answer is '+(q.type==='quiz'?q.a[q.correct]:q.answer)+'.';$('#wg-feedback').style.color=ok?'#16725e':'#a64335';if(ok)p.pos=Math.min(21,p.pos+1);$('#wg-continue').classList.remove('wg-hidden');$('#wg-continue').onclick=()=>{modal.innerHTML='';tokens();if(p.pos===21)finish(p);else{state.locked=false;nextTurn()}}}}
-+function showDialog(title,text,callback){const m=$('#wg-modal');m.innerHTML=`<div class="wg-modal"><div class="wg-dialog"><h2>${title}</h2><p>${text}</p><button class="wg-primary" id="wg-ok">Continue</button></div></div>`;$('#wg-ok').onclick=()=>{m.innerHTML='';callback()}}
-+function finish(p){state.locked=true;const m=$('#wg-modal');m.innerHTML=`<div class="wg-modal"><div class="wg-dialog wg-end"><img src="${ROOT+p.asset}" alt="${p.label}"><h2>${p.label} reached the Clocktower Castle!</h2><p>${p.name} completed the winter journey.</p><button class="wg-primary" id="wg-restart">Play again</button></div></div>`;$('#wg-restart').onclick=()=>location.reload()}
-+$('#wg-start').addEventListener('click',startGame);$('#wg-roll').addEventListener('click',roll);$('#wg-calibrate').addEventListener('click',()=>{state.calibrating=!state.calibrating;$('#winter-game').classList.toggle('wg-calibrate',state.calibrating);$('#wg-calibrate').textContent=state.calibrating?'Finish adjusting markers':'Adjust cell markers';setStatus(state.calibrating?'Drag each numbered marker onto the centre of its matching clearing.':'Marker positions saved in this browser.')});$('#wg-export').addEventListener('click',async()=>{const data=JSON.stringify(state.points);try{await navigator.clipboard.writeText(data);setStatus('Coordinates copied as JSON.')}catch{setStatus(data)}});initSetup();
-+})();
-+</script>
-+</body>
-+</html>
+/* Standalone page reset; game styles below are container-scoped. */
+body{margin:0}
+#winter-game,#winter-game *{box-sizing:border-box}#winter-game{--ink:#163b42;--green:#17695c;--red:#b74d3b;--cream:#fffaf0;--mint:#e4f1e9;width:100%;min-height:100vh;margin:0;color:var(--ink);font-family:Arial,Helvetica,sans-serif;background:linear-gradient(180deg,#d5ecea,#f0f4e7 55%,#deeadb);isolation:isolate;position:relative;overflow:hidden}#winter-game button,#winter-game input{font:inherit}#winter-game button{cursor:pointer}#winter-game .wg-screen{min-height:100vh;padding:clamp(14px,3vw,32px);display:flex;flex-direction:column;align-items:center;justify-content:center}#winter-game .wg-title{font-family:Georgia,serif;font-size:clamp(32px,6vw,62px);line-height:1.02;text-align:center;color:#174b50;margin:0 0 8px}#winter-game .wg-subtitle{text-align:center;color:#42666b;margin:0 0 22px;font-size:16px}#winter-game .wg-panel{width:min(960px,100%);background:#fffcf5;border:2px solid white;border-radius:14px;box-shadow:0 7px 0 #a9c5b9,0 15px 36px #244a4420;padding:clamp(16px,3vw,28px)}#winter-game .wg-label{font-size:12px;font-weight:800;text-transform:uppercase;color:#637d77;margin:0 0 10px}#winter-game .wg-counts{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:18px}#winter-game .wg-count{padding:12px 16px;border-radius:8px;background:#e6efe8;color:#31565a;border:2px solid transparent;font-weight:800}#winter-game .wg-count[aria-pressed="true"]{border-color:#287d68;background:#d9eee5}#winter-game .wg-layout{display:grid;grid-template-columns:minmax(0,1fr) 280px;gap:18px;align-items:start}#winter-game .wg-roster{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px;max-height:440px;overflow:auto;padding:2px}#winter-game .wg-char{min-width:0;background:#f1eee4;border:2px solid transparent;border-radius:9px;padding:8px 5px;color:#294f53;font-weight:700;text-align:center}#winter-game .wg-char[aria-pressed="true"]{border-color:#287d68;background:#e1f0e7}#winter-game .wg-char img{display:block;width:100%;height:124px;object-fit:contain;margin:0 auto 5px}#winter-game .wg-char span{display:block;font-size:12px;line-height:1.2;overflow-wrap:anywhere}#winter-game .wg-preview{position:sticky;top:12px;background:#e8f1e8;border-radius:10px;min-height:310px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:16px;text-align:center}#winter-game .wg-preview img{height:260px;max-width:100%;object-fit:contain}#winter-game .wg-preview strong{font-family:Georgia,serif;font-size:20px;color:#174b50}#winter-game .wg-selection{display:flex;gap:8px;flex-wrap:wrap;margin:13px 0 18px}#winter-game .wg-selected-chip{background:#fff;border:1px solid #d4e1d8;border-radius:7px;padding:6px 9px;font-size:12px;font-weight:700}#winter-game .wg-primary{border:0;border-radius:8px;background:#b84d3b;color:white;padding:13px 19px;font-weight:800;box-shadow:0 4px #84382d}#winter-game .wg-primary:disabled{opacity:.48;cursor:not-allowed}#winter-game .wg-start{width:100%}#winter-game .wg-game{justify-content:flex-start;padding:14px!important;gap:10px}#winter-game .wg-top{width:min(1400px,100%);display:flex;align-items:center;justify-content:space-between;gap:10px;margin:0 auto}#winter-game .wg-wordmark{font:700 23px Georgia,serif;color:#174b50}#winter-game .wg-players{display:flex;gap:7px;flex-wrap:wrap;justify-content:flex-end}#winter-game .wg-player{background:#fffaf0;border:2px solid white;border-radius:8px;padding:7px 10px;font-size:12px;font-weight:800;box-shadow:0 2px #bdcec3}#winter-game .wg-player.is-current{border-color:#ba5645;background:#fff0e7}#winter-game .wg-board-layout{width:min(1400px,100%);margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) 250px;gap:12px;align-items:stretch}#winter-game .wg-board{width:100%;aspect-ratio:16/9;position:relative;overflow:hidden;border:4px solid #fff;border-radius:12px;box-shadow:0 6px #9cbab0;background:#dcebe1}#winter-game .wg-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:fill;display:block}#winter-game .wg-token-layer{position:absolute;inset:0;pointer-events:none}#winter-game .wg-token{position:absolute;width:clamp(28px,4.2vw,54px);height:clamp(38px,5.7vw,72px);object-fit:contain;transform:translate(-50%,-85%);filter:drop-shadow(0 2px 2px #203b3c70);transition:left .22s linear,top .22s linear;z-index:3}#winter-game .wg-spot{position:absolute;width:24px;height:24px;border:2px solid white;border-radius:50%;background:#b84d3b;color:#fff;display:none;align-items:center;justify-content:center;font-size:11px;font-weight:800;transform:translate(-50%,-50%);z-index:5;box-shadow:0 1px 5px #173b3b80;touch-action:none;cursor:grab}#winter-game.wg-calibrate .wg-spot{display:flex}#winter-game .wg-side{background:#fffcf5;border:2px solid white;border-radius:12px;padding:14px;box-shadow:0 6px #a9c5b9;display:flex;flex-direction:column;gap:9px}#winter-game .wg-side h2{font:700 21px Georgia,serif;margin:0;color:#174b50}#winter-game .wg-current{font-weight:800;background:#e5f0e7;border-radius:7px;padding:9px;font-size:14px}#winter-game .wg-die{font-size:44px;text-align:center;line-height:1.1}#winter-game .wg-side small{font-size:12px;line-height:1.4;color:#5e7972}#winter-game .wg-tool{font-size:12px;border:1px solid #adc6bb;background:#fff;padding:9px;border-radius:7px;font-weight:700;color:#34585a}#winter-game .wg-status{min-height:30px;font-size:13px;font-weight:700;line-height:1.4}#winter-game .wg-modal{position:fixed;inset:0;background:#12363dcc;z-index:20;display:flex;align-items:center;justify-content:center;padding:16px}#winter-game .wg-dialog{width:min(520px,100%);max-height:90vh;overflow:auto;background:#fffaf0;border:3px solid white;border-radius:14px;padding:22px;box-shadow:0 10px #a9c5b9}#winter-game .wg-dialog h2{font:700 26px Georgia,serif;color:#174b50;margin:0 0 8px}#winter-game .wg-dialog p{line-height:1.5}#winter-game .wg-answer{display:block;width:100%;text-align:left;padding:11px;margin:7px 0;background:#e6f0e7;color:#264b4f;border:2px solid transparent;border-radius:7px;font-weight:700}#winter-game .wg-answer:hover{border-color:#438b75}#winter-game .wg-fill{width:100%;padding:12px;border:2px solid #b6cec2;border-radius:7px;margin-bottom:9px}#winter-game .wg-feedback{min-height:24px;font-weight:800}#winter-game .wg-end{text-align:center}#winter-game .wg-end img{height:min(45vh,320px);max-width:90%;object-fit:contain}#winter-game .wg-hidden{display:none!important}#winter-game .wg-alert{color:#a64436;font-size:12px;min-height:16px}
+@media(max-width:760px){#winter-game .wg-screen{padding:14px;justify-content:flex-start}#winter-game .wg-count{min-height:44px}#winter-game .wg-layout{grid-template-columns:1fr!important}#winter-game .wg-roster{grid-template-columns:repeat(3,minmax(0,1fr))!important;max-height:42vh!important}#winter-game .wg-char img{height:100px!important}#winter-game .wg-preview{position:static!important;min-height:0!important;padding:10px!important}#winter-game .wg-preview img{height:145px}#winter-game .wg-side{display:grid!important;grid-template-columns:1fr auto;align-items:center}#winter-game .wg-side h2,#winter-game .wg-current{grid-column:1/-1}#winter-game .wg-side small{grid-column:1/-1}#winter-game .wg-board-layout{grid-template-columns:1fr!important}#winter-game .wg-top{align-items:flex-start!important}#winter-game .wg-wordmark{font-size:18px!important}#winter-game .wg-player{font-size:10px!important;padding:5px 6px!important}#winter-game .wg-game{padding:9px!important}#winter-game .wg-board{border-width:2px!important}#winter-game .wg-spot{width:22px!important;height:22px!important}}
+@media(max-width:390px){#winter-game .wg-roster{grid-template-columns:repeat(2,minmax(0,1fr))!important}#winter-game .wg-char img{height:112px!important}#winter-game .wg-title{font-size:34px!important}}
+
+#winter-game .wg-board{align-self:start}
+#winter-game .wg-die{min-width:116px;display:grid;justify-items:center;gap:1px}
+#winter-game .wg-die-stage{position:relative;display:grid;place-items:center;width:116px;height:106px;perspective:480px;background:radial-gradient(ellipse at 50% 88%,#5895aa45,transparent 57%)}
+#winter-game .wg-die-tilt,#winter-game .wg-cube{width:54px;height:54px;transform-style:preserve-3d}
+#winter-game .wg-die-tilt{transform:rotateX(-12deg) rotateY(18deg)}
+#winter-game .wg-cube{position:relative}
+#winter-game .wg-face{position:absolute;inset:0;border:1px solid #d6faff;border-radius:8px;background:linear-gradient(145deg,#ffffff,#d9f5ff 43%,#7fc6df);box-shadow:inset 0 0 0 2px #ecfcffb0,inset 0 -4px 8px #3189a755;display:grid;grid-template:repeat(3,1fr)/repeat(3,1fr);padding:8px;place-items:center;backface-visibility:hidden}
+#winter-game .wg-face:nth-child(1){transform:translateZ(27px)}
+#winter-game .wg-face:nth-child(2){transform:rotateY(90deg) translateZ(27px)}
+#winter-game .wg-face:nth-child(3){transform:rotateX(90deg) translateZ(27px)}
+#winter-game .wg-face:nth-child(4){transform:rotateX(-90deg) translateZ(27px)}
+#winter-game .wg-face:nth-child(5){transform:rotateY(-90deg) translateZ(27px)}
+#winter-game .wg-face:nth-child(6){transform:rotateY(180deg) translateZ(27px)}
+#winter-game .wg-pip{width:9px;height:9px;border-radius:50%;background:radial-gradient(circle at 40% 35%,#fff 0 9%,#98e1f8 12%,#285e80 65%);box-shadow:0 1px 1px #ffffffce}
+#winter-game .wg-die-result{font-size:12px;line-height:1.35;font-weight:800;color:#295568;text-align:center;min-height:17px}
+#winter-game .wg-token{object-position:center bottom}
+@media(max-width:760px){#winter-game .wg-status{grid-column:1/-1}}
+@media(prefers-reduced-motion:reduce){#winter-game .wg-token{transition:none}}
+</style>
+</head>
+<body>
+<main id="winter-game">
+  <section class="wg-screen" id="wg-setup">
+    <h1 class="wg-title">Winter Past Adventure</h1><p class="wg-subtitle">A snowy journey through the past</p>
+    <div class="wg-panel">
+      <p class="wg-label">Choose the number of players</p><div class="wg-counts" id="wg-counts"></div>
+      <div class="wg-layout"><div><p class="wg-label">Choose one character per player</p><div class="wg-roster" id="wg-roster"></div></div><aside class="wg-preview" id="wg-preview"><span>Select a character</span></aside></div>
+      <div class="wg-selection" id="wg-selection"></div><div class="wg-alert" id="wg-alert"></div>
+      <button class="wg-primary wg-start" id="wg-start" disabled>Start the adventure</button>
+    </div>
+  </section>
+  <section class="wg-screen wg-game wg-hidden" id="wg-game">
+    <header class="wg-top"><div class="wg-wordmark">Winter Past Adventure</div><div class="wg-players" id="wg-players"></div></header>
+    <div class="wg-board-layout"><div class="wg-board" id="wg-board"><img class="wg-bg" src="https://raw.githubusercontent.com/AlexandraGes-ESL/Pictures/main/winter/background.png" alt="Snowy Christmas board game map"><div id="wg-spots"></div><div class="wg-token-layer" id="wg-token-layer"></div></div>
+      <aside class="wg-side"><h2>Current turn</h2><div class="wg-current" id="wg-current"></div><div class="wg-die"><div class="wg-die-stage" aria-hidden="true"><div class="wg-die-tilt"><div class="wg-cube" id="wg-cube"></div></div></div><span class="wg-die-result" id="wg-die-result" role="status">Ready to roll</span></div><button class="wg-primary" id="wg-roll">Roll the die</button><div class="wg-status" id="wg-status" role="status">Roll to move along the snowy trail.</div><button class="wg-tool" id="wg-calibrate">Adjust cell markers</button><button class="wg-tool" id="wg-export">Copy coordinates</button><small>Tap “Adjust cell markers”, then drag each numbered dot to the centre of its matching clearing. Coordinates are measured as percentages of the map.</small></aside>
+    </div>
+  </section><div id="wg-modal"></div>
+</main>
+<script>
+(()=>{'use strict';
+const ROOT='https://raw.githubusercontent.com/AlexandraGes-ESL/Pictures/main/winter/';
+const chars=[['Angel','Angel.png'],['Elf','Elf.png'],['Ice Princess','Elsa-Cinderella.png'],['Gingerbread','Gingerbread.png'],['Green Trickster','Grinch-elf.png'],['Ice Man','Ice-man.png'],['Red Hat Traveller','Man-red-hat.png'],['Mrs Claus','Mrs.Claus.png'],['Nutcracker','Nutcracker.png'],['Penguin','Penguin.png'],['Reindeer','Reindeer.png'],['Santa','Santa.png'],['Snowman','Snowman.png'],['Polar Bear','White-bear.png'],['Winter Fairy','Winter-fairy.png'],['Winter Witch','Winter-witch.png']];
+// Calibrated centres for background.png, in route order (START → FINISH).
+const initialPoints=[[0.103,0.7814],[0.212,0.7777],[0.3214,0.787],[0.4323,0.7838],[0.5427,0.7858],[0.655,0.7861],[0.7652,0.7855],[0.8771,0.7827],[0.8756,0.6131],[0.7618,0.6128],[0.6564,0.6099],[0.5423,0.6182],[0.4292,0.6169],[0.3185,0.6101],[0.2027,0.6086],[0.2156,0.4573],[0.321,0.4508],[0.4313,0.4472],[0.5403,0.4485],[0.6522,0.4491],[0.7583,0.4467],[0.869,0.4445]];
+const pointsKey="winterBoardPoints:calibrated-v1";
+const labels={4:['boost','☕','Hot chocolate break! Move forward 2 spaces.'],7:['trap','🧊','Icy patch! Miss your next turn.'],10:['boost','🎁','A kind traveller shares a lucky map. Move forward 2 spaces.'],13:['trap','🌨️','A snowstorm pushes you back 2 spaces.'],16:['boost','🛷','A speedy sled carries you forward 3 spaces.'],19:['trap','🧤','You dropped a mitten. Move back 1 space.']};
+const bank=[{type:'quiz',q:'Yesterday, we ___ a snowman.',a:['made','make','were make'],correct:0},{type:'fill',q:'Complete: She ___ (see) a shooting star last night.',answer:'saw'},{type:'quiz',q:'While I ___ home, it started to snow.',a:['walked','was walking','am walking'],correct:1},{type:'fill',q:'Complete: They ___ (not / go) to the market last Sunday.',answer:'did not go'}];
+const host=document.getElementById('winter-game');
+const $=s=>host.querySelector(s);
+function readPoints(){
+  try{const points=JSON.parse(localStorage.getItem(pointsKey)||'null');
+    if(Array.isArray(points)&&points.length===initialPoints.length&&points.every(p=>Array.isArray(p)&&p.length===2&&p.every(n=>Number.isFinite(n)&&n>=0&&n<=1))) return points;
+  }catch{}
+  return initialPoints.map(p=>p.slice());
+}
+const state={count:2,selected:[],players:[],turn:0,locked:false,finished:false,die:1,points:readPoints(),calibrating:false,questionIndex:0};
+function initSetup(){const counts=$('#wg-counts');for(let n=1;n<=4;n++){const b=document.createElement('button');b.className='wg-count';b.textContent=n===1?'1 player vs computer':n+' players';b.setAttribute('aria-pressed',n===state.count);b.onclick=()=>{state.count=n;state.selected=state.selected.slice(0,n);counts.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));renderRoster()};counts.append(b)}renderRoster()}
+function renderRoster(){const list=$('#wg-roster');list.innerHTML='';chars.forEach((c,i)=>{const b=document.createElement('button');b.className='wg-char';b.setAttribute('aria-pressed',state.selected.includes(i));b.innerHTML=`<img loading="lazy" src="${ROOT+c[1]}" alt=""><span>${c[0]}</span>`;b.onclick=()=>{if(state.selected.includes(i))state.selected=state.selected.filter(x=>x!==i);else if(state.selected.length<state.count)state.selected.push(i);renderRoster()};list.append(b)});const preview=$('#wg-preview');if(state.selected.length){const c=chars[state.selected[state.selected.length-1]];preview.innerHTML=`<img src="${ROOT+c[1]}" alt=""><strong>${c[0]}</strong>`}else preview.innerHTML='<span>Select a character</span>';$('#wg-selection').innerHTML=state.selected.map((id,i)=>`<span class="wg-selected-chip">Player ${i+1}: ${chars[id][0]}</span>`).join('');$('#wg-start').disabled=state.selected.length!==state.count;$('#wg-alert').textContent=state.selected.length<state.count?`Choose ${state.count-state.selected.length} more character${state.count-state.selected.length===1?'':'s'}.`:''}
+function startGame(){if(state.selected.length!==state.count)return;state.players=state.selected.map((id,i)=>({name:state.count===1?'You':'Player '+(i+1),asset:chars[id][1],label:chars[id][0],pos:0,skip:false}));
+if(state.count===1){const options=chars.filter((_,i)=>i!==state.selected[0]);const [label,asset]=options[Math.floor(Math.random()*options.length)];state.players.push({name:'Computer',label,asset,pos:0,skip:false,bot:true});}
+$('#wg-setup').classList.add('wg-hidden');$('#wg-game').classList.remove('wg-hidden');buildSpots();renderGame()}
+function buildSpots(){const holder=$('#wg-spots');holder.innerHTML='';state.points.forEach((p,i)=>{const el=document.createElement('button');el.className='wg-spot';el.type='button';el.textContent=i+1;el.setAttribute('aria-label','Cell '+(i+1)+' position');el.dataset.index=i;el.style.left=(p[0]*100)+'%';el.style.top=(p[1]*100)+'%';el.addEventListener('pointerdown',dragStart);holder.append(el)})}
+let drag=null;function dragStart(e){if(!state.calibrating)return;e.preventDefault();const board=$('#wg-board'),r=board.getBoundingClientRect();drag={el:e.currentTarget,rect:r,index:+e.currentTarget.dataset.index};drag.el.setPointerCapture(e.pointerId);dragMove(e);drag.el.addEventListener('pointermove',dragMove);drag.el.addEventListener('pointerup',dragEnd,{once:true})}
+function dragMove(e){if(!drag)return;const x=Math.max(0,Math.min(1,(e.clientX-drag.rect.left)/drag.rect.width)),y=Math.max(0,Math.min(1,(e.clientY-drag.rect.top)/drag.rect.height));state.points[drag.index]=[+x.toFixed(4),+y.toFixed(4)];drag.el.style.left=(x*100)+'%';drag.el.style.top=(y*100)+'%'}
+function dragEnd(){if(!drag)return;drag.el.removeEventListener('pointermove',dragMove);try{localStorage.setItem(pointsKey,JSON.stringify(state.points))}catch{}drag=null;tokens()}
+function tokens(){
+ const layer=$('#wg-token-layer');
+ state.players.forEach((p,i)=>{
+   let el=layer.children[i];
+   if(!el){el=document.createElement('img');el.className='wg-token';el.src=ROOT+p.asset;el.alt=p.label;layer.append(el)}
+   const [x,y]=state.points[p.pos], group=state.players.filter(other=>other.pos===p.pos);
+   const rank=group.indexOf(p), count=group.length;
+   const dx=count===1?0:count===2?(rank===0?-1.45:1.45):rank%2===0?-1.65:1.65;
+   const dy=count<3?0:rank<2?-1.4:1.4;
+   el.style.left=(x*100+dx)+'%';el.style.top=(y*100+dy)+'%';
+ });
+}
+function renderGame(){const p=state.players[state.turn];$('#wg-players').innerHTML=state.players.map((x,i)=>`<div class="wg-player ${i===state.turn?'is-current':''}">${x.bot?'CPU · ':''}${x.label} · ${x.pos+1}/22</div>`).join('');$('#wg-current').textContent=p.name+' · '+p.label;$('#wg-roll').disabled=state.locked||Boolean(p.bot)||state.finished;$('#wg-roll').textContent=p.bot?'Computer’s turn':'Roll the die';tokens()}
+function setStatus(t){$('#wg-status').textContent=t}
+const LAST=initialPoints.length-1;
+// The computer follows the same route and event rules. On a challenge, only
+// its outcome is simulated; it doesn't consume a question from the learner's bank.
+const BOT_SUCCESS=.60;
+const wait=ms=>new Promise(resolve=>setTimeout(resolve,ms));
+const reduced=()=>window.matchMedia?.('(prefers-reduced-motion: reduce)').matches===true;
+const pipLayouts=[[5],[1,9],[1,5,9],[1,3,7,9],[1,3,5,7,9],[1,3,4,6,7,9]];
+const angles=[[0,0],[0,-90],[-90,0],[90,0],[0,90],[0,180]];
+const pose=(x,y)=>`rotateX(${x}deg) rotateY(${y}deg)`;
+function buildDie(){
+ const cube=$('#wg-cube');
+ pipLayouts.forEach(layout=>{
+   const face=document.createElement('div');face.className='wg-face';
+   layout.forEach(i=>{const pip=document.createElement('span');pip.className='wg-pip';pip.style.gridArea=`${Math.ceil(i/3)} / ${(i-1)%3+1}`;face.append(pip)});
+   cube.append(face);
+ });
+}
+async function animateDie(value,player){
+ const cube=$('#wg-cube'), result=$('#wg-die-result');
+ const [x,y]=angles[value-1], [oldX,oldY]=angles[state.die-1];
+ result.textContent='Rolling…';
+ if(!reduced()&&typeof cube.animate==='function'){
+   const motion=cube.animate([{transform:pose(oldX,oldY)},{transform:pose(x+720,y+720)}],{duration:760,easing:'cubic-bezier(.15,.58,.23,1)',fill:'forwards'});
+   try{await motion.finished}catch{}
+   cube.style.transform=pose(x,y);motion.cancel();
+ }else cube.style.transform=pose(x,y);
+ state.die=value;result.textContent=`${player.bot?'CPU rolled':'Rolled'}: ${value}`;
+}
+async function walk(p,delta){
+ const goal=Math.max(0,Math.min(LAST,p.pos+delta));
+ if(reduced()){p.pos=goal;renderGame();return}
+ while(p.pos!==goal){p.pos+=Math.sign(goal-p.pos);renderGame();await wait(220)}
+}
+function nextTurn(){
+ if(state.finished)return;
+ state.turn=(state.turn+1)%state.players.length;
+ const p=state.players[state.turn];state.locked=false;renderGame();
+ if(p.bot){setStatus('The computer is getting ready to roll…');setTimeout(()=>{if(state.players[state.turn]===p&&!state.finished)roll(true)},650)}
+ else setStatus(p.skip?'An icy patch delays your next turn.':`${p.name==='You'?'Your turn':p.name+'’s turn'}. Roll to move along the snowy trail.`);
+}
+async function roll(automatic=false){
+ const p=state.players[state.turn];
+ if(!p||state.locked||state.finished||Boolean(p.bot)!==automatic)return;
+ state.locked=true;renderGame();
+ if(p.skip){p.skip=false;
+   if(p.bot){setStatus('The computer misses this turn.');await wait(950);nextTurn()}
+   else showDialog('Snowy delay','This player misses a turn.',nextTurn);
+   return;
+ }
+ const n=1+Math.floor(Math.random()*6);
+ setStatus(p.bot?'The computer is rolling…':'Rolling the die…');
+ await animateDie(n,p);await walk(p,n);await land(p);
+}
+async function resolveEvent(p){
+ const delta={4:2,10:2,13:-2,16:3,19:-1}[p.pos];
+ if(p.pos===7)p.skip=true;
+ else if(delta)await walk(p,delta);
+ if(p.pos===LAST)finish(p);else nextTurn();
+}
+async function land(p){
+ if(p.pos===LAST){finish(p);return}
+ const event=labels[p.pos];
+ if(event){
+   if(p.bot){setStatus('CPU event · '+event[2]);await wait(1500);await resolveEvent(p)}
+   else showDialog(event[1]+' '+(event[0]==='boost'?'Lucky break':'Winter trouble'),event[2],()=>resolveEvent(p));
+   return;
+ }
+ if(!p.bot){ask(p);return}
+ const correct=Math.random()<BOT_SUCCESS;
+ setStatus(correct?'The computer solved its challenge. One extra space!':'The computer missed its challenge. No extra move.');
+ await wait(1350);
+ if(correct)await walk(p,1);
+ if(p.pos===LAST)finish(p);else nextTurn();
+}
+function ask(p){const q=bank[state.questionIndex++%bank.length],modal=$('#wg-modal');modal.innerHTML=`<div class="wg-modal"><div class="wg-dialog"><p class="wg-label">Past tense challenge · ${q.type==='fill'?'Complete the sentence':'Choose the best answer'}</p><h2>Winter story</h2><p>${q.q}</p><div id="wg-answers"></div><div class="wg-feedback" id="wg-feedback"></div><button class="wg-primary wg-hidden" id="wg-continue">Continue</button></div></div>`;const a=$('#wg-answers');if(q.type==='quiz')q.a.forEach((v,i)=>{const b=document.createElement('button');b.className='wg-answer';b.textContent=v;b.onclick=()=>grade(i===q.correct);a.append(b)});else{a.innerHTML='<input class="wg-fill" id="wg-fill" placeholder="Type your answer" autocomplete="off"><button class="wg-primary" id="wg-check">Check</button>';$('#wg-check').onclick=()=>grade($('#wg-fill').value.trim().toLowerCase()===q.answer.toLowerCase())}function grade(ok){if(a.dataset.done)return;a.dataset.done='1';$('#wg-feedback').textContent=ok?'Correct! Move forward one extra space.':'The answer is '+(q.type==='quiz'?q.a[q.correct]:q.answer)+'.';$('#wg-feedback').style.color=ok?'#16725e':'#a64335';$('#wg-continue').classList.remove('wg-hidden');$('#wg-continue').onclick=async()=>{modal.innerHTML='';if(ok)await walk(p,1);if(p.pos===LAST)finish(p);else nextTurn()}}}
+function showDialog(title,text,callback){const m=$('#wg-modal');m.innerHTML=`<div class="wg-modal"><div class="wg-dialog"><h2>${title}</h2><p>${text}</p><button class="wg-primary" id="wg-ok">Continue</button></div></div>`;$('#wg-ok').onclick=()=>{m.innerHTML='';callback()}}
+function finish(p){state.finished=true;state.locked=true;renderGame();const m=$('#wg-modal');m.innerHTML=`<div class="wg-modal"><div class="wg-dialog wg-end"><img src="${ROOT+p.asset}" alt="${p.label}"><h2>${p.label} reached the Clocktower Castle!</h2><p>${p.name==='You'?'You win!':p.bot?'The computer wins!':p.name+' completed the winter journey.'}</p><button class="wg-primary" id="wg-restart">Play again</button></div></div>`;$('#wg-restart').onclick=()=>location.reload()}
+$('#wg-start').addEventListener('click',startGame);$('#wg-roll').addEventListener('click',()=>roll());$('#wg-calibrate').addEventListener('click',()=>{state.calibrating=!state.calibrating;host.classList.toggle('wg-calibrate',state.calibrating);$('#wg-calibrate').textContent=state.calibrating?'Finish adjusting markers':'Adjust cell markers';setStatus(state.calibrating?'Drag each numbered marker onto the centre of its matching clearing.':'Marker positions saved in this browser.')});$('#wg-export').addEventListener('click',async()=>{const data=JSON.stringify(state.points);try{await navigator.clipboard.writeText(data);setStatus('Coordinates copied as JSON.')}catch{setStatus(data)}});buildDie();initSetup();
+})();
+</script>
+</body>
+</html>
