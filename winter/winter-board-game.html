@@ -57,7 +57,165 @@ const chars=[['Angel','Angel.png'],['Elf','Elf.png'],['Ice Princess','Elsa-Cinde
 const initialPoints=[[0.103,0.7814],[0.212,0.7777],[0.3214,0.787],[0.4323,0.7838],[0.5427,0.7858],[0.655,0.7861],[0.7652,0.7855],[0.8771,0.7827],[0.8756,0.6131],[0.7618,0.6128],[0.6564,0.6099],[0.5423,0.6182],[0.4292,0.6169],[0.3185,0.6101],[0.2027,0.6086],[0.2156,0.4573],[0.321,0.4508],[0.4313,0.4472],[0.5403,0.4485],[0.6522,0.4491],[0.7583,0.4467],[0.869,0.4445]];
 const pointsKey="winterBoardPoints:calibrated-v1";
 const labels={4:['boost','☕','Hot chocolate break! Move forward 2 spaces.'],7:['trap','🧊','Icy patch! Miss your next turn.'],10:['boost','🎁','A kind traveller shares a lucky map. Move forward 2 spaces.'],13:['trap','🌨️','A snowstorm pushes you back 2 spaces.'],16:['boost','🛷','A speedy sled carries you forward 3 spaces.'],19:['trap','🧤','You dropped a mitten. Move back 1 space.']};
-const bank=[{type:'quiz',q:'Yesterday, we ___ a snowman.',a:['made','make','were make'],correct:0},{type:'fill',q:'Complete: She ___ (see) a shooting star last night.',answer:'saw'},{type:'quiz',q:'While I ___ home, it started to snow.',a:['walked','was walking','am walking'],correct:1},{type:'fill',q:'Complete: They ___ (not / go) to the market last Sunday.',answer:'did not go'}];
+const bank = [
+  {
+    type: 'quiz',
+    q: 'We arrived ___ the station just before the train left.',
+    a: ['at', 'in', 'on'],
+    correct: 0
+  },
+  {
+    type: 'quiz',
+    q: 'My sister works ___ a small design studio in Bristol.',
+    a: ['at', 'in', 'on'],
+    correct: 1
+  },
+  {
+    type: 'quiz',
+    q: 'There was a beautiful painting ___ the wall above the fireplace.',
+    a: ['at', 'in', 'on'],
+    correct: 2
+  },
+  {
+    type: 'quiz',
+    q: 'We usually have our team meeting ___ Monday morning.',
+    a: ['at', 'in', 'on'],
+    correct: 2
+  },
+  {
+    type: 'quiz',
+    q: 'The children were playing ___ the garden when it started to snow.',
+    a: ['at', 'in', 'on'],
+    correct: 1
+  },
+  {
+    type: 'quiz',
+    q: 'I left my keys ___ the kitchen table.',
+    a: ['at', 'in', 'on'],
+    correct: 2
+  },
+  {
+    type: 'quiz',
+    q: 'The museum is usually quiet ___ the early morning.',
+    a: ['at', 'in', 'on'],
+    correct: 1
+  },
+  {
+    type: 'quiz',
+    q: 'Someone is waiting for you ___ the entrance.',
+    a: ['at', 'in', 'on'],
+    correct: 0
+  },
+  {
+    type: 'quiz',
+    q: 'They moved to Canada ___ 2018.',
+    a: ['at', 'in', 'on'],
+    correct: 1
+  },
+  {
+    type: 'quiz',
+    q: 'There were several people standing ___ the bus stop.',
+    a: ['at', 'in', 'on'],
+    correct: 0
+  },
+  {
+    type: 'quiz',
+    q: 'We stayed ___ a lovely hotel near the lake.',
+    a: ['at', 'in', 'on'],
+    correct: 1
+  },
+  {
+    type: 'quiz',
+    q: 'The final decision was announced ___ the radio.',
+    a: ['at', 'in', 'on'],
+    correct: 2
+  },
+  {
+    type: 'quiz',
+    q: 'I will call you ___ lunchtime.',
+    a: ['at', 'in', 'on'],
+    correct: 0
+  },
+  {
+    type: 'quiz',
+    q: 'The students are ___ the library, preparing for their exams.',
+    a: ['at', 'in', 'on'],
+    correct: 1
+  },
+  {
+    type: 'quiz',
+    q: 'We met ___ a conference in Edinburgh last year.',
+    a: ['at', 'in', 'on'],
+    correct: 0
+  },
+  {
+    type: 'quiz',
+    q: 'The instructions are written ___ page 42 of the handbook.',
+    a: ['at', 'in', 'on'],
+    correct: 2
+  },
+
+  {
+    type: 'fill',
+    q: 'Complete the sentence: The train leaves ___ 7:45.',
+    answer: 'at'
+  },
+  {
+    type: 'fill',
+    q: 'Complete the sentence: I was born ___ November.',
+    answer: 'in'
+  },
+  {
+    type: 'fill',
+    q: 'Complete the sentence: We went skiing ___ Saturday.',
+    answer: 'on'
+  },
+  {
+    type: 'fill',
+    q: 'Complete the sentence: She is waiting ___ the airport.',
+    answer: 'at'
+  },
+  {
+    type: 'fill',
+    q: 'Complete the sentence: There is a small village ___ the mountains.',
+    answer: 'in'
+  },
+  {
+    type: 'fill',
+    q: 'Complete the sentence: Your coat is ___ the chair.',
+    answer: 'on'
+  },
+  {
+    type: 'fill',
+    q: 'Complete the sentence: They arrived ___ the hotel late at night.',
+    answer: 'at'
+  },
+  {
+    type: 'fill',
+    q: 'Complete the sentence: We often travel ___ winter.',
+    answer: 'in'
+  },
+  {
+    type: 'fill',
+    q: 'Complete the sentence: I saw the announcement ___ the website.',
+    answer: 'on'
+  },
+  {
+    type: 'fill',
+    q: 'Complete the sentence: He is ___ work until six o’clock.',
+    answer: 'at'
+  },
+  {
+    type: 'fill',
+    q: 'Complete the sentence: The children are playing ___ the snow.',
+    answer: 'in'
+  },
+  {
+    type: 'fill',
+    q: 'Complete the sentence: Someone left a message ___ my phone.',
+    answer: 'on'
+  }
+];
 const host=document.getElementById('winter-game');
 const $=s=>host.querySelector(s);
 function readPoints(){
