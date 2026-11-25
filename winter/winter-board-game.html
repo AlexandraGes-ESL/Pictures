@@ -7,7 +7,7 @@
 <style>
 /* Standalone page reset; game styles below are container-scoped. */
 body{margin:0}
-#winter-game,#winter-game *{box-sizing:border-box}#winter-game{--ink:#163b42;--green:#17695c;--red:#b74d3b;--cream:#fffaf0;--mint:#e4f1e9;width:100%;min-height:100vh;margin:0;color:var(--ink);font-family:Arial,Helvetica,sans-serif;background:linear-gradient(180deg,#d5ecea,#f0f4e7 55%,#deeadb);isolation:isolate;position:relative;overflow:hidden}#winter-game button,#winter-game input{font:inherit}#winter-game button{cursor:pointer}#winter-game .wg-screen{min-height:100vh;padding:clamp(14px,3vw,32px);display:flex;flex-direction:column;align-items:center;justify-content:center}#winter-game .wg-title{font-family:Georgia,serif;font-size:clamp(32px,6vw,62px);line-height:1.02;text-align:center;color:#174b50;margin:0 0 8px}#winter-game .wg-subtitle{text-align:center;color:#42666b;margin:0 0 22px;font-size:16px}#winter-game .wg-panel{width:min(960px,100%);background:#fffcf5;border:2px solid white;border-radius:14px;box-shadow:0 7px 0 #a9c5b9,0 15px 36px #244a4420;padding:clamp(16px,3vw,28px)}#winter-game .wg-label{font-size:12px;font-weight:800;text-transform:uppercase;color:#637d77;margin:0 0 10px}#winter-game .wg-counts{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:18px}#winter-game .wg-count{padding:12px 16px;border-radius:8px;background:#e6efe8;color:#31565a;border:2px solid transparent;font-weight:800}#winter-game .wg-count[aria-pressed="true"]{border-color:#287d68;background:#d9eee5}#winter-game .wg-layout{display:grid;grid-template-columns:minmax(0,1fr) 280px;gap:18px;align-items:start}#winter-game .wg-roster{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px;max-height:440px;overflow:auto;padding:2px}#winter-game .wg-char{min-width:0;background:#f1eee4;border:2px solid transparent;border-radius:9px;padding:8px 5px;color:#294f53;font-weight:700;text-align:center}#winter-game .wg-char[aria-pressed="true"]{border-color:#287d68;background:#e1f0e7}#winter-game .wg-char img{display:block;width:100%;height:124px;object-fit:contain;margin:0 auto 5px}#winter-game .wg-char span{display:block;font-size:12px;line-height:1.2;overflow-wrap:anywhere}#winter-game .wg-preview{position:sticky;top:12px;background:#e8f1e8;border-radius:10px;min-height:310px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:16px;text-align:center}#winter-game .wg-preview img{height:260px;max-width:100%;object-fit:contain}#winter-game .wg-preview strong{font-family:Georgia,serif;font-size:20px;color:#174b50}#winter-game .wg-selection{display:flex;gap:8px;flex-wrap:wrap;margin:13px 0 18px}#winter-game .wg-selected-chip{background:#fff;border:1px solid #d4e1d8;border-radius:7px;padding:6px 9px;font-size:12px;font-weight:700}#winter-game .wg-primary{border:0;border-radius:8px;background:#b84d3b;color:white;padding:13px 19px;font-weight:800;box-shadow:0 4px #84382d}#winter-game .wg-primary:disabled{opacity:.48;cursor:not-allowed}#winter-game .wg-start{width:100%}#winter-game .wg-game{justify-content:flex-start;padding:14px!important;gap:10px}#winter-game .wg-top{width:min(1400px,100%);display:flex;align-items:center;justify-content:space-between;gap:10px;margin:0 auto}#winter-game .wg-wordmark{font:700 23px Georgia,serif;color:#174b50}#winter-game .wg-players{display:flex;gap:7px;flex-wrap:wrap;justify-content:flex-end}#winter-game .wg-player{background:#fffaf0;border:2px solid white;border-radius:8px;padding:7px 10px;font-size:12px;font-weight:800;box-shadow:0 2px #bdcec3}#winter-game .wg-player.is-current{border-color:#ba5645;background:#fff0e7}#winter-game .wg-board-layout{width:min(1400px,100%);margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) 250px;gap:12px;align-items:stretch}#winter-game .wg-board{width:100%;aspect-ratio:16/9;position:relative;overflow:hidden;border:4px solid #fff;border-radius:12px;box-shadow:0 6px #9cbab0;background:#dcebe1}#winter-game .wg-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:fill;display:block}#winter-game .wg-token-layer{position:absolute;inset:0;pointer-events:none}#winter-game .wg-token{position:absolute;width:clamp(28px,4.2vw,54px);height:clamp(38px,5.7vw,72px);object-fit:contain;transform:translate(-50%,-85%);filter:drop-shadow(0 2px 2px #203b3c70);transition:left .22s linear,top .22s linear;z-index:3}#winter-game .wg-spot{position:absolute;width:24px;height:24px;border:2px solid white;border-radius:50%;background:#b84d3b;color:#fff;display:none;align-items:center;justify-content:center;font-size:11px;font-weight:800;transform:translate(-50%,-50%);z-index:5;box-shadow:0 1px 5px #173b3b80;touch-action:none;cursor:grab}#winter-game.wg-calibrate .wg-spot{display:flex}#winter-game .wg-side{background:#fffcf5;border:2px solid white;border-radius:12px;padding:14px;box-shadow:0 6px #a9c5b9;display:flex;flex-direction:column;gap:9px}#winter-game .wg-side h2{font:700 21px Georgia,serif;margin:0;color:#174b50}#winter-game .wg-current{font-weight:800;background:#e5f0e7;border-radius:7px;padding:9px;font-size:14px}#winter-game .wg-die{font-size:44px;text-align:center;line-height:1.1}#winter-game .wg-side small{font-size:12px;line-height:1.4;color:#5e7972}#winter-game .wg-tool{font-size:12px;border:1px solid #adc6bb;background:#fff;padding:9px;border-radius:7px;font-weight:700;color:#34585a}#winter-game .wg-status{min-height:30px;font-size:13px;font-weight:700;line-height:1.4}#winter-game .wg-modal{position:fixed;inset:0;background:#12363dcc;z-index:20;display:flex;align-items:center;justify-content:center;padding:16px}#winter-game .wg-dialog{width:min(520px,100%);max-height:90vh;overflow:auto;background:#fffaf0;border:3px solid white;border-radius:14px;padding:22px;box-shadow:0 10px #a9c5b9}#winter-game .wg-dialog h2{font:700 26px Georgia,serif;color:#174b50;margin:0 0 8px}#winter-game .wg-dialog p{line-height:1.5}#winter-game .wg-answer{display:block;width:100%;text-align:left;padding:11px;margin:7px 0;background:#e6f0e7;color:#264b4f;border:2px solid transparent;border-radius:7px;font-weight:700}#winter-game .wg-answer:hover{border-color:#438b75}#winter-game .wg-fill{width:100%;padding:12px;border:2px solid #b6cec2;border-radius:7px;margin-bottom:9px}#winter-game .wg-feedback{min-height:24px;font-weight:800}#winter-game .wg-end{text-align:center}#winter-game .wg-end img{height:min(45vh,320px);max-width:90%;object-fit:contain}#winter-game .wg-hidden{display:none!important}#winter-game .wg-alert{color:#a64436;font-size:12px;min-height:16px}
+#winter-game,#winter-game *{box-sizing:border-box}#winter-game{--ink:#163b42;--green:#17695c;--red:#b74d3b;--cream:#fffaf0;--mint:#e4f1e9;width:100%;min-height:100vh;margin:0;color:var(--ink);font-family:Arial,Helvetica,sans-serif;background:linear-gradient(180deg,#d5ecea,#f0f4e7 55%,#deeadb);isolation:isolate;position:relative;overflow:hidden}#winter-game button,#winter-game input{font:inherit}#winter-game button{cursor:pointer}#winter-game .wg-screen{min-height:100vh;padding:clamp(14px,3vw,32px);display:flex;flex-direction:column;align-items:center;justify-content:center}#winter-game .wg-title{font-family:Georgia,serif;font-size:clamp(32px,6vw,62px);line-height:1.02;text-align:center;color:#174b50;margin:0 0 8px}#winter-game .wg-subtitle{text-align:center;color:#42666b;margin:0 0 22px;font-size:16px}#winter-game .wg-panel{width: min(1080px, 100%);background:#fffcf5;border:2px solid white;border-radius:14px;box-shadow:0 7px 0 #a9c5b9,0 15px 36px #244a4420;padding:clamp(16px,3vw,28px)}#winter-game .wg-label{font-size:12px;font-weight:800;text-transform:uppercase;color:#637d77;margin:0 0 10px}#winter-game .wg-counts{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:18px}#winter-game .wg-count{padding:12px 16px;border-radius:8px;background:#e6efe8;color:#31565a;border:2px solid transparent;font-weight:800}#winter-game .wg-count[aria-pressed="true"]{border-color:#287d68;background:#d9eee5}#winter-game .wg-layout{display:grid;grid-template-columns:minmax(0,1fr) 280px;gap:18px;align-items:start}#winter-game .wg-roster{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px;max-height:440px;overflow:auto;padding:2px}#winter-game .wg-char{min-width:0;background:#f1eee4;border:2px solid transparent;border-radius:9px;padding:8px 5px;color:#294f53;font-weight:700;text-align:center}#winter-game .wg-char[aria-pressed="true"]{border-color:#287d68;background:#e1f0e7}#winter-game .wg-char img{display:block;width:100%;height:124px;object-fit:contain;margin:0 auto 5px}#winter-game .wg-char span{display:block;font-size:12px;line-height:1.2;overflow-wrap:anywhere}#winter-game .wg-preview{position:sticky;top:12px;background:#e8f1e8;border-radius:10px;min-height:310px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:16px;text-align:center}#winter-game .wg-preview img{height:260px;max-width:100%;object-fit:contain}#winter-game .wg-preview strong{font-family:Georgia,serif;font-size:20px;color:#174b50}#winter-game .wg-selection{display:flex;gap:8px;flex-wrap:wrap;margin:13px 0 18px}#winter-game .wg-selected-chip{background:#fff;border:1px solid #d4e1d8;border-radius:7px;padding:6px 9px;font-size:12px;font-weight:700}#winter-game .wg-primary{border:0;border-radius:8px;background:#b84d3b;color:white;padding:13px 19px;font-weight:800;box-shadow:0 4px #84382d}#winter-game .wg-primary:disabled{opacity:.48;cursor:not-allowed}#winter-game .wg-start{width:100%}#winter-game .wg-game{justify-content:flex-start;padding:14px!important;gap:10px}#winter-game .wg-top{width:min(1400px,100%);display:flex;align-items:center;justify-content:space-between;gap:10px;margin:0 auto}#winter-game .wg-wordmark{font:700 23px Georgia,serif;color:#174b50}#winter-game .wg-players{display:flex;gap:7px;flex-wrap:wrap;justify-content:flex-end}#winter-game .wg-player{background:#fffaf0;border:2px solid white;border-radius:8px;padding:7px 10px;font-size:12px;font-weight:800;box-shadow:0 2px #bdcec3}#winter-game .wg-player.is-current{border-color:#ba5645;background:#fff0e7}#winter-game .wg-board-layout{width:min(1400px,100%);margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) 250px;gap:12px;align-items:stretch}#winter-game .wg-board{width:100%;aspect-ratio:16/9;position:relative;overflow:hidden;border:4px solid #fff;border-radius:12px;box-shadow:0 6px #9cbab0;background:#dcebe1}#winter-game .wg-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:fill;display:block}#winter-game .wg-token-layer{position:absolute;inset:0;pointer-events:none}#winter-game .wg-token{position:absolute;width:clamp(28px,4.2vw,54px);height:clamp(38px,5.7vw,72px);object-fit:contain;transform:translate(-50%,-85%);filter:drop-shadow(0 2px 2px #203b3c70);transition:left .22s linear,top .22s linear;z-index:3}#winter-game .wg-spot{position:absolute;width:24px;height:24px;border:2px solid white;border-radius:50%;background:#b84d3b;color:#fff;display:none;align-items:center;justify-content:center;font-size:11px;font-weight:800;transform:translate(-50%,-50%);z-index:5;box-shadow:0 1px 5px #173b3b80;touch-action:none;cursor:grab}#winter-game.wg-calibrate .wg-spot{display:flex}#winter-game .wg-side{background:#fffcf5;border:2px solid white;border-radius:12px;padding:14px;box-shadow:0 6px #a9c5b9;display:flex;flex-direction:column;gap:9px}#winter-game .wg-side h2{font:700 21px Georgia,serif;margin:0;color:#174b50}#winter-game .wg-current{font-weight:800;background:#e5f0e7;border-radius:7px;padding:9px;font-size:14px}#winter-game .wg-die{font-size:44px;text-align:center;line-height:1.1}#winter-game .wg-side small{font-size:12px;line-height:1.4;color:#5e7972}#winter-game .wg-tool{font-size:12px;border:1px solid #adc6bb;background:#fff;padding:9px;border-radius:7px;font-weight:700;color:#34585a}#winter-game .wg-status{min-height:30px;font-size:13px;font-weight:700;line-height:1.4}#winter-game .wg-modal{position:fixed;inset:0;background:#12363dcc;z-index:20;display:flex;align-items:center;justify-content:center;padding:16px}#winter-game .wg-dialog{width:min(520px,100%);max-height:90vh;overflow:auto;background:#fffaf0;border:3px solid white;border-radius:14px;padding:22px;box-shadow:0 10px #a9c5b9}#winter-game .wg-dialog h2{font:700 26px Georgia,serif;color:#174b50;margin:0 0 8px}#winter-game .wg-dialog p{line-height:1.5}#winter-game .wg-answer{display:block;width:100%;text-align:left;padding:11px;margin:7px 0;background:#e6f0e7;color:#264b4f;border:2px solid transparent;border-radius:7px;font-weight:700}#winter-game .wg-answer:hover{border-color:#438b75}#winter-game .wg-fill{width:100%;padding:12px;border:2px solid #b6cec2;border-radius:7px;margin-bottom:9px}#winter-game .wg-feedback{min-height:24px;font-weight:800}#winter-game .wg-end{text-align:center}#winter-game .wg-end img{height:min(45vh,320px);max-width:90%;object-fit:contain}#winter-game .wg-hidden{display:none!important}#winter-game .wg-alert{color:#a64436;font-size:12px;min-height:16px}
 @media(max-width:760px){#winter-game .wg-screen{padding:14px;justify-content:flex-start}#winter-game .wg-count{min-height:44px}#winter-game .wg-layout{grid-template-columns:1fr!important}#winter-game .wg-roster{grid-template-columns:repeat(3,minmax(0,1fr))!important;max-height:42vh!important}#winter-game .wg-char img{height:100px!important}#winter-game .wg-preview{position:static!important;min-height:0!important;padding:10px!important}#winter-game .wg-preview img{height:145px}#winter-game .wg-side{display:grid!important;grid-template-columns:1fr auto;align-items:center}#winter-game .wg-side h2,#winter-game .wg-current{grid-column:1/-1}#winter-game .wg-side small{grid-column:1/-1}#winter-game .wg-board-layout{grid-template-columns:1fr!important}#winter-game .wg-top{align-items:flex-start!important}#winter-game .wg-wordmark{font-size:18px!important}#winter-game .wg-player{font-size:10px!important;padding:5px 6px!important}#winter-game .wg-game{padding:9px!important}#winter-game .wg-board{border-width:2px!important}#winter-game .wg-spot{width:22px!important;height:22px!important}}
 @media(max-width:390px){#winter-game .wg-roster{grid-template-columns:repeat(2,minmax(0,1fr))!important}#winter-game .wg-char img{height:112px!important}#winter-game .wg-title{font-size:34px!important}}
 
@@ -29,6 +29,368 @@ body{margin:0}
 #winter-game .wg-token{object-position:center bottom}
 @media(max-width:760px){#winter-game .wg-status{grid-column:1/-1}}
 @media(prefers-reduced-motion:reduce){#winter-game .wg-token{transition:none}}
+  /* =========================================
+   WINTER START SCREEN — visual upgrade
+   ========================================= */
+
+/* Deep winter gradient */
+#winter-game #wg-setup {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 50% -15%, rgba(255,255,255,.82), transparent 34%),
+    radial-gradient(circle at 8% 22%, rgba(159,220,229,.34), transparent 28%),
+    radial-gradient(circle at 92% 78%, rgba(185,224,216,.38), transparent 30%),
+    linear-gradient(
+      160deg,
+      #b9e2e5 0%,
+      #d8eeee 28%,
+      #edf4e8 67%,
+      #d9e9d9 100%
+    );
+}
+
+/* Snow layer 1 */
+#winter-game #wg-setup::before {
+  content: "";
+  position: absolute;
+  inset: -80px 0 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: .72;
+  background-image:
+    radial-gradient(circle, rgba(255,255,255,.95) 0 2px, transparent 2.8px),
+    radial-gradient(circle, rgba(255,255,255,.78) 0 1.5px, transparent 2.3px),
+    radial-gradient(circle, rgba(255,255,255,.88) 0 2.5px, transparent 3.2px);
+  background-size:
+    115px 145px,
+    73px 96px,
+    185px 210px;
+  background-position:
+    8px 0,
+    35px 22px,
+    80px 60px;
+  animation: winterSnowFall 18s linear infinite;
+}
+
+/* Snow layer 2 — slower and more delicate */
+#winter-game #wg-setup::after {
+  content: "";
+  position: absolute;
+  inset: -120px 0 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: .38;
+  background-image:
+    radial-gradient(circle, #ffffff 0 1.5px, transparent 2.5px),
+    radial-gradient(circle, #ffffff 0 1px, transparent 2px);
+  background-size:
+    220px 230px,
+    145px 175px;
+  background-position:
+    40px 0,
+    100px 55px;
+  animation: winterSnowFallSlow 28s linear infinite;
+}
+
+@keyframes winterSnowFall {
+  from {
+    transform: translate3d(-18px, -100px, 0);
+  }
+  to {
+    transform: translate3d(22px, 900px, 0);
+  }
+}
+
+@keyframes winterSnowFallSlow {
+  from {
+    transform: translate3d(18px, -160px, 0);
+  }
+  to {
+    transform: translate3d(-20px, 900px, 0);
+  }
+}
+
+/* Keep all interface elements above the snow */
+#winter-game #wg-setup > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Soft glow behind the title */
+#winter-game #wg-setup .wg-title {
+  text-shadow:
+    0 2px 0 rgba(255,255,255,.85),
+    0 0 22px rgba(255,255,255,.6);
+  letter-spacing: -1px;
+}
+
+#winter-game #wg-setup .wg-subtitle {
+  color: #37666b;
+  text-shadow: 0 1px 0 rgba(255,255,255,.75);
+}
+
+/* More dimensional main panel */
+#winter-game #wg-setup .wg-panel {
+  position: relative;
+  overflow: hidden;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,.94),
+      rgba(255,250,239,.94)
+    );
+  border: 1px solid rgba(255,255,255,.98);
+  box-shadow:
+    0 2px 0 rgba(255,255,255,.9) inset,
+    0 0 0 1px rgba(116,165,157,.16),
+    0 12px 0 #a7c5ba,
+    0 22px 44px rgba(28,74,72,.20);
+}
+
+/* Decorative icy highlight on panel */
+#winter-game #wg-setup .wg-panel::before {
+  content: "";
+  position: absolute;
+  left: 7%;
+  right: 7%;
+  top: 0;
+  height: 2px;
+  border-radius: 50%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255,255,255,.95),
+    transparent
+  );
+  pointer-events: none;
+}
+
+/* Player-count buttons */
+#winter-game #wg-setup .wg-count {
+  position: relative;
+  overflow: hidden;
+  background:
+    linear-gradient(145deg, #f1f6ed, #dcebe3);
+  border: 2px solid rgba(255,255,255,.9);
+  box-shadow:
+    0 3px 0 #bfd3c8,
+    0 5px 12px rgba(40,88,80,.10);
+  transition:
+    transform .18s ease,
+    box-shadow .18s ease,
+    background .18s ease;
+}
+
+#winter-game #wg-setup .wg-count:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 5px 0 #a8c5b9,
+    0 9px 16px rgba(40,88,80,.16);
+}
+
+#winter-game #wg-setup .wg-count[aria-pressed="true"] {
+  background:
+    linear-gradient(145deg, #e6f7ef, #cdebe1);
+  border-color: #28836f;
+  box-shadow:
+    0 3px 0 #6cae9b,
+    0 8px 16px rgba(37,117,96,.20),
+    0 0 0 3px rgba(81,181,151,.12);
+}
+
+/* Character cards — dimensional contour */
+#winter-game #wg-setup .wg-char {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  background:
+    linear-gradient(#f7f3e8, #eee9dc) padding-box,
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,1),
+      rgba(206,190,151,.95),
+      rgba(255,255,255,.92)
+    ) border-box;
+  border: 2px solid transparent;
+  border-radius: 13px;
+  box-shadow:
+    0 4px 0 #c9bea6,
+    0 8px 15px rgba(67,73,56,.12);
+  transition:
+    transform .2s ease,
+    box-shadow .2s ease,
+    filter .2s ease;
+}
+
+/* Glossy top edge */
+#winter-game #wg-setup .wg-char::before {
+  content: "";
+  position: absolute;
+  left: 8%;
+  right: 8%;
+  top: 0;
+  height: 3px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.85);
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Very subtle card shine */
+#winter-game #wg-setup .wg-char::after {
+  content: "";
+  position: absolute;
+  width: 70px;
+  height: 180%;
+  top: -40%;
+  left: -90px;
+  transform: rotate(20deg);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255,255,255,.32),
+    transparent
+  );
+  pointer-events: none;
+  transition: left .55s ease;
+  z-index: 3;
+}
+
+#winter-game #wg-setup .wg-char:hover {
+  transform: translateY(-5px) rotateX(2deg);
+  box-shadow:
+    0 7px 0 #b6aa91,
+    0 14px 22px rgba(67,73,56,.20);
+  filter: saturate(1.06);
+}
+
+#winter-game #wg-setup .wg-char:hover::after {
+  left: 125%;
+}
+
+#winter-game #wg-setup .wg-char[aria-pressed="true"] {
+  background:
+    linear-gradient(#edf8ef, #dcefe4) padding-box,
+    linear-gradient(
+      145deg,
+      #ffffff,
+      #318b76,
+      #b8e6d3
+    ) border-box;
+  box-shadow:
+    0 4px 0 #438c78,
+    0 10px 20px rgba(35,120,94,.25),
+    0 0 0 4px rgba(82,173,142,.13);
+  transform: translateY(-3px);
+}
+
+/* Character image: more breathing space */
+#winter-game #wg-setup .wg-char img {
+  position: relative;
+  z-index: 1;
+  filter:
+    drop-shadow(0 5px 3px rgba(53,63,54,.16));
+  transition: transform .2s ease;
+}
+
+#winter-game #wg-setup .wg-char:hover img {
+  transform: scale(1.045);
+}
+
+/* Character name */
+#winter-game #wg-setup .wg-char span {
+  position: relative;
+  z-index: 4;
+  color: #294f53;
+  text-shadow: 0 1px 0 rgba(255,255,255,.8);
+}
+
+/* Selected-character preview */
+#winter-game #wg-setup .wg-preview {
+  background:
+    radial-gradient(circle at 50% 20%, rgba(255,255,255,.72), transparent 42%),
+    linear-gradient(145deg, #eaf7ed, #d4e9df);
+  border: 2px solid rgba(255,255,255,.95);
+  box-shadow:
+    0 4px 0 #bed4c7,
+    inset 0 1px 0 rgba(255,255,255,.9),
+    0 10px 20px rgba(45,91,83,.11);
+}
+
+#winter-game #wg-setup .wg-preview img {
+  filter: drop-shadow(0 8px 5px rgba(46,65,59,.20));
+  animation: characterFloat 3.8s ease-in-out infinite;
+}
+
+@keyframes characterFloat {
+  0%, 100% {
+    transform: translateY(0) rotate(-1deg);
+  }
+  50% {
+    transform: translateY(-7px) rotate(1deg);
+  }
+}
+
+/* Start button */
+#winter-game #wg-setup .wg-start {
+  position: relative;
+  overflow: hidden;
+  background:
+    linear-gradient(145deg, #c9624d, #a94035);
+  border: 1px solid rgba(255,255,255,.34);
+  box-shadow:
+    0 5px 0 #81352c,
+    0 10px 18px rgba(133,55,45,.18);
+  transition:
+    transform .18s ease,
+    box-shadow .18s ease,
+    filter .18s ease;
+}
+
+#winter-game #wg-setup .wg-start:not(:disabled):hover {
+  transform: translateY(-3px);
+  filter: brightness(1.06);
+  box-shadow:
+    0 8px 0 #81352c,
+    0 14px 22px rgba(133,55,45,.25);
+}
+
+#winter-game #wg-setup .wg-start:not(:disabled):active {
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 #81352c;
+}
+
+/* Mobile: keep the visual depth, but avoid hover movement */
+@media (max-width: 760px) {
+  #winter-game #wg-setup .wg-char:hover {
+    transform: none;
+  }
+
+  #winter-game #wg-setup .wg-char:hover img {
+    transform: none;
+  }
+
+  #winter-game #wg-setup .wg-preview {
+    border-radius: 12px;
+  }
+}
+
+/* Accessibility / reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  #winter-game #wg-setup::before,
+  #winter-game #wg-setup::after,
+  #winter-game #wg-setup .wg-preview img {
+    animation: none;
+  }
+
+  #winter-game #wg-setup .wg-char,
+  #winter-game #wg-setup .wg-char img,
+  #winter-game #wg-setup .wg-count,
+  #winter-game #wg-setup .wg-start {
+    transition: none;
+  }
+}
 </style>
 </head>
 <body>
