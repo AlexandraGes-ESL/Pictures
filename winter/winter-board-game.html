@@ -113,6 +113,48 @@ body{margin:0}
   #winter-game .wg-primary,#winter-game .wg-tool,#winter-game .wg-quiz .wg-answer {transition:none}
 }
 
+
+/* Footer is in normal flow after the active screen, never over the board. */
+#winter-game .wg-credit{display:flex;justify-content:center;align-items:center;gap:8px 18px;flex-wrap:wrap;padding:16px 20px;background:#e1eee7;color:#355e59;font:12px/1.5 Arial,sans-serif;text-align:center;border-top:1px solid #b7d2c8}
+#winter-game .wg-credit a{color:#175e54;font-weight:700;text-decoration:underline;text-underline-offset:3px}
+#winter-game .wg-credit-note{flex-basis:100%;font-size:11px}
+#winter-game .wg-event{text-align:center;width:min(480px,100%);background:linear-gradient(145deg,#fffdf7,#e8f4ee);border-color:#fff;}
+#winter-game .wg-event-art{height:150px;position:relative;overflow:hidden;display:grid;place-items:center;border-radius:15px;background:radial-gradient(ellipse at 50% 80%,#c5e6ed,#ecf8f5 65%);margin:0 0 15px}
+#winter-game .wg-event-art img{display:block;width:130px;height:130px;object-fit:contain;filter:drop-shadow(0 7px 5px #294b4a30)}
+#winter-game .wg-event-art[data-event="🎁"] img{animation:wg-gift-hop 1.4s ease-in-out infinite}
+#winter-game .wg-event-art[data-event="🛷"] img{animation:wg-sled-slide 2.1s ease-in-out infinite alternate}
+#winter-game .wg-event-art[data-event="🧤"] img{animation:wg-mitten-blow 2.5s ease-in-out infinite alternate}
+@keyframes wg-gift-hop{0%,75%,100%{transform:translateY(0) rotate(0)} 35%{transform:translateY(-19px) rotate(-8deg)} 52%{transform:translateY(-6px) rotate(7deg)}}
+@keyframes wg-sled-slide{from{transform:translateX(-28px) rotate(-5deg)}to{transform:translateX(28px) rotate(4deg)}}
+@keyframes wg-mitten-blow{0%{transform:translate(-28px,9px) rotate(-16deg)}50%{transform:translate(0,-13px) rotate(12deg)}100%{transform:translate(28px,4px) rotate(-10deg)}}
+#winter-game .wg-blizzard{position:absolute;inset:-50%;background-image:radial-gradient(circle,#fff 0 2px,transparent 3px),radial-gradient(circle,#b9dbe5 0 3px,transparent 4px);background-size:37px 47px,69px 63px;animation:wg-storm .8s linear infinite}
+#winter-game .wg-storm-symbol{font-size:65px;position:relative;filter:drop-shadow(0 3px 4px #47859b55)}
+@keyframes wg-storm{from{transform:translate(-25px,-25px)}to{transform:translate(12px,22px)}}
+@media(prefers-reduced-motion:reduce){#winter-game .wg-event-art img,#winter-game .wg-blizzard{animation:none!important}}
+
+
+/* A winter-night frame and two soft snowfall layers over the map. */
+#winter-game .wg-game{background:radial-gradient(ellipse at 18% 0%,#426b78 0,transparent 50%),radial-gradient(ellipse at 90% 15%,#34736d88,transparent 48%),linear-gradient(145deg,#203d50,#294f5b 55%,#183d43)}
+#winter-game .wg-game .wg-wordmark{color:#f4faf5;text-shadow:0 2px 8px #102b37aa}
+#winter-game .wg-game .wg-board{box-shadow:0 0 0 2px #d8f4ed99,0 8px 0 #16343b,0 16px 36px #071c2870}
+#winter-game .wg-board::before,#winter-game .wg-board::after{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;background-repeat:repeat;will-change:background-position}
+#winter-game .wg-board::before{opacity:.58;background-image:radial-gradient(circle,#fff 0 1.4px,transparent 2.3px),radial-gradient(circle,#e9faff 0 1px,transparent 2px);background-size:125px 157px,89px 113px;background-position:0 0,32px 25px;animation:wg-board-snow-near 14s linear infinite}
+#winter-game .wg-board::after{opacity:.46;background-image:radial-gradient(circle,#fff 0 2px,transparent 3.2px),radial-gradient(circle,#e4f9ff 0 1.2px,transparent 2.3px);background-size:203px 191px,141px 137px;background-position:42px 7px,4px 51px;animation:wg-board-snow-far 22s linear infinite}
+@keyframes wg-board-snow-near{to{background-position:125px 628px,121px 477px}}
+@keyframes wg-board-snow-far{to{background-position:245px 580px,145px 462px}}
+@media(prefers-reduced-motion:reduce){#winter-game .wg-board::before,#winter-game .wg-board::after{animation:none}}
+
+
+/* Map-inspired twilight: snowy lavender, midnight blue, aurora teal and warm light. */
+#winter-game .wg-game{background:radial-gradient(ellipse at 12% 8%,#a2adc1a0,transparent 40%),radial-gradient(ellipse at 89% 12%,#4d999080,transparent 42%),radial-gradient(ellipse at 75% 95%,#d4a07755,transparent 42%),linear-gradient(135deg,#34435f,#243b58 48%,#275e65)}
+@media(min-width:761px){#winter-game .wg-side{align-self:stretch;min-height:0}#winter-game .wg-turn-portrait{flex:1 1 120px;min-height:90px}}
+#winter-game .wg-turn-portrait{position:relative;display:grid;place-items:center;overflow:hidden;border-radius:14px;background:radial-gradient(ellipse at 50% 80%,#c7e8e6 0,transparent 54%),linear-gradient(155deg,#eef7f4,#e1edf2);border:1px solid #d4e9e7}
+#winter-game .wg-turn-portrait::after{content:"";position:absolute;bottom:11%;width:64%;height:10%;border-radius:50%;background:#547e7b26;filter:blur(5px)}
+#winter-game .wg-turn-portrait img{position:relative;z-index:1;display:block;width:90%;height:100%;max-height:220px;min-height:0;object-fit:contain;filter:drop-shadow(0 8px 5px #31576545);animation:wg-turn-float 3.8s ease-in-out infinite}
+@keyframes wg-turn-float{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(-7px) rotate(1deg)}}
+@media(max-width:760px){#winter-game .wg-turn-portrait{height:130px;grid-column:1/-1}#winter-game .wg-turn-portrait img{max-height:120px}}
+@media(prefers-reduced-motion:reduce){#winter-game .wg-turn-portrait img{animation:none}}
+
 </style>
 </head>
 <body>
@@ -129,15 +171,17 @@ body{margin:0}
   <section class="wg-screen wg-game wg-hidden" id="wg-game">
     <header class="wg-top"><div class="wg-wordmark">Winter Adventure</div><button type="button" class="wg-tool wg-sound" aria-pressed="false">🔇 Sound off</button><div class="wg-players" id="wg-players"></div></header>
     <div class="wg-board-layout"><div class="wg-board" id="wg-board"><img class="wg-bg" src="https://raw.githubusercontent.com/AlexandraGes-ESL/Pictures/main/winter/background.png" alt="Snowy Christmas board game map"><div class="wg-token-layer" id="wg-token-layer"></div></div>
-      <aside class="wg-side"><h2>Current turn</h2><div class="wg-current" id="wg-current"></div><div class="wg-die"><div class="wg-die-stage" aria-hidden="true"><div class="wg-die-tilt"><div class="wg-cube" id="wg-cube"></div></div></div><span class="wg-die-result" id="wg-die-result" role="status">Ready to roll</span></div><button class="wg-primary" id="wg-roll">Roll the die</button><div class="wg-status" id="wg-status" role="status">Roll to move along the snowy trail.</div><small>Roll 1–2: move 1 · 3–4: move 2 · 5–6: move 3. Answer correctly to move; a wrong answer sends you back 1 space.</small></aside>
+      <aside class="wg-side"><h2>Current turn</h2><div class="wg-current" id="wg-current"></div><div class="wg-turn-portrait"><img id="wg-turn-character" alt=""></div><div class="wg-die"><div class="wg-die-stage" aria-hidden="true"><div class="wg-die-tilt"><div class="wg-cube" id="wg-cube"></div></div></div><span class="wg-die-result" id="wg-die-result" role="status">Ready to roll</span></div><button class="wg-primary" id="wg-roll">Roll the die</button><div class="wg-status" id="wg-status" role="status">Roll to move along the snowy trail.</div><small>Roll 1–2: move 1 · 3–4: move 2 · 5–6: move 3. Answer correctly to move; a wrong answer sends you back 1 space.</small></aside>
     </div>
   </section><div id="wg-modal"></div>
+  <footer class="wg-credit"><span>© 2026 Alexandra Ges · ESL materials</span><a href="https://boosty.to/alexandrages_esl" target="_blank" rel="noopener noreferrer">Boosty</a><a href="https://t.me/alexandragesESL" target="_blank" rel="noopener noreferrer">Telegram</a><span class="wg-credit-note">This material is protected by copyright. Not for sale, resale or redistribution.</span></footer>
 </main>
 <script>
 (()=>{'use strict';
 const ROOT='https://raw.githubusercontent.com/AlexandraGes-ESL/Pictures/main/winter/';
 const chars=[['Angel','Angel.png'],['Elf','Elf.png'],['Ice Princess','Elsa-Cinderella.png'],['Gingerbread','Gingerbread.png'],['Green Trickster','Grinch-elf.png'],['Ice Man','Ice-man.png'],['Red Hat Traveller','Man-red-hat.png'],['Mrs Claus','Mrs.Claus.png'],['Nutcracker','Nutcracker.png'],['Penguin','Penguin.png'],['Reindeer','Reindeer.png'],['Santa','Santa.png'],['Snowman','Snowman.png'],['Polar Bear','White-bear.png'],['Winter Fairy','Winter-fairy.png'],['Winter Witch','Winter-witch.png']];
 const points=[[0.103,0.7814],[0.212,0.7777],[0.3214,0.787],[0.4323,0.7838],[0.5427,0.7858],[0.655,0.7861],[0.7652,0.7855],[0.8771,0.7827],[0.8756,0.6131],[0.7618,0.6128],[0.6564,0.6099],[0.5423,0.6182],[0.4292,0.6169],[0.3185,0.6101],[0.2027,0.6086],[0.2156,0.4573],[0.321,0.4508],[0.4313,0.4472],[0.5403,0.4485],[0.6522,0.4491],[0.7583,0.4467],[0.869,0.4445]];
+// QUESTION BANK: replace this block for another edition.
 const bank=[
   {
     "q": "My brother broke my phone and laughed. I’m ___.",
@@ -1280,6 +1324,7 @@ const bank=[
     ]
   }
 ];
+
 const host=document.getElementById('winter-game'), $=s=>host.querySelector(s), LAST=points.length-1;
 const state={count:2,selected:[],players:[],turn:0,locked:false,finished:false,die:1,deck:[],sound:false};
 const wait=ms=>new Promise(resolve=>setTimeout(resolve,ms));
@@ -1315,7 +1360,7 @@ function initSetup(){const counts=$('#wg-counts');counts.replaceChildren();for(l
 function renderRoster(){const list=$('#wg-roster');list.innerHTML='';chars.forEach((c,i)=>{const b=document.createElement('button');b.type='button';b.className='wg-char';b.setAttribute('aria-pressed',String(state.selected.includes(i)));b.innerHTML=`<img loading="lazy" src="${ROOT+c[1]}" alt=""><span>${c[0]}</span>`;b.onclick=()=>{if(state.selected.includes(i))state.selected=state.selected.filter(x=>x!==i);else if(state.selected.length<state.count)state.selected.push(i);renderRoster()};list.append(b)});const preview=$('#wg-preview');if(state.selected.length){const c=chars[state.selected[state.selected.length-1]];preview.innerHTML=`<img src="${ROOT+c[1]}" alt=""><strong>${c[0]}</strong>`}else preview.innerHTML='<span>Select a character</span>';$('#wg-selection').innerHTML=state.selected.map((id,i)=>`<span class="wg-selected-chip">Player ${i+1}: ${chars[id][0]}</span>`).join('');$('#wg-start').disabled=state.selected.length!==state.count;const remaining=state.count-state.selected.length;$('#wg-alert').textContent=remaining?`Choose ${remaining} more character${remaining===1?'':'s'}.`:''}
 function startGame(){if(state.selected.length!==state.count)return;if(state.sound)initAudio();state.players=state.selected.map((id,i)=>({name:state.count===1?'You':'Player '+(i+1),asset:chars[id][1],label:chars[id][0],pos:0}));if(state.count===1){const options=chars.filter((_,i)=>i!==state.selected[0]);const [label,asset]=options[Math.floor(Math.random()*options.length)];state.players.push({name:'Computer',label,asset,pos:0,bot:true})}state.turn=0;state.locked=false;state.finished=false;state.die=1;state.deck=[];$('#wg-cube').style.transform=pose(0,0);$('#wg-die-result').textContent='Ready to roll';$('#wg-token-layer').replaceChildren();$('#wg-setup').classList.add('wg-hidden');$('#wg-game').classList.remove('wg-hidden');setStatus('Roll, then answer to move.');renderGame();$('#wg-roll').focus()}
 function tokens(){const layer=$('#wg-token-layer');state.players.forEach((p,i)=>{let el=layer.children[i];if(!el){el=document.createElement('img');el.className='wg-token';el.src=ROOT+p.asset;el.alt=p.label;layer.append(el)}const [x,y]=points[p.pos],group=state.players.filter(other=>other.pos===p.pos),rank=group.indexOf(p),count=group.length,dx=count===1?0:count===2?(rank===0?-1.45:1.45):rank%2===0?-1.65:1.65,dy=count<3?0:rank<2?-1.4:1.4;el.style.left=(x*100+dx)+'%';el.style.top=(y*100+dy)+'%'})}
-function renderGame(){const p=state.players[state.turn];$('#wg-players').innerHTML=state.players.map((x,i)=>`<div class="wg-player ${i===state.turn?'is-current':''}">${x.bot?'CPU · ':''}${x.label} · ${x.pos+1}/22</div>`).join('');$('#wg-current').textContent=p.name+' · '+p.label;$('#wg-roll').disabled=state.locked||Boolean(p.bot)||state.finished;$('#wg-roll').textContent=p.bot?'Computer’s turn':'Roll the die';tokens()}
+function renderGame(){const p=state.players[state.turn];$('#wg-players').innerHTML=state.players.map((x,i)=>`<div class="wg-player ${i===state.turn?'is-current':''}">${x.bot?'CPU · ':''}${x.label} · ${x.pos+1}/22</div>`).join('');$('#wg-current').textContent=p.name+' · '+p.label;const portrait=$('#wg-turn-character');if(portrait.getAttribute('src')!==ROOT+p.asset)portrait.src=ROOT+p.asset;portrait.alt='';$('#wg-roll').disabled=state.locked||Boolean(p.bot)||state.finished;$('#wg-roll').textContent=p.bot?'Computer’s turn':'Roll the die';tokens()}
 function setStatus(t){$('#wg-status').textContent=t}
 const pipLayouts=[[5],[1,9],[1,5,9],[1,3,7,9],[1,3,5,7,9],[1,3,4,6,7,9]],angles=[[0,0],[0,-90],[-90,0],[90,0],[0,90],[0,180]],pose=(x,y)=>`rotateX(${x}deg) rotateY(${y}deg)`;
 function buildDie(){const cube=$('#wg-cube');pipLayouts.forEach(layout=>{const face=document.createElement('div');face.className='wg-face';layout.forEach(i=>{const pip=document.createElement('span');pip.className='wg-pip';pip.style.gridArea=`${Math.ceil(i/3)} / ${(i-1)%3+1}`;face.append(pip)});cube.append(face)})}
@@ -1325,7 +1370,7 @@ function nextTurn(){if(state.finished)return;state.turn=(state.turn+1)%state.pla
 async function roll(automatic=false){const p=state.players[state.turn];if(!p||state.locked||state.finished||Boolean(p.bot)!==automatic)return;state.locked=true;renderGame();const n=1+Math.floor(Math.random()*6),steps=Math.ceil(n/2);setStatus(p.bot?'The computer is rolling…':'Rolling the die…');await animateDie(n,p);if(p.bot){const correct=Math.random()<.60;setStatus(correct?`The computer solved its challenge. Moving ${steps}…`:'The computer missed its challenge. Back 1 space.');sound(correct?'correct':'wrong');await wait(1300);await resolveAnswer(p,correct,steps)}else ask(p,steps)}
 // Events apply once, only after a correct answer and normal movement; no cascades.
 const events={4:['☕','A hot chocolate break slows you down. Move back 1 space.',-1],7:['🧊','An icy path sends you sliding back 2 spaces.',-2],10:['🎁','A missing gift delays your journey. Move back 1 space.',-1],13:['🌨️','A snowstorm pushes you back 2 spaces.',-2],16:['🛷','Your sled takes a wrong turn. Move back 2 spaces.',-2],19:['🧤','You dropped a mitten. Move back 1 space.',-1]};
-async function resolveAnswer(p,ok,steps){if(!ok){await walk(p,-1);nextTurn();return}await walk(p,steps);if(p.pos===LAST){finish(p);return}const ev=events[p.pos];if(!ev){nextTurn();return}sound('event');if(p.bot){setStatus('CPU event · '+ev[1]);await wait(1500);await walk(p,ev[2]);nextTurn()}else showDialog(ev[0]+' Winter detour',ev[1],async()=>{await walk(p,ev[2]);nextTurn()})}
+async function resolveAnswer(p,ok,steps){if(!ok){await walk(p,-1);nextTurn();return}await walk(p,steps);if(p.pos===LAST){finish(p);return}const ev=events[p.pos];if(!ev){nextTurn();return}sound('event');if(p.bot){setStatus('CPU event · '+ev[1]);await wait(1500);await walk(p,ev[2]);nextTurn()}else showDialog(ev[0],ev[1],async()=>{await walk(p,ev[2]);nextTurn()})}
 function ask(p,steps){
   const q=nextQuestion(), modal=$('#wg-modal');
   modal.innerHTML=`<div class="wg-modal"><div class="wg-dialog wg-quiz" role="dialog" aria-modal="true" aria-labelledby="wg-question-title" aria-describedby="wg-question-text">
@@ -1375,7 +1420,17 @@ function ask(p,steps){
     };
   }
 }
-function showDialog(title,text,callback){const m=$('#wg-modal');m.innerHTML=`<div class="wg-modal"><div class="wg-dialog" role="dialog" aria-modal="true" aria-labelledby="wg-dialog-title"><h2 id="wg-dialog-title">${title}</h2><p>${text}</p><button class="wg-primary" id="wg-ok">Continue</button></div></div>`;$('#wg-game').inert=true;const button=$('#wg-ok');button.focus();button.onclick=()=>{button.disabled=true;m.innerHTML='';$('#wg-game').inert=false;callback()}}
+const eventImages={"☕": "https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExZmJuMGJjazg2ZGd1d3hoNGMxZDBjdTZjaW9tM3lta2htMHB5OWZteSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/aCg6e2SEixUUfoR7K7/giphy.gif", "🧊": "https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExcDkwcW96c3BjM2M3NTFwbDUzZml4eGlhZDBodnZudGQ1d28xemozeCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/fUXkufLq1JDSunqjeJ/giphy.gif", "🎁": "https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExaWtveHZuYmZzbGVpdHlkd2U1aGtha3h5OWJxdDBiNHBwcGV6enQxdCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/3k4GhMeTbvIbEtlOUn/giphy.gif", "🛷": "https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExenRneTRybGY3OTMzZjV5azJpaW8yNDY2dnZzdHBmNXQ2bXlqemtqcSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/0feDinX9lu3gvWEDe5/giphy.gif", "🧤": "https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExNXE4MTBrZzIwYWl0dG9ibWEyc2prczlsNjR3ZHRtdnM1YWNkMml5OCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/Y0aOKhewq81CRlH7bX/giphy.gif"};
+function showDialog(icon,text,callback){
+  const m=$('#wg-modal');
+  m.innerHTML=`<div class="wg-modal"><div class="wg-dialog wg-event" role="dialog" aria-modal="true" aria-labelledby="wg-dialog-title"><div class="wg-event-art" aria-hidden="true"></div><h2 id="wg-dialog-title">Winter detour</h2><p></p><button class="wg-primary" id="wg-ok">Continue</button></div></div>`;
+  const art=m.querySelector('.wg-event-art'); art.dataset.event=icon;
+  if(icon==='🌨️'){art.innerHTML='<div class="wg-blizzard"></div><span class="wg-storm-symbol">🌨️</span>'}
+  else if(eventImages[icon]&&!reduced()) {const image=document.createElement('img');image.alt='';image.src=eventImages[icon];image.onerror=()=>{art.textContent=icon;art.style.fontSize='64px'};art.append(image)}
+  else {art.textContent=icon;art.style.fontSize='64px'}
+  m.querySelector('p').textContent=text;
+  $('#wg-game').inert=true;const button=$('#wg-ok');button.focus();button.onclick=()=>{button.disabled=true;m.innerHTML='';$('#wg-game').inert=false;callback()}
+}
 function finish(p){state.finished=true;state.locked=true;renderGame();sound('win');const m=$('#wg-modal');m.innerHTML=`<div class="wg-modal"><div class="wg-dialog wg-end" role="dialog" aria-modal="true" aria-labelledby="wg-win-title"><img src="${ROOT+p.asset}" alt="${p.label}"><h2 id="wg-win-title">${p.label} reached the Clocktower Castle!</h2><p>${p.name==='You'?'You win!':p.bot?'The computer wins!':p.name+' completed the winter journey.'}</p><button class="wg-primary" id="wg-restart">Play again</button></div></div>`;$('#wg-game').inert=true;const restart=$('#wg-restart');restart.focus();restart.onclick=()=>{m.innerHTML='';$('#wg-game').inert=false;$('#wg-game').classList.add('wg-hidden');$('#wg-setup').classList.remove('wg-hidden');state.selected=[];state.deck=[];initSetup();$('#wg-counts [aria-pressed="true"]').focus()}}
 $('#wg-modal').addEventListener('keydown',e=>{
   if(e.key!=='Tab')return;
@@ -1386,6 +1441,20 @@ $('#wg-modal').addEventListener('keydown',e=>{
     e.preventDefault(); (e.shiftKey?last:first).focus();
   }
 });
+// Warm the browser image cache while learners choose their characters.
+// Keep Image references alive; errors and slow networks never block play.
+const preloadedImages=[];
+function preloadAssets(){
+  const urls=[ROOT+'background.png',...chars.map(([,file])=>ROOT+file),...(reduced()?[]:Object.values(eventImages))];
+  for(const url of new Set(urls)){
+    const image=new Image();
+    image.decoding='async';
+    image.onerror=()=>{};
+    image.src=url;
+    preloadedImages.push(image);
+  }
+}
+preloadAssets();
 $('#wg-start').addEventListener('click',startGame);$('#wg-roll').addEventListener('click',()=>roll());buildDie();initSetup();updateSound();
 })();
 </script>
